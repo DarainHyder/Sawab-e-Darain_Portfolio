@@ -2,39 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Data Science Portfolio Design System - Modern, Interactive, Eye-catching
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    
+    /* Data Science Theme Colors */
+    --data-blue: 216 100% 50%;
+    --data-purple: 267 85% 58%;
+    --data-teal: 180 76% 48%;
+    --data-cyan: 195 100% 50%;
+    
+    /* Enhanced Color Palette */
+    --card: 240 9% 7%;
+    --card-foreground: 0 0% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --popover: 240 9% 7%;
+    --popover-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 216 100% 50%;
+    --primary-foreground: 0 0% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --secondary: 240 5% 15%;
+    --secondary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 240 5% 10%;
+    --muted-foreground: 240 5% 65%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 267 85% 58%;
+    --accent-foreground: 0 0% 98%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(216 100% 50%), hsl(267 85% 58%));
+    --gradient-secondary: linear-gradient(90deg, hsl(180 76% 48%), hsl(195 100% 50%));
+    --gradient-hero: linear-gradient(135deg, hsl(240 10% 3.9%) 0%, hsl(216 100% 10%) 50%, hsl(267 85% 15%) 100%);
+    
+    /* Shadows & Effects */
+    --shadow-glow: 0 0 50px hsl(216 100% 50% / 0.3);
+    --shadow-card: 0 8px 32px hsl(240 10% 3.9% / 0.5);
+    --shadow-accent: 0 0 30px hsl(267 85% 58% / 0.4);
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 240 5% 20%;
+    --input: 240 5% 15%;
+    --ring: 216 100% 50%;
 
     --radius: 0.5rem;
 
@@ -101,5 +118,96 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Portfolio Specific Components */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+  
+  .glow-card {
+    @apply border border-border/20 backdrop-blur-sm;
+    background: linear-gradient(135deg, hsl(240 9% 7% / 0.8), hsl(240 5% 10% / 0.6));
+    box-shadow: var(--shadow-card), inset 0 1px 0 hsl(0 0% 100% / 0.1);
+  }
+  
+  .glow-card:hover {
+    box-shadow: var(--shadow-glow), var(--shadow-card), inset 0 1px 0 hsl(0 0% 100% / 0.2);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+  }
+  
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .data-gradient {
+    background: var(--gradient-primary);
+  }
+  
+  .interactive-hover {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-lg;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out forwards;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
