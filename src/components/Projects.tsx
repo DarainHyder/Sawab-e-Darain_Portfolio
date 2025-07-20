@@ -14,28 +14,28 @@ const Projects = () => {
       githubUrl: "https://github.com/DarainHyder/Heart_Attack_risk-analysis-and-Trainig-Model"
     },
     {
+      title: "AI Podcast Generator",
+      description: "AI-powered podcast generator that combines LLM script creation with premium text-to-speech synthesis to produce ready-to-publish audio content from simple text prompts.",
+      tech: ["Python", "LLM", "Text-to-Speech", "AI"],
+      icon: BarChart3,
+      color: "text-accent",
+      githubUrl: "https://github.com/DarainHyder/podcast_generator"
+    },
+    {
+      title: "Word Puzzle Solver",
+      description: "Intelligent algorithm to solve various word puzzles using advanced pattern recognition and optimization techniques for efficient puzzle resolution.",
+      tech: ["Python", "Algorithms", "Pattern Recognition", "Optimization"],
+      icon: Database,
+      color: "text-data-teal",
+      githubUrl: "https://github.com/DarainHyder/Word_Puzzle_Solver"
+    },
+    {
       title: "Data Analysis Projects",
       description: "Collection of data analysis projects showcasing various statistical methods and visualization techniques for real-world datasets.",
       tech: ["Python", "Jupyter Notebook", "Data Visualization", "Statistics"],
-      icon: BarChart3,
-      color: "text-accent",
-      githubUrl: "https://github.com/DarainHyder/Data-Analysis-Projects"
-    },
-    {
-      title: "Checker Game - Java GUI",
-      description: "Java-based Checkers game with interactive GUI, smooth animations, and sound effects. Implements OOP concepts with user-friendly gameplay.",
-      tech: ["Java", "GUI", "OOP", "Game Development"],
-      icon: Database,
-      color: "text-data-teal",
-      githubUrl: "https://github.com/DarainHyder/Checker-Game"
-    },
-    {
-      title: "Internship Projects Collection",
-      description: "Multiple internship tasks from CodeAlfa, GrowIntern, and InfoTech showcasing various programming and data science skills.",
-      tech: ["Python", "Data Science", "Web Development", "Analysis"],
       icon: TrendingUp,
       color: "text-data-cyan",
-      githubUrl: "https://github.com/DarainHyder/GrowIntern-Intenship-Tasks"
+      githubUrl: "https://github.com/DarainHyder/Data-Analysis-Projects"
     }
   ];
 
