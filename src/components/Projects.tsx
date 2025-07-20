@@ -6,32 +6,36 @@ import { Github, ExternalLink, Database, BarChart3, Brain, TrendingUp } from "lu
 const Projects = () => {
   const projects = [
     {
-      title: "Sales Prediction ML Model",
-      description: "Built a machine learning model to predict sales trends using historical data and multiple regression techniques.",
-      tech: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
-      icon: TrendingUp,
-      color: "text-primary"
-    },
-    {
-      title: "Customer Segmentation Analysis",
-      description: "Performed customer segmentation using K-means clustering to identify target demographics for marketing campaigns.",
-      tech: ["Python", "K-means", "Data Visualization", "NumPy"],
-      icon: BarChart3,
-      color: "text-accent"
-    },
-    {
-      title: "Data Visualization Dashboard",
-      description: "Created an interactive dashboard for visualizing complex datasets with real-time filtering and analysis capabilities.",
-      tech: ["React", "D3.js", "JavaScript", "CSS"],
-      icon: Database,
-      color: "text-data-teal"
-    },
-    {
-      title: "Sentiment Analysis Tool",
-      description: "Developed a natural language processing tool to analyze sentiment in social media posts and customer reviews.",
-      tech: ["Python", "NLTK", "Machine Learning", "Flask"],
+      title: "Heart Attack Risk Analysis & ML Model",
+      description: "Applied Probability and Statistics concepts to analyze heart attack risks with data cleaning, hypothesis testing, and model training using classified dataset.",
+      tech: ["Python", "Jupyter Notebook", "Statistics", "Machine Learning"],
       icon: Brain,
-      color: "text-data-cyan"
+      color: "text-primary",
+      githubUrl: "https://github.com/DarainHyder/Heart_Attack_risk-analysis-and-Trainig-Model"
+    },
+    {
+      title: "Data Analysis Projects",
+      description: "Collection of data analysis projects showcasing various statistical methods and visualization techniques for real-world datasets.",
+      tech: ["Python", "Jupyter Notebook", "Data Visualization", "Statistics"],
+      icon: BarChart3,
+      color: "text-accent",
+      githubUrl: "https://github.com/DarainHyder/Data-Analysis-Projects"
+    },
+    {
+      title: "Checker Game - Java GUI",
+      description: "Java-based Checkers game with interactive GUI, smooth animations, and sound effects. Implements OOP concepts with user-friendly gameplay.",
+      tech: ["Java", "GUI", "OOP", "Game Development"],
+      icon: Database,
+      color: "text-data-teal",
+      githubUrl: "https://github.com/DarainHyder/Checker-Game"
+    },
+    {
+      title: "Internship Projects Collection",
+      description: "Multiple internship tasks from CodeAlfa, GrowIntern, and InfoTech showcasing various programming and data science skills.",
+      tech: ["Python", "Data Science", "Web Development", "Analysis"],
+      icon: TrendingUp,
+      color: "text-data-cyan",
+      githubUrl: "https://github.com/DarainHyder/GrowIntern-Intenship-Tasks"
     }
   ];
 
@@ -74,13 +78,23 @@ const Projects = () => {
                     ))}
                   </div>
                   <div className="flex gap-3">
-                    <Button variant="outline" size="sm" className="flex-1">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex-1"
+                      onClick={() => window.open(project.githubUrl, '_blank')}
+                    >
                       <Github className="mr-2 h-4 w-4" />
                       Code
                     </Button>
-                    <Button variant="default" size="sm" className="flex-1">
+                    <Button 
+                      variant="default" 
+                      size="sm" 
+                      className="flex-1"
+                      onClick={() => window.open(project.githubUrl, '_blank')}
+                    >
                       <ExternalLink className="mr-2 h-4 w-4" />
-                      Demo
+                      View
                     </Button>
                   </div>
                 </div>
@@ -90,7 +104,12 @@ const Projects = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Button variant="outline" size="lg" className="interactive-hover">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="interactive-hover"
+            onClick={() => window.open('https://github.com/DarainHyder', '_blank')}
+          >
             <Github className="mr-2 h-5 w-5" />
             View All Projects on GitHub
           </Button>
