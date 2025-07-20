@@ -70,7 +70,7 @@ const Contact = () => {
                 <Mail className="h-6 w-6 text-primary" />
                 <div>
                   <p className="font-medium">Email</p>
-                  <p className="text-muted-foreground">your.email@example.com</p>
+                  <p className="text-muted-foreground">darainhyder21@gmail.com</p>
                 </div>
               </div>
 
@@ -94,14 +94,20 @@ const Contact = () => {
             <div className="pt-6 border-t border-border/20">
               <h4 className="font-semibold mb-4">Follow me on</h4>
               <div className="flex gap-4">
-                <Button variant="outline" size="icon" className="interactive-hover">
-                  <Github className="h-5 w-5" />
+                <Button variant="outline" size="icon" className="interactive-hover" asChild>
+                  <a href="https://github.com/DarainHyder" target="_blank" rel="noopener noreferrer">
+                    <Github className="h-5 w-5" />
+                  </a>
                 </Button>
-                <Button variant="outline" size="icon" className="interactive-hover">
-                  <Linkedin className="h-5 w-5" />
+                <Button variant="outline" size="icon" className="interactive-hover" asChild>
+                  <a href="https://www.linkedin.com/in/syed-darain-hyder-kazmi" target="_blank" rel="noopener noreferrer">
+                    <Linkedin className="h-5 w-5" />
+                  </a>
                 </Button>
-                <Button variant="outline" size="icon" className="interactive-hover">
-                  <Mail className="h-5 w-5" />
+                <Button variant="outline" size="icon" className="interactive-hover" asChild>
+                  <a href="mailto:darainhyder21@gmail.com">
+                    <Mail className="h-5 w-5" />
+                  </a>
                 </Button>
               </div>
             </div>
