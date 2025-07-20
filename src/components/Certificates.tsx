@@ -5,52 +5,52 @@ import { Award, Calendar, ExternalLink } from "lucide-react";
 const Certificates = () => {
   const certificates = [
     {
-      title: "Python for Data Science",
-      issuer: "Coursera",
+      title: "Associate Data Scientist in Python",
+      issuer: "DataCamp",
       date: "2024",
-      description: "Comprehensive course covering Python programming fundamentals for data analysis and visualization.",
-      skills: ["Python", "Pandas", "NumPy", "Matplotlib"],
-      level: "Intermediate"
-    },
-    {
-      title: "Machine Learning Fundamentals",
-      issuer: "edX",
-      date: "2024",
-      description: "Introduction to machine learning algorithms, supervised and unsupervised learning techniques.",
-      skills: ["ML Algorithms", "Scikit-learn", "Statistics", "Data Mining"],
-      level: "Beginner"
-    },
-    {
-      title: "SQL for Data Analysis",
-      issuer: "Udemy",
-      date: "2023",
-      description: "Advanced SQL techniques for data manipulation, querying, and database management.",
-      skills: ["SQL", "Database Design", "Query Optimization", "Data Modeling"],
+      description: "Comprehensive career track covering Python for data science, machine learning, and statistical analysis with real-world projects.",
+      skills: ["Python", "Machine Learning", "Statistics", "Data Manipulation", "scikit-learn"],
       level: "Advanced"
     },
     {
-      title: "Data Visualization with Tableau",
-      issuer: "Tableau",
+      title: "Supervised Learning with scikit-learn",
+      issuer: "DataCamp",
       date: "2024",
-      description: "Creating interactive dashboards and compelling data visualizations using Tableau.",
-      skills: ["Tableau", "Dashboard Design", "Data Storytelling", "Business Intelligence"],
+      description: "Master supervised learning techniques including regression, classification, and model evaluation using scikit-learn.",
+      skills: ["Supervised Learning", "scikit-learn", "Regression", "Classification", "Model Evaluation"],
       level: "Intermediate"
     },
     {
-      title: "Statistical Analysis",
-      issuer: "Khan Academy",
-      date: "2023",
-      description: "Fundamentals of statistics including probability, hypothesis testing, and regression analysis.",
-      skills: ["Statistics", "Probability", "Hypothesis Testing", "Regression"],
+      title: "Unsupervised Learning in Python",
+      issuer: "DataCamp",
+      date: "2024",
+      description: "Explore clustering, dimensionality reduction, and pattern discovery techniques for unsupervised machine learning.",
+      skills: ["Unsupervised Learning", "Clustering", "PCA", "K-means", "Dimensionality Reduction"],
       level: "Intermediate"
     },
     {
-      title: "Deep Learning Basics",
-      issuer: "DeepLearning.AI",
+      title: "Machine Learning with Tree-Based Models",
+      issuer: "DataCamp",
       date: "2024",
-      description: "Introduction to neural networks, deep learning frameworks, and practical applications.",
-      skills: ["Neural Networks", "TensorFlow", "Deep Learning", "AI"],
-      level: "Beginner"
+      description: "Learn decision trees, random forests, and gradient boosting methods for powerful predictive modeling.",
+      skills: ["Decision Trees", "Random Forest", "Gradient Boosting", "XGBoost", "Ensemble Methods"],
+      level: "Advanced"
+    },
+    {
+      title: "Hypothesis Testing in Python",
+      issuer: "DataCamp",
+      date: "2024",
+      description: "Statistical hypothesis testing fundamentals including t-tests, chi-square tests, and ANOVA for data-driven decisions.",
+      skills: ["Hypothesis Testing", "Statistical Analysis", "t-tests", "ANOVA", "Statistical Inference"],
+      level: "Intermediate"
+    },
+    {
+      title: "Data Analyst with Python",
+      issuer: "DataCamp",
+      date: "2024",
+      description: "Complete data analysis career track covering data manipulation, visualization, and statistical analysis using Python.",
+      skills: ["Data Analysis", "pandas", "matplotlib", "seaborn", "Data Visualization", "Statistical Analysis"],
+      level: "Advanced"
     }
   ];
 
@@ -128,8 +128,8 @@ const Certificates = () => {
             <div className="text-sm text-muted-foreground">Certificates Earned</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold gradient-text mb-2">4</div>
-            <div className="text-sm text-muted-foreground">Platforms</div>
+            <div className="text-3xl font-bold gradient-text mb-2">1</div>
+            <div className="text-sm text-muted-foreground">Platform</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold gradient-text mb-2">20+</div>
