@@ -56,8 +56,10 @@ const Navigation = () => {
                 {item.label}
               </button>
             ))}
-            <Button variant="outline" size="sm" className="interactive-hover">
-              Resume
+            <Button variant="outline" size="sm" className="interactive-hover" asChild>
+              <a href="https://drive.google.com/file/d/1JzLHJqTzMioS_z-0g4OKU38Y5bogRLn0/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
+                CV
+              </a>
             </Button>
           </div>
 
@@ -85,8 +87,10 @@ const Navigation = () => {
                   {item.label}
                 </button>
               ))}
-              <Button variant="outline" size="sm" className="w-full mt-4">
-                Download Resume
+              <Button variant="outline" size="sm" className="w-full mt-4" asChild>
+                <a href="https://drive.google.com/file/d/1yv5AB6wYc9sAAjPRLOQOBUeccFe3AFnv/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
+                  Download Resume
+                </a>
               </Button>
             </div>
           </div>
