@@ -78,7 +78,7 @@ const Contact = () => {
                 <Phone className="h-6 w-6 text-primary" />
                 <div>
                   <p className="font-medium">Phone</p>
-                  <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                  <p className="text-muted-foreground">+923433055357</p>
                 </div>
               </div>
 
@@ -86,7 +86,7 @@ const Contact = () => {
                 <MapPin className="h-6 w-6 text-primary" />
                 <div>
                   <p className="font-medium">Location</p>
-                  <p className="text-muted-foreground">Available for remote work</p>
+                  <p className="text-muted-foreground">Islamabad, Pakistan</p>
                 </div>
               </div>
             </div>
