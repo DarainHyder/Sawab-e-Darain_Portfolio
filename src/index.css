@@ -2,56 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Data Science Portfolio Design System - Modern, Interactive, Eye-catching
+/* DarainX - Black & Red Aesthetic Theme
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 4%;
+    --foreground: 0 0% 95%;
     
-    /* Data Science Theme Colors */
-    --data-blue: 216 100% 50%;
-    --data-purple: 267 85% 58%;
-    --data-teal: 180 76% 48%;
-    --data-cyan: 195 100% 50%;
+    /* DarainX Black & Red Theme */
+    --primary-red: 0 84% 60%;
+    --crimson: 348 91% 40%;
+    --dark-red: 0 65% 35%;
+    --blood-red: 0 100% 25%;
     
     /* Enhanced Color Palette */
-    --card: 240 9% 7%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 240 9% 7%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 216 100% 50%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 0 84% 60%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 5% 15%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 90%;
 
-    --muted: 240 5% 10%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 267 85% 58%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 348 91% 40%;
+    --accent-foreground: 0 0% 100%;
     
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(216 100% 50%), hsl(267 85% 58%));
-    --gradient-secondary: linear-gradient(90deg, hsl(180 76% 48%), hsl(195 100% 50%));
-    --gradient-hero: linear-gradient(135deg, hsl(240 10% 3.9%) 0%, hsl(216 100% 10%) 50%, hsl(267 85% 15%) 100%);
+    /* Gradients - Black & Red Aesthetic */
+    --gradient-primary: linear-gradient(135deg, hsl(0 84% 60%), hsl(348 91% 40%));
+    --gradient-secondary: linear-gradient(90deg, hsl(0 0% 8%), hsl(0 65% 15%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 4%) 0%, hsl(0 20% 8%) 30%, hsl(348 40% 10%) 70%, hsl(0 50% 6%) 100%);
+    --gradient-mesh: radial-gradient(circle at 20% 50%, hsl(0 84% 60% / 0.15) 0%, transparent 50%),
+                     radial-gradient(circle at 80% 20%, hsl(348 91% 40% / 0.15) 0%, transparent 50%),
+                     radial-gradient(circle at 40% 80%, hsl(0 65% 35% / 0.1) 0%, transparent 50%);
     
-    /* Shadows & Effects */
-    --shadow-glow: 0 0 50px hsl(216 100% 50% / 0.3);
-    --shadow-card: 0 8px 32px hsl(240 10% 3.9% / 0.5);
-    --shadow-accent: 0 0 30px hsl(267 85% 58% / 0.4);
+    /* Shadows & Effects - Red Glow */
+    --shadow-glow: 0 0 40px hsl(0 84% 60% / 0.4);
+    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.6);
+    --shadow-accent: 0 0 30px hsl(348 91% 40% / 0.5);
+    --shadow-red-intense: 0 0 60px hsl(0 84% 60% / 0.6);
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 240 5% 20%;
-    --input: 240 5% 15%;
-    --ring: 216 100% 50%;
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 0 84% 60%;
 
     --radius: 0.5rem;
 
@@ -122,25 +126,38 @@ All colors MUST be HSL.
 }
 
 @layer components {
-  /* Portfolio Specific Components */
+  /* DarainX Portfolio Components - Black & Red Aesthetic */
   .gradient-text {
     @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
   }
   
   .glow-card {
     @apply border border-border/20 backdrop-blur-sm;
-    background: linear-gradient(135deg, hsl(240 9% 7% / 0.8), hsl(240 5% 10% / 0.6));
-    box-shadow: var(--shadow-card), inset 0 1px 0 hsl(0 0% 100% / 0.1);
+    background: linear-gradient(135deg, hsl(0 0% 8% / 0.9), hsl(0 10% 6% / 0.8));
+    box-shadow: var(--shadow-card), inset 0 1px 0 hsl(0 84% 60% / 0.1);
   }
   
   .glow-card:hover {
-    box-shadow: var(--shadow-glow), var(--shadow-card), inset 0 1px 0 hsl(0 0% 100% / 0.2);
+    box-shadow: var(--shadow-glow), var(--shadow-card), inset 0 1px 0 hsl(0 84% 60% / 0.2);
     transform: translateY(-2px);
     transition: all 0.3s ease;
   }
   
   .hero-gradient {
     background: var(--gradient-hero);
+    position: relative;
+  }
+  
+  .hero-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-mesh);
+    opacity: 0.8;
+    z-index: 1;
   }
   
   .data-gradient {
@@ -148,7 +165,12 @@ All colors MUST be HSL.
   }
   
   .interactive-hover {
-    @apply transition-all duration-300 hover:scale-105 hover:shadow-lg;
+    @apply transition-all duration-300 hover:scale-105;
+    box-shadow: 0 4px 20px hsl(0 0% 0% / 0.3);
+  }
+  
+  .interactive-hover:hover {
+    box-shadow: var(--shadow-glow);
   }
 }
 

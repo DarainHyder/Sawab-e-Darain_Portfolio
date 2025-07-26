@@ -24,10 +24,10 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
-				'data-blue': 'hsl(var(--data-blue))',
-				'data-purple': 'hsl(var(--data-purple))',
-				'data-teal': 'hsl(var(--data-teal))',
-				'data-cyan': 'hsl(var(--data-cyan))',
+				'primary-red': 'hsl(var(--primary-red))',
+				'crimson': 'hsl(var(--crimson))',
+				'dark-red': 'hsl(var(--dark-red))',
+				'blood-red': 'hsl(var(--blood-red))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
