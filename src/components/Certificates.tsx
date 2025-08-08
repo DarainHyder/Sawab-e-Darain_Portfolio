@@ -10,7 +10,17 @@ const Certificates = () => {
       date: "2024",
       description: "Comprehensive career track covering Python for data science, machine learning, and statistical analysis with real-world projects.",
       skills: ["Python", "Machine Learning", "Statistics", "Data Manipulation", "scikit-learn"],
-      level: "Advanced"
+      level: "Advanced",
+      url: "https://www.datacamp.com/completed/statement-of-accomplishment/track/2d7a1c36c792f5ed56094e402144ec75db634915?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa&utm_source=copylink"
+    },
+    {
+      title: "Data Analyst with Python",
+      issuer: "DataCamp",
+      date: "2024",
+      description: "Complete data analysis career track covering data manipulation, visualization, and statistical analysis using Python.",
+      skills: ["Data Analysis", "pandas", "matplotlib", "seaborn", "Data Visualization", "Statistical Analysis"],
+      level: "Advanced",
+      url: "https://www.datacamp.com/completed/statement-of-accomplishment/track/60d23c4b115258dd770d8e0ca38bac2cec6b59c0?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa&utm_source=copylink"
     },
     {
       title: "Supervised Learning with scikit-learn",
@@ -43,14 +53,6 @@ const Certificates = () => {
       description: "Statistical hypothesis testing fundamentals including t-tests, chi-square tests, and ANOVA for data-driven decisions.",
       skills: ["Hypothesis Testing", "Statistical Analysis", "t-tests", "ANOVA", "Statistical Inference"],
       level: "Intermediate"
-    },
-    {
-      title: "Data Analyst with Python",
-      issuer: "DataCamp",
-      date: "2024",
-      description: "Complete data analysis career track covering data manipulation, visualization, and statistical analysis using Python.",
-      skills: ["Data Analysis", "pandas", "matplotlib", "seaborn", "Data Visualization", "Statistical Analysis"],
-      level: "Advanced"
     }
   ];
 
@@ -111,7 +113,10 @@ const Certificates = () => {
                       ))}
                     </div>
                   </div>
-                  <button className="w-full flex items-center justify-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors">
+                  <button 
+                    className="w-full flex items-center justify-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
+                    onClick={() => cert.url && window.open(cert.url, '_blank')}
+                  >
                     <ExternalLink className="h-3 w-3" />
                     View Certificate
                   </button>
