@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Github, ExternalLink, Database, BarChart3, Brain, TrendingUp } from "lucide-react";
+import { Github, ExternalLink, Database, BarChart3, Brain, TrendingUp, Stethoscope, Activity } from "lucide-react";
 
 const Projects = () => {
   const projects = [
@@ -36,6 +36,22 @@ const Projects = () => {
       icon: TrendingUp,
       color: "text-data-cyan",
       githubUrl: "https://github.com/DarainHyder/Data-Analysis-Projects"
+    },
+    {
+      title: "Pneumonia Prediction Model",
+      description: "Machine learning model for pneumonia detection and prediction using medical imaging data and advanced deep learning techniques for accurate diagnosis.",
+      tech: ["Python", "Deep Learning", "Medical Imaging", "TensorFlow"],
+      icon: Stethoscope,
+      color: "text-red-400",
+      githubUrl: "https://github.com/DarainHyder"
+    },
+    {
+      title: "Osteoporosis Prediction Model",
+      description: "Advanced predictive model for osteoporosis risk assessment using patient data, statistical analysis, and machine learning algorithms.",
+      tech: ["Python", "Machine Learning", "Medical Analytics", "Scikit-learn"],
+      icon: Activity,
+      color: "text-accent",
+      githubUrl: "https://github.com/DarainHyder"
     }
   ];
 
