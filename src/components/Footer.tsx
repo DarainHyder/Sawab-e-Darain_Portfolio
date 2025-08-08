@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold gradient-text">DataPro</h3>
+            <h3 className="text-xl font-bold gradient-text">DarainX</h3>
             <p className="text-muted-foreground">
               A passionate BSCS student on a mission to transform data into insights and make a positive impact through technology.
             </p>
@@ -68,7 +68,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border/20 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} DataPro Portfolio. All rights reserved.
+            © {currentYear} DarainX Portfolio. All rights reserved.
           </p>
           <p className="text-muted-foreground text-sm flex items-center gap-2">
             Made with <Heart className="h-4 w-4 text-red-500" /> using React & Tailwind CSS

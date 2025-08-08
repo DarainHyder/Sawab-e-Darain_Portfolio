@@ -7,7 +7,7 @@ const Certificates = () => {
     {
       title: "Associate Data Scientist in Python",
       issuer: "DataCamp",
-      date: "2024",
+      date: "2025",
       description: "Comprehensive career track covering Python for data science, machine learning, and statistical analysis with real-world projects.",
       skills: ["Python", "Machine Learning", "Statistics", "Data Manipulation", "scikit-learn"],
       level: "Advanced",
@@ -16,24 +16,25 @@ const Certificates = () => {
     {
       title: "Data Analyst with Python",
       issuer: "DataCamp",
-      date: "2024",
+      date: "2025",
       description: "Complete data analysis career track covering data manipulation, visualization, and statistical analysis using Python.",
       skills: ["Data Analysis", "pandas", "matplotlib", "seaborn", "Data Visualization", "Statistical Analysis"],
       level: "Advanced",
       url: "https://www.datacamp.com/completed/statement-of-accomplishment/track/60d23c4b115258dd770d8e0ca38bac2cec6b59c0?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa&utm_source=copylink"
     },
     {
-      title: "Supervised Learning with scikit-learn",
+      title: "Supervised ML Course",
       issuer: "DataCamp",
-      date: "2024",
-      description: "Master supervised learning techniques including regression, classification, and model evaluation using scikit-learn.",
-      skills: ["Supervised Learning", "scikit-learn", "Regression", "Classification", "Model Evaluation"],
-      level: "Intermediate"
+      date: "2025",
+      description: "Comprehensive supervised machine learning course covering advanced algorithms, model training, and evaluation techniques.",
+      skills: ["Supervised Learning", "Machine Learning", "Model Training", "Algorithm Optimization", "Model Evaluation"],
+      level: "Advanced",
+      url: "https://www.datacamp.com/completed/statement-of-accomplishment/track/2d7a1c36c792f5ed56094e402144ec75db634915?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa&utm_source=copylink"
     },
     {
       title: "Unsupervised Learning in Python",
       issuer: "DataCamp",
-      date: "2024",
+      date: "2025",
       description: "Explore clustering, dimensionality reduction, and pattern discovery techniques for unsupervised machine learning.",
       skills: ["Unsupervised Learning", "Clustering", "PCA", "K-means", "Dimensionality Reduction"],
       level: "Intermediate"
@@ -41,7 +42,7 @@ const Certificates = () => {
     {
       title: "Machine Learning with Tree-Based Models",
       issuer: "DataCamp",
-      date: "2024",
+      date: "2025",
       description: "Learn decision trees, random forests, and gradient boosting methods for powerful predictive modeling.",
       skills: ["Decision Trees", "Random Forest", "Gradient Boosting", "XGBoost", "Ensemble Methods"],
       level: "Advanced"
@@ -49,7 +50,7 @@ const Certificates = () => {
     {
       title: "Hypothesis Testing in Python",
       issuer: "DataCamp",
-      date: "2024",
+      date: "2025",
       description: "Statistical hypothesis testing fundamentals including t-tests, chi-square tests, and ANOVA for data-driven decisions.",
       skills: ["Hypothesis Testing", "Statistical Analysis", "t-tests", "ANOVA", "Statistical Inference"],
       level: "Intermediate"
