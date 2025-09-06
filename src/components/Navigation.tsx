@@ -61,6 +61,9 @@ const Navigation = () => {
                 CV
               </a>
             </Button>
+            <Button size="sm" asChild>
+              <a href="/auth">Login</a>
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -91,6 +94,9 @@ const Navigation = () => {
                 <a href="https://drive.google.com/file/d/1yv5AB6wYc9sAAjPRLOQOBUeccFe3AFnv/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
                   Download Resume
                 </a>
+              </Button>
+              <Button size="sm" className="w-full" asChild>
+                <a href="/auth">Login</a>
               </Button>
             </div>
           </div>
