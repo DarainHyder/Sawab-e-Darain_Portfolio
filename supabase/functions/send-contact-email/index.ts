@@ -30,7 +30,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Send email to you (replace with your actual email)
     const emailResponse = await resend.emails.send({
       from: "Contact Form <onboarding@resend.dev>",
-      to: ["darainx@gmail.com"], // Replace with your actual email if different
+      to: ["darainhyder21@gmail.com"], // Replace with your actual email if different
       subject: `Contact Form: ${subject}`,
       html: `
         <h2>New Contact Form Message</h2>

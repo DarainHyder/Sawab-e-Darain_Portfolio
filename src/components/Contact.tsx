@@ -154,8 +154,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-medium">Email</p>
-                      <a href="mailto:darainx@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-                        darainx@gmail.com
+                      <a href="mailto:darainhyder21@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                        darainhyder21@gmail.com
                       </a>
                     </div>
                   </div>
@@ -195,7 +195,7 @@ const Contact = () => {
                       </a>
                     </Button>
                     <Button variant="outline" size="icon" asChild>
-                      <a href="mailto:darainx@gmail.com">
+                      <a href="mailto:darainhyder21@gmail.com">
                         <Mail className="h-5 w-5" />
                       </a>
                     </Button>
