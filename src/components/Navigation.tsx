@@ -42,7 +42,7 @@ const Navigation = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="text-xl font-bold gradient-text hover:scale-105 transition-transform"
           >
-            DarainX
+            DarainHyder
           </button>
 
           {/* Desktop Navigation */}

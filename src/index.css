@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* DarainX - Black & Red Aesthetic Theme
+/* DarainHyder - Black & Red Aesthetic Theme
 All colors MUST be HSL.
 */
 
@@ -11,7 +11,7 @@ All colors MUST be HSL.
     --background: 0 0% 4%;
     --foreground: 0 0% 95%;
     
-    /* DarainX Black & Red Theme */
+    /* DarainHyder Black & Red Theme */
     --primary-red: 0 84% 60%;
     --crimson: 348 91% 40%;
     --dark-red: 0 65% 35%;
@@ -126,7 +126,7 @@ All colors MUST be HSL.
 }
 
 @layer components {
-  /* DarainX Portfolio Components - Black & Red Aesthetic */
+  /* DarainHyder Portfolio Components - Black & Red Aesthetic */
   .gradient-text {
     @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
   }
