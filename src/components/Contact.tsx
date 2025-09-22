@@ -185,19 +185,20 @@ const Contact = () => {
                   <h4 className="font-semibold mb-4">Follow me</h4>
                   <div className="flex gap-4">
                     <Button variant="outline" size="icon" asChild>
-                      <a href="https://github.com/darainhyder" target="_blank" rel="noopener noreferrer">
+                      <a href="https://github.com/DarainHyder" target="_blank" rel="noopener noreferrer">
                         <Github className="h-5 w-5" />
                       </a>
                     </Button>
                     <Button variant="outline" size="icon" asChild>
-                      <a href="https://linkedin.com/in/darainhyder" target="_blank" rel="noopener noreferrer">
+                      <a href="https://www.linkedin.com/in/syed-darain-hyder-kazm" target="_blank" rel="noopener noreferrer">
                         <Linkedin className="h-5 w-5" />
                       </a>
                     </Button>
-                    <Button variant="outline" size="icon" asChild>
-                      <a href="mailto:darainhyder21@gmail.com">
+                    <Button variant="outline" size="icon" onClick={() => {
+                      const contactSection = document.getElementById('contact');
+                      contactSection?.scrollIntoView({ behavior: 'smooth' });
+                    }}>
                         <Mail className="h-5 w-5" />
-                      </a>
                     </Button>
                   </div>
                 </div>

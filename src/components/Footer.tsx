@@ -41,23 +41,27 @@ const Footer = () => {
             <h4 className="font-semibold">Let's Connect</h4>
             <div className="flex gap-4">
               <a 
-                href="#" 
+                href="https://github.com/DarainHyder" 
+                target="_blank" 
+                rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-muted/20 hover:bg-primary/20 text-muted-foreground hover:text-primary transition-colors"
               >
                 <Github className="h-5 w-5" />
               </a>
               <a 
-                href="#" 
+                href="https://www.linkedin.com/in/syed-darain-hyder-kazm" 
+                target="_blank" 
+                rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-muted/20 hover:bg-primary/20 text-muted-foreground hover:text-primary transition-colors"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a 
-                href="#" 
+              <button 
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 className="p-2 rounded-lg bg-muted/20 hover:bg-primary/20 text-muted-foreground hover:text-primary transition-colors"
               >
                 <Mail className="h-5 w-5" />
-              </a>
+              </button>
             </div>
             <p className="text-sm text-muted-foreground">
               Available for internships and collaborative projects
