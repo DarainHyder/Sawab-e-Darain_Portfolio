@@ -72,11 +72,13 @@ const About = () => {
         {/* Skills Overview */}
         <div className="text-center">
           <h3 className="text-3xl font-bold mb-8">Core <span className="gradient-text">Competencies</span></h3>
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
             {[
               { name: "Python", level: 85 },
               { name: "Machine Learning", level: 75 },
               { name: "Data Analysis", level: 80 },
+              { name: "NLP", level: 70 },
+              { name: "Computer Vision", level: 65 },
               { name: "SQL", level: 70 }
             ].map((skill, index) => (
               <div key={skill.name} className="text-center">

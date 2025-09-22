@@ -1,10 +1,18 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Github, ExternalLink, Database, BarChart3, Brain, TrendingUp, Stethoscope, Activity } from "lucide-react";
+import { Github, ExternalLink, Database, BarChart3, Brain, TrendingUp, Stethoscope, Activity, Image, Gamepad2 } from "lucide-react";
 
 const Projects = () => {
   const projects = [
+    {
+      title: "Image Quality Assessment",
+      description: "Advanced image quality assessment system using computer vision and machine learning techniques to evaluate and measure image quality parameters with high accuracy.",
+      tech: ["Python", "Computer Vision", "Machine Learning", "OpenCV"],
+      icon: Image,
+      color: "text-primary",
+      githubUrl: "https://github.com/DarainHyder/Image_Quality_Assessment"
+    },
     {
       title: "Heart Attack Risk Analysis & ML Model",
       description: "Applied Probability and Statistics concepts to analyze heart attack risks with data cleaning, hypothesis testing, and model training using classified dataset.",
@@ -52,6 +60,14 @@ const Projects = () => {
       icon: Activity,
       color: "text-accent",
       githubUrl: "https://github.com/DarainHyder"
+    },
+    {
+      title: "Checkers Game",
+      description: "Interactive checkers game implementation with AI opponent, featuring strategic gameplay mechanics and user-friendly interface for an engaging gaming experience.",
+      tech: ["Python", "Game Development", "AI", "GUI"],
+      icon: Gamepad2,
+      color: "text-data-teal",
+      githubUrl: "https://github.com/DarainHyder/Checker-Game"
     }
   ];
 
