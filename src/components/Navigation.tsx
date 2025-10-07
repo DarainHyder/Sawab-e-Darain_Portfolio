@@ -40,9 +40,11 @@ const Navigation = () => {
           {/* Logo */}
           <button 
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-xl font-bold gradient-text hover:scale-105 transition-transform"
+            className="text-xl font-bold hover:scale-105 transition-transform flex items-center gap-2"
           >
-            DarainHyder
+            <span className="gradient-text font-extrabold tracking-tight">DS</span>
+            <span className="text-muted-foreground font-light">|</span>
+            <span className="text-sm font-medium text-muted-foreground">Data Science</span>
           </button>
 
           {/* Desktop Navigation */}
@@ -57,7 +59,7 @@ const Navigation = () => {
               </button>
             ))}
             <Button variant="outline" size="sm" className="interactive-hover" asChild>
-              <a href="https://drive.google.com/file/d/1JzLHJqTzMioS_z-0g4OKU38Y5bogRLn0/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
+              <a href="https://drive.google.com/file/d/1sS1wm2hGQmQwDob8GvasqPYFnejf9APv/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                 CV
               </a>
             </Button>
@@ -88,7 +90,7 @@ const Navigation = () => {
                 </button>
               ))}
               <Button variant="outline" size="sm" className="w-full mt-4" asChild>
-                <a href="https://drive.google.com/file/d/1yv5AB6wYc9sAAjPRLOQOBUeccFe3AFnv/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
+                <a href="https://drive.google.com/file/d/1sS1wm2hGQmQwDob8GvasqPYFnejf9APv/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                   Download Resume
                 </a>
               </Button>

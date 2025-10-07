@@ -9,7 +9,11 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold gradient-text">DarainHyder</h3>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl font-extrabold gradient-text tracking-tight">DS</span>
+              <span className="text-muted-foreground">|</span>
+              <span className="text-sm font-medium text-muted-foreground">Data Science</span>
+            </div>
             <p className="text-muted-foreground">
               A passionate BSCS student on a mission to transform data into insights and make a positive impact through technology.
             </p>

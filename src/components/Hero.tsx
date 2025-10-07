@@ -28,8 +28,7 @@ const Hero = () => {
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <div className="animate-fade-in-up">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="gradient-text">Data</span>{" "}
-            <span className="text-foreground">Enthusiast</span>
+            <span className="gradient-text tracking-wide font-extrabold">Darain Hyder</span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-4">
             BSCS Student | Aspiring Data Scientist
@@ -40,24 +39,47 @@ const Hero = () => {
         </div>
 
         <div className="animate-slide-in-left flex flex-wrap justify-center gap-4 mb-12">
-          <Button variant="default" size="lg" className="interactive-hover">
+          <Button 
+            variant="default" 
+            size="lg" 
+            className="interactive-hover"
+            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+          >
             <Github className="mr-2 h-5 w-5" />
             View Projects
           </Button>
-          <Button variant="outline" size="lg" className="interactive-hover">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="interactive-hover"
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          >
             <Mail className="mr-2 h-5 w-5" />
             Contact Me
           </Button>
         </div>
 
         <div className="animate-slide-in-right flex justify-center gap-6 mb-12">
-          <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+          <a 
+            href="https://github.com/DarainHyder" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-primary transition-colors"
+          >
             <Github className="h-6 w-6" />
           </a>
-          <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+          <a 
+            href="https://www.linkedin.com/in/syed-darain-hyder-kazm" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-primary transition-colors"
+          >
             <Linkedin className="h-6 w-6" />
           </a>
-          <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+          <a 
+            href="mailto:darainhyder21@gmail.com"
+            className="text-muted-foreground hover:text-primary transition-colors"
+          >
             <Mail className="h-6 w-6" />
           </a>
         </div>

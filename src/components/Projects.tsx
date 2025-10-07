@@ -6,19 +6,35 @@ import { Github, ExternalLink, Database, BarChart3, Brain, TrendingUp, Stethosco
 const Projects = () => {
   const projects = [
     {
+      title: "NASA Space App",
+      description: "Innovative space exploration application developed for NASA Space Apps Challenge, featuring advanced data visualization and analysis of space-related datasets.",
+      tech: ["Python", "Data Visualization", "Space Tech", "APIs"],
+      icon: Brain,
+      color: "text-primary",
+      githubUrl: "https://github.com/DarainHyder/NASA-Space-App"
+    },
+    {
+      title: "BioMed Research Helper",
+      description: "Comprehensive biomedical research assistance tool that leverages AI and data analysis to support medical research workflows and literature analysis.",
+      tech: ["Python", "AI", "Medical Research", "NLP"],
+      icon: Stethoscope,
+      color: "text-accent",
+      githubUrl: "https://github.com/DarainHyder/BioMed_ResearchHelper"
+    },
+    {
       title: "Image Quality Assessment",
       description: "Advanced image quality assessment system using computer vision and machine learning techniques to evaluate and measure image quality parameters with high accuracy.",
       tech: ["Python", "Computer Vision", "Machine Learning", "OpenCV"],
       icon: Image,
-      color: "text-primary",
+      color: "text-data-teal",
       githubUrl: "https://github.com/DarainHyder/Image_Quality_Assessment"
     },
     {
       title: "Heart Attack Risk Analysis & ML Model",
       description: "Applied Probability and Statistics concepts to analyze heart attack risks with data cleaning, hypothesis testing, and model training using classified dataset.",
       tech: ["Python", "Jupyter Notebook", "Statistics", "Machine Learning"],
-      icon: Brain,
-      color: "text-primary",
+      icon: Activity,
+      color: "text-data-cyan",
       githubUrl: "https://github.com/DarainHyder/Heart_Attack_risk-analysis-and-Trainig-Model"
     },
     {
@@ -26,7 +42,7 @@ const Projects = () => {
       description: "AI-powered podcast generator that combines LLM script creation with premium text-to-speech synthesis to produce ready-to-publish audio content from simple text prompts.",
       tech: ["Python", "LLM", "Text-to-Speech", "AI"],
       icon: BarChart3,
-      color: "text-accent",
+      color: "text-primary",
       githubUrl: "https://github.com/DarainHyder/podcast_generator"
     },
     {
@@ -34,31 +50,15 @@ const Projects = () => {
       description: "Intelligent algorithm to solve various word puzzles using advanced pattern recognition and optimization techniques for efficient puzzle resolution.",
       tech: ["Python", "Algorithms", "Pattern Recognition", "Optimization"],
       icon: Database,
-      color: "text-data-teal",
+      color: "text-accent",
       githubUrl: "https://github.com/DarainHyder/Word_Puzzle_Solver"
-    },
-    {
-      title: "Data Analysis Projects",
-      description: "Collection of data analysis projects showcasing various statistical methods and visualization techniques for real-world datasets.",
-      tech: ["Python", "Jupyter Notebook", "Data Visualization", "Statistics"],
-      icon: TrendingUp,
-      color: "text-data-cyan",
-      githubUrl: "https://github.com/DarainHyder/Data-Analysis-Projects"
-    },
-    {
-      title: "Pneumonia Prediction Model",
-      description: "Machine learning model for pneumonia detection and prediction using medical imaging data and advanced deep learning techniques for accurate diagnosis.",
-      tech: ["Python", "Deep Learning", "Medical Imaging", "TensorFlow"],
-      icon: Stethoscope,
-      color: "text-red-400",
-      githubUrl: "https://github.com/DarainHyder"
     },
     {
       title: "Osteoporosis Prediction Model",
       description: "Advanced predictive model for osteoporosis risk assessment using patient data, statistical analysis, and machine learning algorithms.",
       tech: ["Python", "Machine Learning", "Medical Analytics", "Scikit-learn"],
-      icon: Activity,
-      color: "text-accent",
+      icon: TrendingUp,
+      color: "text-data-teal",
       githubUrl: "https://github.com/DarainHyder"
     },
     {
@@ -66,7 +66,7 @@ const Projects = () => {
       description: "Interactive checkers game implementation with AI opponent, featuring strategic gameplay mechanics and user-friendly interface for an engaging gaming experience.",
       tech: ["Python", "Game Development", "AI", "GUI"],
       icon: Gamepad2,
-      color: "text-data-teal",
+      color: "text-data-cyan",
       githubUrl: "https://github.com/DarainHyder/Checker-Game"
     }
   ];
