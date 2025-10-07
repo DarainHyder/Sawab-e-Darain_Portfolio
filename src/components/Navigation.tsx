@@ -29,36 +29,44 @@ const Navigation = () => {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? "bg-background/80 backdrop-blur-md border-b border-border/20" 
+          ? "bg-background/95 backdrop-blur-xl border-b border-primary/20 shadow-[0_4px_30px_rgba(255,69,58,0.1)]" 
           : "bg-transparent"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+        <div className="flex items-center justify-between h-20">
+          {/* Logo with glow effect */}
           <button 
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-xl font-bold hover:scale-105 transition-transform flex items-center gap-2"
+            className={`text-xl font-bold hover:scale-105 transition-all duration-300 flex items-center gap-2 group ${
+              isScrolled ? 'shadow-[0_0_20px_rgba(255,69,58,0.3)]' : ''
+            }`}
           >
-            <span className="gradient-text font-extrabold tracking-tight">DS</span>
-            <span className="text-muted-foreground font-light">|</span>
-            <span className="text-sm font-medium text-muted-foreground">Data Science</span>
+            <span className="gradient-text font-extrabold tracking-tight text-2xl group-hover:drop-shadow-[0_0_10px_rgba(255,69,58,0.5)]">DS</span>
+            <span className="text-primary/50 font-light">|</span>
+            <span className="text-sm font-medium text-muted-foreground group-hover:text-primary transition-colors">Data Science</span>
           </button>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation with hover effects */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-muted-foreground hover:text-primary transition-colors font-medium"
+                className="relative text-muted-foreground hover:text-primary transition-all duration-300 font-medium group"
               >
                 {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300"></span>
               </button>
             ))}
-            <Button variant="outline" size="sm" className="interactive-hover" asChild>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="interactive-hover border-primary/30 hover:border-primary hover:bg-primary/10 hover:shadow-[0_0_20px_rgba(255,69,58,0.3)] transition-all duration-300" 
+              asChild
+            >
               <a href="https://drive.google.com/file/d/1sS1wm2hGQmQwDob8GvasqPYFnejf9APv/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                 CV
               </a>

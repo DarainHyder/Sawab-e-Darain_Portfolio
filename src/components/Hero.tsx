@@ -17,11 +17,37 @@ const Hero = () => {
         <div className="absolute inset-0 hero-gradient opacity-80"></div>
       </div>
       
-      {/* Animated Background Elements */}
+      {/* Animated ML Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-primary/10 animate-pulse-slow"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full bg-accent/10 animate-float"></div>
-        <div className="absolute top-1/2 right-1/3 w-32 h-32 rounded-full bg-data-teal/10 animate-pulse-slow"></div>
+        {/* Large glowing orbs */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/20 blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-accent/20 blur-3xl animate-float"></div>
+        <div className="absolute top-1/2 right-1/3 w-64 h-64 rounded-full bg-primary/15 blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+        
+        {/* Neural network layers */}
+        <div className="absolute top-20 left-10 flex flex-col gap-4">
+          <div className="w-3 h-3 rounded-full bg-primary/60 animate-pulse shadow-[0_0_15px_rgba(255,69,58,0.6)]"></div>
+          <div className="w-3 h-3 rounded-full bg-accent/60 animate-pulse shadow-[0_0_15px_rgba(255,45,85,0.6)]" style={{ animationDelay: '0.2s' }}></div>
+          <div className="w-3 h-3 rounded-full bg-primary/60 animate-pulse shadow-[0_0_15px_rgba(255,69,58,0.6)]" style={{ animationDelay: '0.4s' }}></div>
+        </div>
+        
+        <div className="absolute top-40 left-32 flex flex-col gap-4">
+          <div className="w-3 h-3 rounded-full bg-accent/60 animate-pulse shadow-[0_0_15px_rgba(255,45,85,0.6)]" style={{ animationDelay: '0.3s' }}></div>
+          <div className="w-3 h-3 rounded-full bg-primary/60 animate-pulse shadow-[0_0_15px_rgba(255,69,58,0.6)]" style={{ animationDelay: '0.5s' }}></div>
+          <div className="w-3 h-3 rounded-full bg-accent/60 animate-pulse shadow-[0_0_15px_rgba(255,45,85,0.6)]" style={{ animationDelay: '0.7s' }}></div>
+          <div className="w-3 h-3 rounded-full bg-primary/60 animate-pulse shadow-[0_0_15px_rgba(255,69,58,0.6)]" style={{ animationDelay: '0.9s' }}></div>
+        </div>
+        
+        <div className="absolute bottom-20 right-20 flex flex-col gap-4">
+          <div className="w-3 h-3 rounded-full bg-primary/60 animate-pulse shadow-[0_0_15px_rgba(255,69,58,0.6)]" style={{ animationDelay: '0.6s' }}></div>
+          <div className="w-3 h-3 rounded-full bg-accent/60 animate-pulse shadow-[0_0_15px_rgba(255,45,85,0.6)]" style={{ animationDelay: '0.8s' }}></div>
+          <div className="w-3 h-3 rounded-full bg-primary/60 animate-pulse shadow-[0_0_15px_rgba(255,69,58,0.6)]" style={{ animationDelay: '1s' }}></div>
+        </div>
+
+        {/* Data flow particles */}
+        <div className="absolute top-1/3 left-0 w-2 h-2 rounded-full bg-primary/70 animate-[slide-right_4s_linear_infinite] shadow-[0_0_10px_rgba(255,69,58,0.7)]"></div>
+        <div className="absolute top-1/2 left-0 w-2 h-2 rounded-full bg-accent/70 animate-[slide-right_5s_linear_infinite] shadow-[0_0_10px_rgba(255,45,85,0.7)]" style={{ animationDelay: '0.5s' }}></div>
+        <div className="absolute top-2/3 left-0 w-2 h-2 rounded-full bg-primary/70 animate-[slide-right_4.5s_linear_infinite] shadow-[0_0_10px_rgba(255,69,58,0.7)]" style={{ animationDelay: '1s' }}></div>
       </div>
 
       {/* Content */}
