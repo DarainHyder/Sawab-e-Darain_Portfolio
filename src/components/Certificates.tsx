@@ -1,8 +1,10 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Award, Calendar, ExternalLink } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const Certificates = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const certificates = [
     {
       title: "Associate Data Scientist in Python",
@@ -67,9 +69,9 @@ const Certificates = () => {
   };
 
   return (
-    <section id="certificates" className="py-20 px-4">
+    <section id="certificates" ref={ref} className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 scroll-reveal ${isVisible ? 'visible' : ''}`}>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Certificates & <span className="gradient-text">Achievements</span>
           </h2>
@@ -81,7 +83,7 @@ const Certificates = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {certificates.map((cert, index) => (
-            <Card key={cert.title} className="glow-card interactive-hover group">
+            <Card key={cert.title} className={`glow-card interactive-hover group scroll-reveal ${isVisible ? 'visible' : ''} stagger-${(index % 6) + 1}`}>
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
                   <Award className="h-6 w-6 text-primary" />

@@ -10,11 +10,23 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-gradient-to-br from-background via-background/95 to-primary/5 border-t border-primary/20 overflow-hidden">
+      {/* Giant Background Text */}
+      <div className="absolute inset-0 flex items-center justify-center overflow-hidden opacity-[0.03] pointer-events-none select-none">
+        <div className="text-[20vw] font-extrabold whitespace-nowrap animate-pulse-slow">
+          DATA SCIENCE
+        </div>
+      </div>
+      
       {/* Animated Background Pattern */}
       <div className="absolute inset-0 overflow-hidden opacity-5">
         <div className="absolute top-0 left-0 w-full h-full">
           <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-primary/30 blur-3xl animate-pulse"></div>
           <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-accent/30 blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          
+          {/* Floating binary code */}
+          <div className="absolute top-1/4 left-1/3 text-primary/20 font-mono text-xs animate-float">01001101 01001100</div>
+          <div className="absolute bottom-1/3 right-1/4 text-accent/20 font-mono text-xs animate-float" style={{ animationDelay: '2s' }}>01000001 01001001</div>
+          <div className="absolute top-1/2 left-1/4 text-primary/20 font-mono text-xs animate-float" style={{ animationDelay: '1s' }}>01000100 01010011</div>
         </div>
       </div>
 

@@ -194,6 +194,58 @@ All colors MUST be HSL.
   .animate-slide-in-right {
     animation: slideInRight 0.8s ease-out forwards;
   }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out forwards;
+  }
+  
+  .animate-zoom-in {
+    animation: zoomIn 0.8s ease-out forwards;
+  }
+  
+  .animate-bounce-in {
+    animation: bounceIn 0.8s ease-out forwards;
+  }
+  
+  .animate-rotate-in {
+    animation: rotateIn 0.8s ease-out forwards;
+  }
+  
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  
+  .scroll-reveal.visible {
+    animation: revealUp 0.8s ease-out forwards;
+  }
+  
+  .scroll-reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  
+  .scroll-reveal-left.visible {
+    animation: revealLeft 0.8s ease-out forwards;
+  }
+  
+  .scroll-reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  
+  .scroll-reveal-right.visible {
+    animation: revealRight 0.8s ease-out forwards;
+  }
+  
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
+  .stagger-7 { animation-delay: 0.7s; }
+  .stagger-8 { animation-delay: 0.8s; }
 }
 
 @keyframes float {
@@ -265,6 +317,89 @@ All colors MUST be HSL.
   100% {
     transform: translateX(100vw);
     opacity: 0;
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(-50px);
+  }
+  50% {
+    transform: scale(1.05) translateY(0);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rotateIn {
+  0% {
+    opacity: 0;
+    transform: rotate(-200deg) scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+@keyframes revealUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes revealLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes revealRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 

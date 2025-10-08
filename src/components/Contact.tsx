@@ -7,8 +7,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Send, Github, Linkedin } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const Contact = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
@@ -65,9 +67,9 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-background via-background/80 to-primary/5">
+    <section id="contact" ref={ref} className="py-20 bg-gradient-to-br from-background via-background/80 to-primary/5">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 scroll-reveal ${isVisible ? 'visible' : ''}`}>
           <h2 className="text-4xl font-bold mb-4 gradient-text">Get In Touch</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Ready to start a project together? I'm always open to discussing new opportunities and creative ideas.
@@ -76,7 +78,7 @@ const Contact = () => {
         
         <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           {/* Contact Form */}
-          <div>
+          <div className={`scroll-reveal-left ${isVisible ? 'visible' : ''}`}>
             <Card className="border-0 shadow-lg bg-card/50 backdrop-blur-sm">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2">
@@ -139,7 +141,7 @@ const Contact = () => {
           </div>
           
           {/* Contact Information */}
-          <div className="space-y-8">
+          <div className={`space-y-8 scroll-reveal-right ${isVisible ? 'visible' : ''}`}>
             <Card className="border-0 shadow-lg bg-card/50 backdrop-blur-sm">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2">

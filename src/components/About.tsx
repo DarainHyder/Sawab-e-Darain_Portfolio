@@ -1,11 +1,14 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { GraduationCap, Brain, Code, Database } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const About = () => {
+  const { ref, isVisible } = useScrollAnimation();
+  
   return (
-    <section id="about" className="py-20 px-4">
+    <section id="about" ref={ref} className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 scroll-reveal ${isVisible ? 'visible' : ''}`}>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             About <span className="gradient-text">Me</span>
           </h2>
@@ -16,7 +19,7 @@ const About = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 items-center mb-16">
-          <div className="space-y-6">
+          <div className={`space-y-6 scroll-reveal-left ${isVisible ? 'visible' : ''}`}>
             <h3 className="text-3xl font-bold">My Journey</h3>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Currently pursuing my Bachelor's in Computer Science (BSCS), I'm entering my 5th semester 
@@ -30,8 +33,8 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <Card className="glow-card interactive-hover">
+          <div className={`grid grid-cols-2 gap-4 scroll-reveal-right ${isVisible ? 'visible' : ''}`}>
+            <Card className="glow-card interactive-hover animate-bounce-in stagger-1">
               <CardContent className="p-6 text-center">
                 <GraduationCap className="h-12 w-12 text-primary mx-auto mb-4" />
                 <h4 className="font-semibold mb-2">Education</h4>
@@ -40,7 +43,7 @@ const About = () => {
               </CardContent>
             </Card>
 
-            <Card className="glow-card interactive-hover">
+            <Card className="glow-card interactive-hover animate-bounce-in stagger-2">
               <CardContent className="p-6 text-center">
                 <Brain className="h-12 w-12 text-accent mx-auto mb-4" />
                 <h4 className="font-semibold mb-2">Passion</h4>
@@ -49,7 +52,7 @@ const About = () => {
               </CardContent>
             </Card>
 
-            <Card className="glow-card interactive-hover">
+            <Card className="glow-card interactive-hover animate-bounce-in stagger-3">
               <CardContent className="p-6 text-center">
                 <Code className="h-12 w-12 text-data-teal mx-auto mb-4" />
                 <h4 className="font-semibold mb-2">Projects</h4>
@@ -58,7 +61,7 @@ const About = () => {
               </CardContent>
             </Card>
 
-            <Card className="glow-card interactive-hover">
+            <Card className="glow-card interactive-hover animate-bounce-in stagger-4">
               <CardContent className="p-6 text-center">
                 <Database className="h-12 w-12 text-data-cyan mx-auto mb-4" />
                 <h4 className="font-semibold mb-2">Skills</h4>
