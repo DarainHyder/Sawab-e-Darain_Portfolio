@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Award, Calendar, ExternalLink } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import SectionParticles from "./SectionParticles";
 
 const Certificates = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -69,8 +70,9 @@ const Certificates = () => {
   };
 
   return (
-    <section id="certificates" ref={ref} className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section id="certificates" ref={ref} className="py-20 px-4 relative overflow-hidden">
+      <SectionParticles variant="matrix" />
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className={`text-center mb-16 scroll-reveal ${isVisible ? 'visible' : ''}`}>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Certificates & <span className="gradient-text">Achievements</span>

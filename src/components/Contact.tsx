@@ -8,6 +8,7 @@ import { Mail, Phone, MapPin, Send, Github, Linkedin } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import SectionParticles from "./SectionParticles";
 
 const Contact = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -67,8 +68,9 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" ref={ref} className="py-20 bg-gradient-to-br from-background via-background/80 to-primary/5">
-      <div className="max-w-6xl mx-auto px-4">
+    <section id="contact" ref={ref} className="py-20 bg-gradient-to-br from-background via-background/80 to-primary/5 relative overflow-hidden">
+      <SectionParticles variant="network" />
+      <div className="max-w-6xl mx-auto px-4 relative z-10">
         <div className={`text-center mb-16 scroll-reveal ${isVisible ? 'visible' : ''}`}>
           <h2 className="text-4xl font-bold mb-4 gradient-text">Get In Touch</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">

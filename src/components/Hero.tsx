@@ -56,6 +56,19 @@ const Hero = () => {
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             <span className="gradient-text tracking-wide font-extrabold">Darain Hyder</span>
           </h1>
+          
+          {/* Aesthetic AI Quote */}
+          <div className="mb-6 relative">
+            <p className="text-2xl md:text-3xl font-light text-foreground/90 leading-relaxed tracking-wide mb-2">
+              "Turning <span className="gradient-text font-semibold">data</span> into vision,
+            </p>
+            <p className="text-2xl md:text-3xl font-light text-foreground/90 leading-relaxed tracking-wide">
+              and vision into <span className="gradient-text font-semibold">intelligence</span>."
+            </p>
+            <div className="absolute -left-4 top-0 text-primary/20 text-6xl font-serif">"</div>
+            <div className="absolute -right-4 bottom-0 text-primary/20 text-6xl font-serif">"</div>
+          </div>
+          
           <p className="text-xl md:text-2xl text-muted-foreground mb-4">
             BSCS Student | Aspiring Data Scientist
           </p>

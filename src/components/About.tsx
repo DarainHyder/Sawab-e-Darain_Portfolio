@@ -1,13 +1,15 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { GraduationCap, Brain, Code, Database } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import SectionParticles from "./SectionParticles";
 
 const About = () => {
   const { ref, isVisible } = useScrollAnimation();
   
   return (
-    <section id="about" ref={ref} className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section id="about" ref={ref} className="py-20 px-4 relative overflow-hidden">
+      <SectionParticles variant="neural" />
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className={`text-center mb-16 scroll-reveal ${isVisible ? 'visible' : ''}`}>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             About <span className="gradient-text">Me</span>

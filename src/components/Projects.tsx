@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Github, ExternalLink, Database, BarChart3, Brain, TrendingUp, Stethoscope, Activity, Image, Gamepad2 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import SectionParticles from "./SectionParticles";
 
 const Projects = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -74,8 +75,9 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" ref={ref} className="py-20 px-4 bg-muted/5">
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" ref={ref} className="py-20 px-4 bg-muted/5 relative overflow-hidden">
+      <SectionParticles variant="data-flow" />
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className={`text-center mb-16 scroll-reveal ${isVisible ? 'visible' : ''}`}>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Featured <span className="gradient-text">Projects</span>
