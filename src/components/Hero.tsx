@@ -54,19 +54,35 @@ const Hero = () => {
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <div className="animate-fade-in-up">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="gradient-text tracking-wide font-extrabold">Darain Hyder</span>
+            <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent tracking-wider font-black animate-pulse-slow" style={{ 
+              textShadow: '0 0 40px rgba(255,69,58,0.5), 0 0 80px rgba(255,45,85,0.3)',
+              fontFamily: "'Orbitron', 'Space Grotesk', sans-serif"
+            }}>
+              DARAIN HYDER
+            </span>
           </h1>
           
           {/* Aesthetic AI Quote */}
-          <div className="mb-6 relative">
-            <p className="text-2xl md:text-3xl font-light text-foreground/90 leading-relaxed tracking-wide mb-2">
-              "Turning <span className="gradient-text font-semibold">data</span> into vision,
-            </p>
-            <p className="text-2xl md:text-3xl font-light text-foreground/90 leading-relaxed tracking-wide">
-              and vision into <span className="gradient-text font-semibold">intelligence</span>."
-            </p>
-            <div className="absolute -left-4 top-0 text-primary/20 text-6xl font-serif">"</div>
-            <div className="absolute -right-4 bottom-0 text-primary/20 text-6xl font-serif">"</div>
+          <div className="mb-8 relative px-6">
+            <div className="relative backdrop-blur-sm bg-background/10 rounded-2xl py-6 border border-primary/20">
+              <p className="text-xl md:text-2xl font-light text-foreground/95 leading-relaxed tracking-wide mb-2" style={{
+                fontFamily: "'Fira Code', 'JetBrains Mono', monospace",
+                fontStyle: "italic"
+              }}>
+                "Turning <span className="gradient-text font-bold text-2xl md:text-3xl">data</span> into vision,
+              </p>
+              <p className="text-xl md:text-2xl font-light text-foreground/95 leading-relaxed tracking-wide" style={{
+                fontFamily: "'Fira Code', 'JetBrains Mono', monospace",
+                fontStyle: "italic"
+              }}>
+                and vision into <span className="gradient-text font-bold text-2xl md:text-3xl">intelligence</span>."
+              </p>
+              <div className="absolute -left-6 top-0 text-primary/30 text-7xl font-serif leading-none">"</div>
+              <div className="absolute -right-6 bottom-0 text-accent/30 text-7xl font-serif leading-none rotate-180">"</div>
+              
+              {/* Glowing effect */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/5 via-transparent to-accent/5 animate-pulse-slow"></div>
+            </div>
           </div>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-4">

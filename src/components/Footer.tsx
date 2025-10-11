@@ -86,6 +86,7 @@ const Footer = () => {
               {[
                 { label: "About", id: "about" },
                 { label: "Projects", id: "projects" },
+                { label: "Reviews", id: "reviews" },
                 { label: "Certificates", id: "certificates" },
                 { label: "Contact", id: "contact" }
               ].map((link) => (
