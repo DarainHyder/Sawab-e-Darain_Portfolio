@@ -61,9 +61,11 @@ const Hero = () => {
             </span>
           </h1>
           
-          {/* Minimal Quote */}
+          {/* Unique Aesthetic Quote */}
           <p className="text-lg md:text-xl text-muted-foreground/80 mb-12 font-light italic max-w-xl mx-auto">
-            Transforming data into intelligence
+            Where <span className="gradient-text font-medium not-italic">algorithms</span> meet artistry,
+            <br />
+            <span className="gradient-text font-medium not-italic">patterns</span> become poetry
           </p>
         </div>
 
