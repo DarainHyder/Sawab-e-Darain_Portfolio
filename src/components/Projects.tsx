@@ -90,7 +90,7 @@ const Projects = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <Card key={project.title} className={`glow-card interactive-hover group scroll-reveal ${isVisible ? 'visible' : ''} stagger-${(index % 6) + 1}`}>
+            <Card key={project.title} className={`glow-card group card-reveal ${isVisible ? 'visible' : ''} stagger-${(index % 8) + 1} hover:scale-105 transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,69,58,0.4)]`}>
               <CardHeader>
                 <div className="flex items-center gap-4 mb-4">
                   <div className={`p-3 rounded-lg bg-muted/20 ${project.color}`}>

@@ -22,11 +22,18 @@ const Footer = () => {
         <div className="absolute top-0 left-0 w-full h-full">
           <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-primary/30 blur-3xl animate-pulse"></div>
           <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-accent/30 blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute top-1/2 left-1/2 w-48 h-48 rounded-full bg-primary/20 blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
           
           {/* Floating binary code */}
-          <div className="absolute top-1/4 left-1/3 text-primary/20 font-mono text-xs animate-float">01001101 01001100</div>
-          <div className="absolute bottom-1/3 right-1/4 text-accent/20 font-mono text-xs animate-float" style={{ animationDelay: '2s' }}>01000001 01001001</div>
-          <div className="absolute top-1/2 left-1/4 text-primary/20 font-mono text-xs animate-float" style={{ animationDelay: '1s' }}>01000100 01010011</div>
+          <div className="absolute top-1/4 left-1/3 text-primary/30 font-mono text-sm animate-float">01001101 01001100</div>
+          <div className="absolute bottom-1/3 right-1/4 text-accent/30 font-mono text-sm animate-float" style={{ animationDelay: '2s' }}>01000001 01001001</div>
+          <div className="absolute top-1/2 left-1/4 text-primary/30 font-mono text-sm animate-float" style={{ animationDelay: '1s' }}>01000100 01010011</div>
+          <div className="absolute top-3/4 right-1/3 text-accent/30 font-mono text-sm animate-float" style={{ animationDelay: '3s' }}>01010000 01011001</div>
+          
+          {/* Moving particles */}
+          <div className="absolute top-20 left-1/4 w-2 h-2 rounded-full bg-primary/40 animate-flow-right"></div>
+          <div className="absolute top-1/3 left-1/2 w-2 h-2 rounded-full bg-accent/40 animate-flow-right" style={{ animationDelay: '1.5s' }}></div>
+          <div className="absolute bottom-1/4 left-1/3 w-2 h-2 rounded-full bg-primary/40 animate-flow-right" style={{ animationDelay: '2.5s' }}></div>
         </div>
       </div>
 
@@ -35,9 +42,9 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Brand Section with Interactive Elements */}
           <div className="md:col-span-2 space-y-6">
-            <div className="flex items-center gap-3 group">
-              <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(255,69,58,0.3)]">
-                <Brain className="h-6 w-6 text-primary" />
+            <div className="flex items-center gap-3 group cursor-pointer">
+              <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(255,69,58,0.5)] animate-pulse-slow">
+                <Brain className="h-6 w-6 text-primary group-hover:scale-110 transition-transform" />
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-1">

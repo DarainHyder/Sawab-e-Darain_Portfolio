@@ -213,29 +213,43 @@ All colors MUST be HSL.
   
   .scroll-reveal {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(80px) scale(0.9);
   }
   
   .scroll-reveal.visible {
-    animation: revealUp 0.8s ease-out forwards;
+    animation: revealUpBig 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   }
   
   .scroll-reveal-left {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateX(-80px) scale(0.9);
   }
   
   .scroll-reveal-left.visible {
-    animation: revealLeft 0.8s ease-out forwards;
+    animation: revealLeftBig 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   }
   
   .scroll-reveal-right {
     opacity: 0;
-    transform: translateX(50px);
+    transform: translateX(80px) scale(0.9);
   }
   
   .scroll-reveal-right.visible {
-    animation: revealRight 0.8s ease-out forwards;
+    animation: revealRightBig 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+  
+  /* Card Animations */
+  .card-float {
+    animation: cardFloat 3s ease-in-out infinite;
+  }
+  
+  .card-reveal {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(20deg) translateY(50px);
+  }
+  
+  .card-reveal.visible {
+    animation: cardFlipIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   }
   
   .stagger-1 { animation-delay: 0.1s; }
@@ -381,6 +395,17 @@ All colors MUST be HSL.
   }
 }
 
+@keyframes revealUpBig {
+  0% {
+    opacity: 0;
+    transform: translateY(80px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @keyframes revealLeft {
   0% {
     opacity: 0;
@@ -392,6 +417,17 @@ All colors MUST be HSL.
   }
 }
 
+@keyframes revealLeftBig {
+  0% {
+    opacity: 0;
+    transform: translateX(-80px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
 @keyframes revealRight {
   0% {
     opacity: 0;
@@ -400,6 +436,37 @@ All colors MUST be HSL.
   100% {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes revealRightBig {
+  0% {
+    opacity: 0;
+    transform: translateX(80px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes cardFlipIn {
+  0% {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(20deg) translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0deg) translateY(0);
+  }
+}
+
+@keyframes cardFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
 

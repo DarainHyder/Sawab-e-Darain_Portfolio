@@ -85,7 +85,7 @@ const Certificates = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {certificates.map((cert, index) => (
-            <Card key={cert.title} className={`glow-card interactive-hover group scroll-reveal ${isVisible ? 'visible' : ''} stagger-${(index % 6) + 1}`}>
+            <Card key={cert.title} className={`glow-card group card-reveal ${isVisible ? 'visible' : ''} stagger-${(index % 6) + 1} hover:scale-105 transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,69,58,0.4)]`}>
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
                   <Award className="h-6 w-6 text-primary" />
