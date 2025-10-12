@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import DataScienceBackground from "./components/DataScienceBackground";
+import CustomCursor from "./components/CustomCursor";
 
 const queryClient = new QueryClient();
 
@@ -13,6 +14,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <DataScienceBackground />
+      <CustomCursor />
       <Toaster />
       <Sonner />
       <BrowserRouter>
