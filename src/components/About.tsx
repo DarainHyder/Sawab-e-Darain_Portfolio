@@ -32,7 +32,7 @@ const About = () => {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-5 gap-8 items-start mb-16">
+        <div className="grid lg:grid-cols-5 gap-8 items-stretch mb-16">
           {/* Journey Text - Takes 3 columns */}
           <div className={`lg:col-span-3 space-y-6 scroll-reveal-left ${isVisible ? 'visible' : ''}`}>
             <div className="relative group">
