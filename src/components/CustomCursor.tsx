@@ -6,84 +6,51 @@ const CustomCursor = () => {
   const [isPointer, setIsPointer] = useState(false);
 
   useEffect(() => {
-    const updatePosition = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-    };
+  const cursor = document.querySelector(".custom-cursor") as HTMLElement;
+  const trail = document.querySelector(".custom-cursor-trail") as HTMLElement;
 
-    const updateCursorType = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const isClickable = 
-        target.tagName === 'A' || 
-        target.tagName === 'BUTTON' || 
-        target.closest('a') || 
-        target.closest('button') ||
-        target.style.cursor === 'pointer' ||
-        window.getComputedStyle(target).cursor === 'pointer';
-      
-      setIsPointer(!!isClickable);
-    };
+  let mouseX = 0, mouseY = 0;
+  let cursorX = 0, cursorY = 0;
 
-    window.addEventListener('mousemove', updatePosition);
-    window.addEventListener('mouseover', updateCursorType);
+  const updateMouse = (e: MouseEvent) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  };
 
-    return () => {
-      window.removeEventListener('mousemove', updatePosition);
-      window.removeEventListener('mouseover', updateCursorType);
-    };
-  }, []);
+  const updateCursorType = (e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    const isClickable =
+      target.tagName === "A" ||
+      target.tagName === "BUTTON" ||
+      target.closest("a") ||
+      target.closest("button") ||
+      target.style.cursor === "pointer" ||
+      window.getComputedStyle(target).cursor === "pointer";
 
-  return (
-    <>
-      {/* Custom cursor dot */}
-      <div
-        className="custom-cursor fixed pointer-events-none z-[9999] mix-blend-difference"
-        style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-          transform: 'translate(-50%, -50%)',
-        }}
-      >
-        {isPointer ? (
-          <div className="relative animate-pulse">
-            <Brain className="w-8 h-8 text-primary" strokeWidth={2.5} />
-            <Sparkles className="w-4 h-4 text-primary absolute -top-1 -right-1 animate-spin" />
-          </div>
-        ) : (
-          <div className="w-3 h-3 rounded-full bg-primary" />
-        )}
-      </div>
+    setIsPointer(!!isClickable);
+  };
 
-      {/* Cursor trail */}
-      <div
-        className="custom-cursor-trail fixed pointer-events-none z-[9998] transition-all duration-200 ease-out"
-        style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-          transform: 'translate(-50%, -50%)',
-        }}
-      >
-        <div className={`rounded-full border-2 border-primary/30 transition-all duration-300 ${
-          isPointer ? 'w-16 h-16' : 'w-8 h-8'
-        }`} />
-      </div>
+  const animate = () => {
+    // simple easing
+    cursorX += (mouseX - cursorX) * 0.2;
+    cursorY += (mouseY - cursorY) * 0.2;
 
-      <style>{`
-        * {
-          cursor: none !important;
-        }
-        
-        @media (max-width: 768px) {
-          .custom-cursor,
-          .custom-cursor-trail {
-            display: none;
-          }
-          * {
-            cursor: auto !important;
-          }
-        }
-      `}</style>
-    </>
-  );
+    if (cursor) cursor.style.transform = `translate3d(${cursorX - 50}%, ${cursorY - 50}%, 0)`;
+    if (trail) trail.style.transform = `translate3d(${cursorX - 50}%, ${cursorY - 50}%, 0)`;
+
+    requestAnimationFrame(animate);
+  };
+
+  window.addEventListener("mousemove", updateMouse);
+  window.addEventListener("mouseover", updateCursorType);
+  animate();
+
+  return () => {
+    window.removeEventListener("mousemove", updateMouse);
+    window.removeEventListener("mouseover", updateCursorType);
+  };
+}, []);
+
 };
 
 export default CustomCursor;
