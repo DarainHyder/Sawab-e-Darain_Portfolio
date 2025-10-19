@@ -1,12 +1,14 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Github, ExternalLink, Database, BarChart3, Brain, TrendingUp, Stethoscope, Activity, Image, Gamepad2 } from "lucide-react";
+import { Github, ExternalLink, Database, BarChart3, Brain, TrendingUp, Stethoscope, Activity, Image, Gamepad2, Sparkles } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import SectionParticles from "./SectionParticles";
+import { useState } from "react";
 
 const Projects = () => {
   const { ref, isVisible } = useScrollAnimation();
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const projects = [
     {
       title: "NASA Space App",
@@ -90,52 +92,82 @@ const Projects = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <Card key={project.title} className={`glow-card group card-reveal ${isVisible ? 'visible' : ''} stagger-${(index % 8) + 1} hover:scale-105 transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,69,58,0.4)]`}>
-              <CardHeader>
-                <div className="flex items-center gap-4 mb-4">
-                  <div className={`p-3 rounded-lg bg-muted/20 ${project.color}`}>
-                    <project.icon className="h-6 w-6" />
+            <div 
+              key={project.title} 
+              className="relative group"
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              {/* Animated gradient background */}
+              <div className={`absolute -inset-0.5 bg-gradient-to-r from-primary via-accent to-primary rounded-2xl blur opacity-0 group-hover:opacity-75 transition-all duration-1000 animate-gradient ${hoveredIndex === index ? 'opacity-75' : ''}`} 
+                   style={{ backgroundSize: '200% 200%' }} />
+              
+              {/* Sparkle particles on hover */}
+              {hoveredIndex === index && (
+                <>
+                  <Sparkles className="absolute -top-2 -right-2 h-6 w-6 text-primary animate-pulse z-20" />
+                  <Sparkles className="absolute -bottom-2 -left-2 h-5 w-5 text-accent animate-pulse z-20" style={{ animationDelay: '0.5s' }} />
+                </>
+              )}
+              
+              <Card className={`relative glow-card card-reveal ${isVisible ? 'visible' : ''} stagger-${(index % 8) + 1} transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 border-2 ${hoveredIndex === index ? 'border-primary/50' : 'border-transparent'}`}>
+                {/* Inner glow effect */}
+                <div className={`absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                
+                <CardHeader className="relative z-10">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className={`relative p-3 rounded-lg bg-muted/20 ${project.color} transition-all duration-500 group-hover:scale-110 group-hover:rotate-12`}>
+                      {/* Icon glow */}
+                      <div className={`absolute inset-0 rounded-lg opacity-0 group-hover:opacity-50 blur-md transition-opacity duration-500 ${project.color}`} 
+                           style={{ backgroundColor: 'currentColor' }} />
+                      <project.icon className="h-6 w-6 relative z-10 group-hover:animate-pulse" />
+                    </div>
+                    <div className="flex-1">
+                      <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">{project.title}</CardTitle>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-xl">{project.title}</CardTitle>
+                  <CardDescription className="text-base leading-relaxed group-hover:text-foreground/90 transition-colors duration-300">
+                    {project.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="relative z-10">
+                  <div className="space-y-4">
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((tech, techIndex) => (
+                        <Badge 
+                          key={tech} 
+                          variant="secondary" 
+                          className={`text-xs transition-all duration-300 hover:scale-110 hover:bg-primary hover:text-primary-foreground cursor-default`}
+                          style={{ transitionDelay: `${techIndex * 50}ms` }}
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="flex gap-3">
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="flex-1 group/btn hover:border-primary hover:text-primary transition-all duration-300"
+                        onClick={() => window.open(project.githubUrl, '_blank')}
+                      >
+                        <Github className="mr-2 h-4 w-4 group-hover/btn:rotate-12 transition-transform duration-300" />
+                        Code
+                      </Button>
+                      <Button 
+                        variant="default" 
+                        size="sm" 
+                        className="flex-1 group/btn hover:shadow-lg hover:shadow-primary/50 transition-all duration-300"
+                        onClick={() => window.open(project.githubUrl, '_blank')}
+                      >
+                        <ExternalLink className="mr-2 h-4 w-4 group-hover/btn:-rotate-12 transition-transform duration-300" />
+                        View
+                      </Button>
+                    </div>
                   </div>
-                </div>
-                <CardDescription className="text-base leading-relaxed">
-                  {project.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
-                      <Badge key={tech} variant="secondary" className="text-xs">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                  <div className="flex gap-3">
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="flex-1"
-                      onClick={() => window.open(project.githubUrl, '_blank')}
-                    >
-                      <Github className="mr-2 h-4 w-4" />
-                      Code
-                    </Button>
-                    <Button 
-                      variant="default" 
-                      size="sm" 
-                      className="flex-1"
-                      onClick={() => window.open(project.githubUrl, '_blank')}
-                    >
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      View
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           ))}
         </div>
 
