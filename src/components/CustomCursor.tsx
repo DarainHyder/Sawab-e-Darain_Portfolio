@@ -31,12 +31,19 @@ const CustomCursor = () => {
   };
 
   const animate = () => {
-    // simple easing
-    cursorX += (mouseX - cursorX) * 0.2;
-    cursorY += (mouseY - cursorY) * 0.2;
+    // ease motion — smooth follow
+    cursorX += (mouseX - cursorX) * 0.15;
+    cursorY += (mouseY - cursorY) * 0.15;
 
-    if (cursor) cursor.style.transform = `translate3d(${cursorX - 50}%, ${cursorY - 50}%, 0)`;
-    if (trail) trail.style.transform = `translate3d(${cursorX - 50}%, ${cursorY - 50}%, 0)`;
+    if (cursor) {
+      cursor.style.left = `${cursorX}px`;
+      cursor.style.top = `${cursorY}px`;
+    }
+
+    if (trail) {
+      trail.style.left = `${cursorX}px`;
+      trail.style.top = `${cursorY}px`;
+    }
 
     requestAnimationFrame(animate);
   };
@@ -49,7 +56,7 @@ const CustomCursor = () => {
     window.removeEventListener("mousemove", updateMouse);
     window.removeEventListener("mouseover", updateCursorType);
   };
-}, []);
+  }, []);
 
 };
 
