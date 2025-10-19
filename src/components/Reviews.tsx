@@ -8,44 +8,44 @@ const Reviews = () => {
   
   const reviews = [
     {
-      name: "Dr. Sarah Mitchell",
+      name: "Dr. Areeba Nadeem",
       role: "Research Director, BioMed Research Institute",
       project: "BioMed Research Helper",
       rating: 5,
-      review: "The BioMed Research Helper has revolutionized our literature analysis workflow. Darain's implementation of NLP techniques is exceptional. Looking forward to collaborating on more medical AI projects!",
-      avatar: "SM"
+      review: "The BioMed Research Helper genuinely streamlined our entire research workflow. The NLP features work flawlessly, and it actually feels built for real medical teams, not just for show. Really solid, thoughtful work.",
+      avatar: "AN"
     },
     {
-      name: "James Chen",
+      name: "Hassan Javed",
       role: "Lead Data Scientist, TechVision Analytics",
       project: "Image Quality Assessment",
       rating: 5,
-      review: "Outstanding work on the Image Quality Assessment system! The computer vision implementation is highly accurate and efficient. We're impressed with the technical depth and would love to discuss future opportunities.",
-      avatar: "JC"
+      review: "The Image Quality Assessment tool turned out way better than we expected. It's fast, precise, and technically sound. You can tell a lot of time went into optimizing it for real-world use. Impressive stuff, seriously.",
+      avatar: "HJ"
     },
     {
-      name: "Dr. Emily Rodriguez",
+      name: "Uzair Ahmed",
       role: "Healthcare Analytics Manager",
       project: "Heart Attack Risk Analysis",
       rating: 5,
-      review: "Brilliant statistical analysis and model training! The heart attack risk prediction model demonstrates strong understanding of probability concepts. Interested in collaborating on more healthcare prediction projects.",
-      avatar: "ER"
+      review: "The statistical modeling behind the heart attack prediction system was just spot on. Everything from data preprocessing to the final probability outputs showed real understanding of the domain. Reliable work and clean implementation.",
+      avatar: "UA"
     },
     {
-      name: "Michael Thompson",
+      name: "Mahnoor Khalid",
       role: "CTO, AI Innovations Lab",
       project: "AI Podcast Generator",
       rating: 5,
-      review: "The AI Podcast Generator is a game-changer! Seamless integration of LLM and TTS technologies. Darain's ability to combine multiple AI services is remarkable. We're exploring partnership opportunities.",
-      avatar: "MT"
+      review: "The AI Podcast Generator felt like something straight out of a startup pitch deck — in the best way. Smooth voice synthesis, great topic flow, and a really natural delivery. It's rare to see such well-integrated AI systems.",
+      avatar: "MK"
     },
     {
-      name: "Prof. David Kumar",
+      name: "Mansoobe Zahra",
       role: "NASA Space Apps Challenge Mentor",
       project: "NASA Space App",
       rating: 5,
-      review: "Innovative approach to space data visualization! The NASA Space App project showed excellent problem-solving skills and creativity. Would definitely recommend for any data science challenges.",
-      avatar: "DK"
+      review: "The space data visualization project was one of the most creative entries we saw. The way complex data was simplified and presented made it stand out instantly. Smart, visually engaging, and full of genuine curiosity.",
+      avatar: "MZ"
     }
   ];
 
