@@ -53,13 +53,26 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <div className="animate-fade-in-up">
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tight">
+          <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight">
             <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent font-light" style={{ 
               letterSpacing: '0.05em'
             }}>
               Darain Hyder
             </span>
           </h1>
+          
+          {/* Professional Titles */}
+          <div className="mb-8 flex flex-wrap justify-center gap-3 text-base md:text-lg">
+            <span className="px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-foreground font-medium hover:bg-primary/20 transition-all duration-300">
+              Data Scientist
+            </span>
+            <span className="px-4 py-2 rounded-full bg-accent/10 border border-accent/30 text-foreground font-medium hover:bg-accent/20 transition-all duration-300">
+              ML Tinker
+            </span>
+            <span className="px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-foreground font-medium hover:bg-primary/20 transition-all duration-300">
+              NLP Rookie
+            </span>
+          </div>
           
           {/* Unique Aesthetic Quote */}
           <p className="text-lg md:text-xl text-muted-foreground/80 mb-12 font-light italic max-w-xl mx-auto">
