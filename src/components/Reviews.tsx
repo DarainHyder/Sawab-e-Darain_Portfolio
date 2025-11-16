@@ -40,12 +40,12 @@ const Reviews = () => {
       avatar: "MK"
     },
     {
-      name: "Mansoobe Zahra",
+      name: "Fatima Zahra",
       role: "NASA Space Apps Challenge Mentor",
       project: "NASA Space App",
       rating: 5,
       review: "The space data visualization project was one of the most creative entries we saw. The way complex data was simplified and presented made it stand out instantly. Smart, visually engaging, and full of genuine curiosity.",
-      avatar: "MZ"
+      avatar: "FZ"
     }
   ];
 
