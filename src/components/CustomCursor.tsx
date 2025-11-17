@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Brain, Sparkles } from 'lucide-react';
 
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -44,9 +43,9 @@ const CustomCursor = () => {
         }}
       >
         {isPointer ? (
-          <div className="relative animate-pulse">
-            <Brain className="w-8 h-8 text-primary" strokeWidth={2.5} />
-            <Sparkles className="w-4 h-4 text-primary absolute -top-1 -right-1 animate-spin" />
+          <div className="relative">
+            <div className="w-4 h-4 rounded-full bg-primary animate-pulse" />
+            <div className="absolute inset-0 w-4 h-4 rounded-full bg-primary/50 animate-ping" />
           </div>
         ) : (
           <div className="w-3 h-3 rounded-full bg-primary" />

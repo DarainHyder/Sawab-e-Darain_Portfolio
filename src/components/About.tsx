@@ -162,184 +162,58 @@ const About = () => {
             </p>
           </div>
           
-          <div className="space-y-6">
-            {/* Data Science & ML */}
-            <Card className="glow-card">
-              <CardContent className="p-6">
-                <h4 className="text-sm font-semibold text-primary mb-4">Data Science & ML</h4>
-                <div className="flex flex-wrap gap-3">
-                  {[
-                    { name: "Python", logo: "python" },
-                    { name: "NumPy", logo: "numpy" },
-                    { name: "Pandas", logo: "pandas" },
-                    { name: "Scikit-learn", logo: "scikitlearn" },
-                    { name: "TensorFlow", logo: "tensorflow" },
-                    { name: "PyTorch", logo: "pytorch" },
-                    { name: "Kaggle", logo: "kaggle" },
-                  ].map((tech) => (
-                    <div
-                      key={tech.name}
-                      className="group relative"
-                      onMouseEnter={() => setHoveredSkill(tech.name)}
-                      onMouseLeave={() => setHoveredSkill(null)}
-                    >
-                      <div className={`flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/50 hover:bg-primary/10 transition-all duration-300 cursor-pointer border border-transparent hover:border-primary/50 ${hoveredSkill === tech.name ? 'bg-primary/10 border-primary/50 scale-105' : ''}`}>
-                        <img 
-                          src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tech.logo}/${tech.logo}-original.svg`}
-                          alt={tech.name}
-                          className="w-5 h-5 group-hover:scale-110 transition-transform duration-300"
-                          onError={(e) => {
-                            e.currentTarget.src = `https://cdn.simpleicons.org/${tech.logo}`;
-                          }}
-                        />
-                        <span className="text-xs font-medium">{tech.name}</span>
-                      </div>
+          <Card className="glow-card">
+            <CardContent className="p-8">
+              <div className="flex flex-wrap gap-3 justify-center">
+                {[
+                  { name: "Python", logo: "python", color: "bg-[#3776AB]" },
+                  { name: "NumPy", logo: "numpy", color: "bg-[#013243]" },
+                  { name: "Pandas", logo: "pandas", color: "bg-[#150458]" },
+                  { name: "Scikit-learn", logo: "scikitlearn", color: "bg-[#F7931E]" },
+                  { name: "TensorFlow", logo: "tensorflow", color: "bg-[#FF6F00]" },
+                  { name: "PyTorch", logo: "pytorch", color: "bg-[#EE4C2C]" },
+                  { name: "NLP", logo: "python", color: "bg-[#FF1493]" },
+                  { name: "Computer Vision", logo: "opencv", color: "bg-[#5C3EE8]" },
+                  { name: "Kaggle", logo: "kaggle", color: "bg-[#20BEFF]" },
+                  { name: "Matplotlib", logo: "matplotlib", color: "bg-[#11557C]" },
+                  { name: "Seaborn", logo: "python", color: "bg-[#9BB7D4]" },
+                  { name: "Power BI", logo: "powerbi", color: "bg-[#F2C811]" },
+                  { name: "HTML5", logo: "html5", color: "bg-[#E34F26]" },
+                  { name: "CSS3", logo: "css3", color: "bg-[#1572B6]" },
+                  { name: "SQL", logo: "mysql", color: "bg-[#00758F]" },
+                  { name: "FastAPI", logo: "fastapi", color: "bg-[#009688]" },
+                  { name: "Docker", logo: "docker", color: "bg-[#2496ED]" },
+                  { name: "Git", logo: "git", color: "bg-[#F05032]" },
+                  { name: "GitHub", logo: "github", color: "bg-[#181717]" },
+                  { name: "GitLab", logo: "gitlab", color: "bg-[#FC6D26]" },
+                  { name: "Postman", logo: "postman", color: "bg-[#FF6C37]" },
+                  { name: "AWS", logo: "amazonwebservices", color: "bg-[#232F3E]" },
+                  { name: "Heroku", logo: "heroku", color: "bg-[#430098]" },
+                  { name: "Figma", logo: "figma", color: "bg-[#F24E1E]" },
+                  { name: "Canva", logo: "canva", color: "bg-[#00C4CC]" },
+                ].map((tech) => (
+                  <div
+                    key={tech.name}
+                    className="group relative"
+                    onMouseEnter={() => setHoveredSkill(tech.name)}
+                    onMouseLeave={() => setHoveredSkill(null)}
+                  >
+                    <div className={`flex items-center gap-2 px-4 py-2.5 rounded-lg ${tech.color} text-white transition-all duration-300 cursor-pointer hover:scale-110 hover:shadow-lg ${hoveredSkill === tech.name ? 'scale-110 shadow-lg' : ''}`}>
+                      <img 
+                        src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tech.logo}/${tech.logo}-original.svg`}
+                        alt={tech.name}
+                        className="w-5 h-5 group-hover:scale-110 transition-transform duration-300 filter brightness-0 invert"
+                        onError={(e) => {
+                          e.currentTarget.src = `https://cdn.simpleicons.org/${tech.logo.toLowerCase()}`;
+                        }}
+                      />
+                      <span className="text-sm font-semibold whitespace-nowrap">{tech.name}</span>
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Visualization */}
-            <Card className="glow-card">
-              <CardContent className="p-6">
-                <h4 className="text-sm font-semibold text-accent mb-4">Visualization & Analytics</h4>
-                <div className="flex flex-wrap gap-3">
-                  {[
-                    { name: "Matplotlib", logo: "matplotlib" },
-                    { name: "Seaborn", logo: "python" },
-                    { name: "Power BI", logo: "powerbi" },
-                  ].map((tech) => (
-                    <div
-                      key={tech.name}
-                      className="group relative"
-                      onMouseEnter={() => setHoveredSkill(tech.name)}
-                      onMouseLeave={() => setHoveredSkill(null)}
-                    >
-                      <div className={`flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/50 hover:bg-accent/10 transition-all duration-300 cursor-pointer border border-transparent hover:border-accent/50 ${hoveredSkill === tech.name ? 'bg-accent/10 border-accent/50 scale-105' : ''}`}>
-                        <img 
-                          src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tech.logo}/${tech.logo}-original.svg`}
-                          alt={tech.name}
-                          className="w-5 h-5 group-hover:scale-110 transition-transform duration-300"
-                          onError={(e) => {
-                            e.currentTarget.src = `https://cdn.simpleicons.org/${tech.logo.toLowerCase()}`;
-                          }}
-                        />
-                        <span className="text-xs font-medium">{tech.name}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Web Development */}
-            <Card className="glow-card">
-              <CardContent className="p-6">
-                <h4 className="text-sm font-semibold text-primary mb-4">Web Development</h4>
-                <div className="flex flex-wrap gap-3">
-                  {[
-                    { name: "HTML", logo: "html5" },
-                    { name: "CSS", logo: "css3" },
-                    { name: "JavaScript", logo: "javascript" },
-                    { name: "React", logo: "react" },
-                    { name: "FastAPI", logo: "fastapi" },
-                    { name: "Flask", logo: "flask" },
-                    { name: "Streamlit", logo: "streamlit" },
-                  ].map((tech) => (
-                    <div
-                      key={tech.name}
-                      className="group relative"
-                      onMouseEnter={() => setHoveredSkill(tech.name)}
-                      onMouseLeave={() => setHoveredSkill(null)}
-                    >
-                      <div className={`flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/50 hover:bg-primary/10 transition-all duration-300 cursor-pointer border border-transparent hover:border-primary/50 ${hoveredSkill === tech.name ? 'bg-primary/10 border-primary/50 scale-105' : ''}`}>
-                        <img 
-                          src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tech.logo}/${tech.logo}-original.svg`}
-                          alt={tech.name}
-                          className="w-5 h-5 group-hover:scale-110 transition-transform duration-300"
-                          onError={(e) => {
-                            e.currentTarget.src = `https://cdn.simpleicons.org/${tech.logo.toLowerCase()}`;
-                          }}
-                        />
-                        <span className="text-xs font-medium">{tech.name}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Database & DevOps */}
-            <Card className="glow-card">
-              <CardContent className="p-6">
-                <h4 className="text-sm font-semibold text-accent mb-4">Database & DevOps</h4>
-                <div className="flex flex-wrap gap-3">
-                  {[
-                    { name: "SQL", logo: "mysql" },
-                    { name: "Docker", logo: "docker" },
-                    { name: "Git", logo: "git" },
-                    { name: "GitHub", logo: "github" },
-                    { name: "Postman", logo: "postman" },
-                    { name: "AWS", logo: "amazonwebservices" },
-                    { name: "Heroku", logo: "heroku" },
-                    { name: "Netlify", logo: "netlify" },
-                  ].map((tech) => (
-                    <div
-                      key={tech.name}
-                      className="group relative"
-                      onMouseEnter={() => setHoveredSkill(tech.name)}
-                      onMouseLeave={() => setHoveredSkill(null)}
-                    >
-                      <div className={`flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/50 hover:bg-accent/10 transition-all duration-300 cursor-pointer border border-transparent hover:border-accent/50 ${hoveredSkill === tech.name ? 'bg-accent/10 border-accent/50 scale-105' : ''}`}>
-                        <img 
-                          src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tech.logo}/${tech.logo}-original.svg`}
-                          alt={tech.name}
-                          className="w-5 h-5 group-hover:scale-110 transition-transform duration-300"
-                          onError={(e) => {
-                            e.currentTarget.src = `https://cdn.simpleicons.org/${tech.logo.toLowerCase()}`;
-                          }}
-                        />
-                        <span className="text-xs font-medium">{tech.name}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Design Tools */}
-            <Card className="glow-card">
-              <CardContent className="p-6">
-                <h4 className="text-sm font-semibold text-primary mb-4">Design Tools</h4>
-                <div className="flex flex-wrap gap-3">
-                  {[
-                    { name: "Figma", logo: "figma" },
-                    { name: "Canva", logo: "canva" },
-                  ].map((tech) => (
-                    <div
-                      key={tech.name}
-                      className="group relative"
-                      onMouseEnter={() => setHoveredSkill(tech.name)}
-                      onMouseLeave={() => setHoveredSkill(null)}
-                    >
-                      <div className={`flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/50 hover:bg-primary/10 transition-all duration-300 cursor-pointer border border-transparent hover:border-primary/50 ${hoveredSkill === tech.name ? 'bg-primary/10 border-primary/50 scale-105' : ''}`}>
-                        <img 
-                          src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tech.logo}/${tech.logo}-original.svg`}
-                          alt={tech.name}
-                          className="w-5 h-5 group-hover:scale-110 transition-transform duration-300"
-                          onError={(e) => {
-                            e.currentTarget.src = `https://cdn.simpleicons.org/${tech.logo.toLowerCase()}`;
-                          }}
-                        />
-                        <span className="text-xs font-medium">{tech.name}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
