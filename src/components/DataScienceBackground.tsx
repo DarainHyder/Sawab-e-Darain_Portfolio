@@ -37,15 +37,15 @@ const DataScienceBackground = () => {
 
     const initNeurons = () => {
       neurons = [];
-      const neuronCount = Math.floor((canvas.width * canvas.height) / 25000);
+      const neuronCount = Math.floor((canvas.width * canvas.height) / 20000);
       
       for (let i = 0; i < neuronCount; i++) {
         neurons.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
-          radius: 2 + Math.random() * 2,
+          vx: (Math.random() - 0.5) * 0.2,
+          vy: (Math.random() - 0.5) * 0.2,
+          radius: 2.5 + Math.random() * 2,
           pulseOffset: Math.random() * Math.PI * 2,
         });
       }
@@ -59,7 +59,7 @@ const DataScienceBackground = () => {
         const dx = n.x - from.x;
         const dy = n.y - from.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        return distance > 0 && distance < 200;
+        return distance > 0 && distance < 250;
       });
 
       if (nearbyNeurons.length > 0) {
@@ -68,33 +68,39 @@ const DataScienceBackground = () => {
           from,
           to,
           progress: 0,
-          speed: 0.005 + Math.random() * 0.01,
+          speed: 0.008 + Math.random() * 0.012,
         });
       }
     };
 
     const drawNeuron = (neuron: Neuron, time: number) => {
-      const pulse = Math.sin(time * 0.001 + neuron.pulseOffset) * 0.3 + 0.7;
-      const glowIntensity = pulse * 0.6;
+      const pulse = Math.sin(time * 0.001 + neuron.pulseOffset) * 0.4 + 0.6;
+      const glowIntensity = pulse * 0.8;
 
-      // Outer glow
+      // Outer glow - Red theme
       const gradient = ctx.createRadialGradient(
         neuron.x, neuron.y, 0,
-        neuron.x, neuron.y, neuron.radius * 4
+        neuron.x, neuron.y, neuron.radius * 5
       );
-      gradient.addColorStop(0, `rgba(100, 180, 255, ${glowIntensity * 0.8})`);
-      gradient.addColorStop(0.5, `rgba(120, 140, 255, ${glowIntensity * 0.3})`);
-      gradient.addColorStop(1, 'rgba(100, 180, 255, 0)');
+      gradient.addColorStop(0, `rgba(255, 69, 58, ${glowIntensity * 0.9})`);
+      gradient.addColorStop(0.4, `rgba(255, 45, 85, ${glowIntensity * 0.5})`);
+      gradient.addColorStop(1, 'rgba(255, 69, 58, 0)');
 
       ctx.fillStyle = gradient;
       ctx.beginPath();
-      ctx.arc(neuron.x, neuron.y, neuron.radius * 4, 0, Math.PI * 2);
+      ctx.arc(neuron.x, neuron.y, neuron.radius * 5, 0, Math.PI * 2);
       ctx.fill();
 
-      // Core
-      ctx.fillStyle = `rgba(150, 200, 255, ${pulse})`;
+      // Core - Bright red/pink
+      ctx.fillStyle = `rgba(255, 85, 100, ${pulse})`;
       ctx.beginPath();
       ctx.arc(neuron.x, neuron.y, neuron.radius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Inner bright core
+      ctx.fillStyle = `rgba(255, 150, 150, ${pulse * 0.8})`;
+      ctx.beginPath();
+      ctx.arc(neuron.x, neuron.y, neuron.radius * 0.5, 0, Math.PI * 2);
       ctx.fill();
     };
 
@@ -103,16 +109,16 @@ const DataScienceBackground = () => {
       const dy = to.y - from.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
       
-      if (distance < 200) {
-        const fadeOpacity = (1 - distance / 200) * opacity * 0.15;
+      if (distance < 250) {
+        const fadeOpacity = (1 - distance / 250) * opacity * 0.25;
         
         const gradient = ctx.createLinearGradient(from.x, from.y, to.x, to.y);
-        gradient.addColorStop(0, `rgba(100, 180, 255, ${fadeOpacity})`);
-        gradient.addColorStop(0.5, `rgba(140, 120, 255, ${fadeOpacity * 1.2})`);
-        gradient.addColorStop(1, `rgba(100, 180, 255, ${fadeOpacity})`);
+        gradient.addColorStop(0, `rgba(255, 69, 58, ${fadeOpacity})`);
+        gradient.addColorStop(0.5, `rgba(255, 45, 85, ${fadeOpacity * 1.3})`);
+        gradient.addColorStop(1, `rgba(255, 69, 58, ${fadeOpacity})`);
 
         ctx.strokeStyle = gradient;
-        ctx.lineWidth = 0.5;
+        ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(from.x, from.y);
         ctx.lineTo(to.x, to.y);
@@ -124,26 +130,28 @@ const DataScienceBackground = () => {
       const x = pulse.from.x + (pulse.to.x - pulse.from.x) * pulse.progress;
       const y = pulse.from.y + (pulse.to.y - pulse.from.y) * pulse.progress;
 
-      // Pulse glow
-      const gradient = ctx.createRadialGradient(x, y, 0, x, y, 8);
-      gradient.addColorStop(0, 'rgba(150, 220, 255, 0.9)');
-      gradient.addColorStop(0.5, 'rgba(120, 160, 255, 0.5)');
-      gradient.addColorStop(1, 'rgba(100, 180, 255, 0)');
+      // Pulse outer glow
+      const gradient = ctx.createRadialGradient(x, y, 0, x, y, 12);
+      gradient.addColorStop(0, 'rgba(255, 100, 120, 1)');
+      gradient.addColorStop(0.3, 'rgba(255, 69, 58, 0.8)');
+      gradient.addColorStop(0.7, 'rgba(255, 45, 85, 0.4)');
+      gradient.addColorStop(1, 'rgba(255, 69, 58, 0)');
 
       ctx.fillStyle = gradient;
       ctx.beginPath();
-      ctx.arc(x, y, 8, 0, Math.PI * 2);
+      ctx.arc(x, y, 12, 0, Math.PI * 2);
       ctx.fill();
 
-      // Pulse core
-      ctx.fillStyle = 'rgba(200, 230, 255, 1)';
+      // Pulse bright core
+      ctx.fillStyle = 'rgba(255, 200, 200, 1)';
       ctx.beginPath();
-      ctx.arc(x, y, 2, 0, Math.PI * 2);
+      ctx.arc(x, y, 3, 0, Math.PI * 2);
       ctx.fill();
     };
 
     const animate = (time: number) => {
-      ctx.fillStyle = 'rgba(10, 15, 30, 1)';
+      // Dark background matching theme
+      ctx.fillStyle = 'rgba(10, 10, 10, 1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Update neuron positions
@@ -175,8 +183,8 @@ const DataScienceBackground = () => {
         return false;
       });
 
-      // Create new pulses randomly
-      if (Math.random() < 0.03 && pulses.length < 15) {
+      // Create new pulses more frequently
+      if (Math.random() < 0.05 && pulses.length < 20) {
         createPulse();
       }
 
@@ -204,7 +212,7 @@ const DataScienceBackground = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ background: '#0a0f1e' }}
+      style={{ background: '#0a0a0a' }}
     />
   );
 };
