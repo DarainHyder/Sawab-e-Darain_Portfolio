@@ -204,7 +204,12 @@ const About = () => {
                         alt={tech.name}
                         className="w-5 h-5 group-hover:scale-110 transition-transform duration-300 filter brightness-0 invert"
                         onError={(e) => {
-                          e.currentTarget.src = `https://cdn.simpleicons.org/${tech.logo.toLowerCase()}`;
+                          const target = e.currentTarget;
+                          if (tech.name === "AWS") {
+                            target.src = "https://cdn.simpleicons.org/amazonaws/white";
+                          } else {
+                            target.src = `https://cdn.simpleicons.org/${tech.logo.toLowerCase()}/white`;
+                          }
                         }}
                       />
                       <span className="text-sm font-semibold whitespace-nowrap">{tech.name}</span>
