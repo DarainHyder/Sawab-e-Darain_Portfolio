@@ -67,7 +67,7 @@ const Hero = () => {
               Data Scientist
             </span>
             <span className="px-4 py-2 rounded-full bg-accent/10 border border-accent/30 text-foreground font-medium hover:bg-accent/20 transition-all duration-300">
-              ML Tinker
+              ML Tinkerer
             </span>
             <span className="px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-foreground font-medium hover:bg-primary/20 transition-all duration-300">
               NLP Rookie
