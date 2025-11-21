@@ -97,7 +97,7 @@ const Navigation = () => {
                 className="relative overflow-hidden rounded-full bg-gradient-to-r from-primary to-accent hover:shadow-[0_0_30px_rgba(255,69,58,0.5)] transition-all duration-300 group border-0"
                 asChild
               >
-                <a href="https://drive.google.com/file/d/1sS1wm2hGQmQwDob8GvasqPYFnejf9APv/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <a href="https://drive.google.com/file/d/1Vq0NkMac79UhlBOpprnomH355hYK8B2L/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                   <Download className="w-4 h-4 group-hover:animate-bounce" />
                   <span className="font-semibold">Resume</span>
                 </a>
@@ -134,7 +134,7 @@ const Navigation = () => {
                 className="w-full mt-4 rounded-2xl bg-gradient-to-r from-primary to-accent hover:shadow-[0_0_30px_rgba(255,69,58,0.5)] border-0" 
                 asChild
               >
-                <a href="https://drive.google.com/file/d/1sS1wm2hGQmQwDob8GvasqPYFnejf9APv/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 justify-center">
+                <a href="https://drive.google.com/file/d/1Vq0NkMac79UhlBOpprnomH355hYK8B2L/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 justify-center">
                   <Download className="w-4 h-4" />
                   Download Resume
                 </a>
