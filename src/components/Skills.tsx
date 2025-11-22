@@ -1,8 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Brain, Code, Database, BarChart3, Sparkles, Zap } from "lucide-react";
+import { Zap } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import SectionParticles from "./SectionParticles";
-import { useState } from "react";
 
 interface Skill {
   name: string;
@@ -12,53 +11,17 @@ interface Skill {
 
 const Skills = () => {
   const { ref, isVisible } = useScrollAnimation();
-  const [activeCategory, setActiveCategory] = useState<string>("all");
-
-  const skillCategories = [
-    { id: "all", label: "All Skills", icon: Sparkles, color: "text-primary" },
-    { id: "ml", label: "ML & AI", icon: Brain, color: "text-accent" },
-    { id: "programming", label: "Programming", icon: Code, color: "text-primary" },
-    { id: "data", label: "Data & Analytics", icon: BarChart3, color: "text-accent" },
-    { id: "tools", label: "Tools & DevOps", icon: Database, color: "text-primary" },
-  ];
-
   const skills: Skill[] = [
-    // ML & AI
-    { name: "Machine Learning", level: 90, category: "ml" },
-    { name: "Deep Learning", level: 85, category: "ml" },
-    { name: "Natural Language Processing", level: 80, category: "ml" },
-    { name: "Computer Vision", level: 75, category: "ml" },
-    { name: "TensorFlow", level: 85, category: "ml" },
-    { name: "PyTorch", level: 82, category: "ml" },
-    { name: "Scikit-learn", level: 90, category: "ml" },
-    
-    // Programming
-    { name: "Python", level: 95, category: "programming" },
-    { name: "SQL", level: 85, category: "programming" },
-    { name: "HTML/CSS", level: 80, category: "programming" },
-    { name: "FastAPI", level: 75, category: "programming" },
-    
-    // Data & Analytics
-    { name: "NumPy", level: 90, category: "data" },
-    { name: "Pandas", level: 92, category: "data" },
-    { name: "Matplotlib", level: 88, category: "data" },
-    { name: "Seaborn", level: 85, category: "data" },
-    { name: "Power BI", level: 80, category: "data" },
-    { name: "Data Visualization", level: 87, category: "data" },
-    { name: "Statistical Analysis", level: 85, category: "data" },
-    
-    // Tools & DevOps
-    { name: "Git & GitHub", level: 90, category: "tools" },
-    { name: "Docker", level: 75, category: "tools" },
-    { name: "AWS", level: 70, category: "tools" },
-    { name: "Kaggle", level: 88, category: "tools" },
-    { name: "Postman", level: 82, category: "tools" },
-    { name: "Jupyter Notebook", level: 95, category: "tools" },
+    { name: "Python", level: 88, category: "programming" },
+    { name: "Machine Learning", level: 85, category: "ml" },
+    { name: "Deep Learning", level: 78, category: "ml" },
+    { name: "TensorFlow", level: 80, category: "ml" },
+    { name: "PyTorch", level: 75, category: "ml" },
+    { name: "SQL", level: 82, category: "programming" },
+    { name: "Pandas", level: 86, category: "data" },
+    { name: "NumPy", level: 84, category: "data" },
+    { name: "Scikit-learn", level: 83, category: "ml" },
   ];
-
-  const filteredSkills = activeCategory === "all" 
-    ? skills 
-    : skills.filter(skill => skill.category === activeCategory);
 
   const getSkillColor = (level: number) => {
     if (level >= 85) return "bg-primary";
@@ -91,32 +54,9 @@ const Skills = () => {
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className={`flex flex-wrap justify-center gap-3 mb-12 scroll-reveal ${isVisible ? 'visible' : ''}`}>
-          {skillCategories.map((category) => {
-            const Icon = category.icon;
-            const isActive = activeCategory === category.id;
-            
-            return (
-              <button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={`group flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                  isActive
-                    ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg scale-105'
-                    : 'bg-background/80 backdrop-blur-sm border border-border hover:border-primary/50 hover:bg-background/90'
-                }`}
-              >
-                <Icon className={`h-5 w-5 transition-transform duration-300 ${isActive ? 'text-white scale-110' : category.color}`} />
-                <span>{category.label}</span>
-              </button>
-            );
-          })}
-        </div>
-
         {/* Skills Grid */}
-        <div className={`grid md:grid-cols-2 gap-6 scroll-reveal ${isVisible ? 'visible' : ''}`}>
-          {filteredSkills.map((skill, index) => (
+        <div className={`grid md:grid-cols-3 gap-6 scroll-reveal ${isVisible ? 'visible' : ''}`}>
+          {skills.map((skill, index) => (
             <Card 
               key={skill.name}
               className="glow-card group hover:scale-[1.02] transition-all duration-300"
