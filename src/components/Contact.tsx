@@ -34,10 +34,10 @@ const Contact = () => {
     setLoading(true);
     
     try {
-      // EmailJS configuration - Replace these with your actual EmailJS credentials
-      const serviceId = 'YOUR_SERVICE_ID';
-      const templateId = 'YOUR_TEMPLATE_ID';
-      const publicKey = 'YOUR_PUBLIC_KEY';
+      // EmailJS configuration
+      const serviceId = 'service_lr5r3g9';
+      const templateId = 'template_25tfbra';
+      const publicKey = 'qAZh3k0bi8Yrl0SJd';
 
       const templateParams = {
         from_name: name,
