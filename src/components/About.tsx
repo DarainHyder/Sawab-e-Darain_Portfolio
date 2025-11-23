@@ -3,7 +3,7 @@ import { GraduationCap, Brain, Code, Database, Sparkles, Quote } from "lucide-re
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import SectionParticles from "./SectionParticles";
 import { useState } from "react";
-import profileImage from "@/assets/darain-profile.jpg";
+import profileImage from "@/assets/darain-professional.jpg";
 
 const About = () => {
   const { ref, isVisible } = useScrollAnimation();
