@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Send, Github, Linkedin } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import emailjs from '@emailjs/browser';
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import SectionParticles from "./SectionParticles";
 
@@ -34,16 +34,20 @@ const Contact = () => {
     setLoading(true);
     
     try {
-      const { error } = await supabase.functions.invoke('send-contact-email', {
-        body: {
-          name,
-          email,
-          subject,
-          message,
-        },
-      });
+      // EmailJS configuration - Replace these with your actual EmailJS credentials
+      const serviceId = 'YOUR_SERVICE_ID';
+      const templateId = 'YOUR_TEMPLATE_ID';
+      const publicKey = 'YOUR_PUBLIC_KEY';
 
-      if (error) throw error;
+      const templateParams = {
+        from_name: name,
+        from_email: email,
+        subject: subject,
+        message: message,
+        to_email: 'darainhyder21@gmail.com',
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
 
       toast({
         title: "Message sent!",
