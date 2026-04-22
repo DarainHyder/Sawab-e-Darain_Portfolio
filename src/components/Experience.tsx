@@ -5,6 +5,15 @@ import SectionParticles from "./SectionParticles";
 
 const experiences = [
   {
+    role: "AI Engineer Intern",
+    company: "Data Pilot",
+    location: "Islamabad / Remote",
+    period: "7 April 2026 - Present",
+    duration: "Ongoing",
+    description: "Building scalable AI/ML data pipelines for social media management dashboards. Implementing ETL/ELT workflows and managing data quality assurance and schema validation for production-ready components.",
+    current: true,
+  },
+  {
     role: "ML Trainee (Contract)",
     company: "Syvyo",
     location: "Remote",
@@ -12,15 +21,6 @@ const experiences = [
     duration: "6 months",
     description: "Selected for contract-based position following successful internship. Implemented machine learning solutions and contributed to production-grade AI models.",
     current: false,
-  },
-  {
-    role: "AI Engineer Intern",
-    company: "Data Pilot",
-    location: "Islamabad / Remote",
-    period: "Nov 2025 - Present",
-    duration: "Ongoing",
-    description: "Building scalable AI/ML data pipelines for social media management dashboards. Implementing ETL/ELT workflows and managing data quality assurance and schema validation for production-ready components.",
-    current: true,
   },
   {
     role: "ML/AI Intern",
