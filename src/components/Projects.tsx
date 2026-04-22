@@ -11,28 +11,40 @@ const Projects = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const projects = [
     {
+      title: "Adaptive Multi-Agent E-Learning System",
+      description: "Built a multi-agent AI system with reinforcement-based feedback loops that personalizes learning paths and adjusts content difficulty dynamically.",
+      tech: ["Multi-Agent AI", "Reinforcement Learning", "NLP", "ML Classification"],
+      icon: Sparkles,
+      color: "text-primary",
+      githubUrl: "https://github.com/DarainHyder",
+      liveUrl: "https://adaptive-e-learning-system.vercel.app/"
+    },
+    {
+      title: "BioMed Research Helper",
+      description: "Comprehensive biomedical research assistance tool integrating PubMed API mining, semantic search, and LLM-summarization for medical literature.",
+      tech: ["Python", "FastAPI", "Streamlit", "LLM", "NLP", "Semantic Search"],
+      icon: Stethoscope,
+      color: "text-accent",
+      githubUrl: "https://github.com/DarainHyder/BioMed_ResearchHelper",
+      liveUrl: "https://bio-med-research-helper-yzop.vercel.app/"
+    },
+    {
+      title: "Image Quality Assessment",
+      description: "PyTorch deep learning pipeline for blind image quality scoring using CNN-based feature extraction, deployed as a microservice via FastAPI.",
+      tech: ["PyTorch", "FastAPI", "Streamlit", "Docker", "CNN", "Computer Vision"],
+      icon: Image,
+      color: "text-data-teal",
+      githubUrl: "https://github.com/DarainHyder/Image_Quality_Assessment",
+      liveUrl: "https://lumina-iqa.vercel.app/"
+    },
+    {
       title: "NASA Space App",
       description: "Innovative space exploration application developed for NASA Space Apps Challenge, featuring advanced data visualization and analysis of space-related datasets.",
       tech: ["Python", "Data Visualization", "Space Tech", "APIs"],
       icon: Brain,
       color: "text-primary",
-      githubUrl: "https://github.com/DarainHyder/NASA-Space-App"
-    },
-    {
-      title: "BioMed Research Helper",
-      description: "Comprehensive biomedical research assistance tool that leverages AI and data analysis to support medical research workflows and literature analysis.",
-      tech: ["Python", "AI", "Medical Research", "NLP"],
-      icon: Stethoscope,
-      color: "text-accent",
-      githubUrl: "https://github.com/DarainHyder/BioMed_ResearchHelper"
-    },
-    {
-      title: "Image Quality Assessment",
-      description: "Advanced image quality assessment system using computer vision and machine learning techniques to evaluate and measure image quality parameters with high accuracy.",
-      tech: ["Python", "Computer Vision", "Machine Learning", "OpenCV"],
-      icon: Image,
-      color: "text-data-teal",
-      githubUrl: "https://github.com/DarainHyder/Image_Quality_Assessment"
+      githubUrl: "https://github.com/DarainHyder/NASA-Space-App",
+      liveUrl: "https://nasa-space-app-nine.vercel.app/"
     },
     {
       title: "Heart Attack Risk Analysis & ML Model",
@@ -40,15 +52,8 @@ const Projects = () => {
       tech: ["Python", "Jupyter Notebook", "Statistics", "Machine Learning"],
       icon: Activity,
       color: "text-data-cyan",
-      githubUrl: "https://github.com/DarainHyder/Heart_Attack_risk-analysis-and-Trainig-Model"
-    },
-    {
-      title: "AI Podcast Generator",
-      description: "AI-powered podcast generator that combines LLM script creation with premium text-to-speech synthesis to produce ready-to-publish audio content from simple text prompts.",
-      tech: ["Python", "LLM", "Text-to-Speech", "AI"],
-      icon: BarChart3,
-      color: "text-primary",
-      githubUrl: "https://github.com/DarainHyder/podcast_generator"
+      githubUrl: "https://github.com/DarainHyder/Heart_Attack_risk-analysis-and-Trainig-Model",
+      liveUrl: "https://myocardial-risk-index.vercel.app/"
     },
     {
       title: "Word Puzzle Solver",
@@ -56,23 +61,8 @@ const Projects = () => {
       tech: ["Python", "Algorithms", "Pattern Recognition", "Optimization"],
       icon: Database,
       color: "text-accent",
-      githubUrl: "https://github.com/DarainHyder/Word_Puzzle_Solver"
-    },
-    {
-      title: "Osteoporosis Prediction Model",
-      description: "Advanced predictive model for osteoporosis risk assessment using patient data, statistical analysis, and machine learning algorithms.",
-      tech: ["Python", "Machine Learning", "Medical Analytics", "Scikit-learn"],
-      icon: TrendingUp,
-      color: "text-data-teal",
-      githubUrl: "https://github.com/DarainHyder"
-    },
-    {
-      title: "Checkers Game",
-      description: "Interactive checkers game implementation with AI opponent, featuring strategic gameplay mechanics and user-friendly interface for an engaging gaming experience.",
-      tech: ["Python", "Game Development", "AI", "GUI"],
-      icon: Gamepad2,
-      color: "text-data-cyan",
-      githubUrl: "https://github.com/DarainHyder/Checker-Game"
+      githubUrl: "https://github.com/DarainHyder/Word_Puzzles_Solver",
+      liveUrl: "https://word-puzzles-solver.vercel.app/"
     }
   ];
 
@@ -158,7 +148,7 @@ const Projects = () => {
                         variant="default" 
                         size="sm" 
                         className="flex-1 group/btn hover:shadow-lg hover:shadow-primary/50 transition-all duration-300"
-                        onClick={() => window.open(project.githubUrl, '_blank')}
+                        onClick={() => window.open((project as any).liveUrl || project.githubUrl, '_blank')}
                       >
                         <ExternalLink className="mr-2 h-4 w-4 group-hover/btn:-rotate-12 transition-transform duration-300" />
                         View

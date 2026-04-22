@@ -70,7 +70,7 @@ const Hero = () => {
               ML Tinkerer
             </span>
             <span className="px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-foreground font-medium hover:bg-primary/20 transition-all duration-300">
-              NLP Rookie
+              AI/ML Engineer
             </span>
           </div>
           

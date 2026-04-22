@@ -22,6 +22,13 @@ const Index = () => {
       <Certificates />
       <Contact />
       <Footer />
+      
+      {/* Fixed Watermark */}
+      <div className="fixed bottom-4 right-4 z-[9999] pointer-events-none select-none">
+        <span className="text-[10px] font-mono text-primary/20 tracking-[0.2em] uppercase vertical-text">
+          sawabedarain
+        </span>
+      </div>
     </div>
   );
 };

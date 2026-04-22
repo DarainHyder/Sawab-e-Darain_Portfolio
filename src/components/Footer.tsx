@@ -149,20 +149,25 @@ const Footer = () => {
               </p>
               <div className="hidden md:block h-4 w-px bg-primary/20"></div>
               <p className="text-muted-foreground text-sm flex items-center gap-2">
-                Made with <Heart className="h-4 w-4 text-primary animate-pulse" /> using React & Tailwind
+                Architecting Intelligence with <Heart className="h-4 w-4 text-primary animate-pulse" /> & Precision
               </p>
             </div>
             
-            {/* Scroll to Top Button */}
-            <Button
-              onClick={scrollToTop}
-              variant="outline"
-              size="sm"
-              className="group border-primary/30 hover:border-primary hover:bg-primary/10 hover:shadow-[0_0_20px_rgba(255,69,58,0.3)] transition-all duration-300"
-            >
-              <ArrowUp className="h-4 w-4 mr-2 group-hover:animate-bounce" />
-              Back to Top
-            </Button>
+            {/* Watermark & Scroll to Top */}
+            <div className="flex items-center gap-6">
+              <span className="text-[10px] font-mono text-muted-foreground/30 tracking-widest uppercase select-none hover:text-primary/50 transition-colors">
+                sawabedarain
+              </span>
+              <Button
+                onClick={scrollToTop}
+                variant="outline"
+                size="sm"
+                className="group border-primary/30 hover:border-primary hover:bg-primary/10 hover:shadow-[0_0_20px_rgba(255,69,58,0.3)] transition-all duration-300"
+              >
+                <ArrowUp className="h-4 w-4 mr-2 group-hover:animate-bounce" />
+                Back to Top
+              </Button>
+            </div>
           </div>
         </div>
       </div>

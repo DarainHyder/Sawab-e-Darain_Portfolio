@@ -1,12 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isPointer, setIsPointer] = useState(false);
+  const [trail, setTrail] = useState<{ x: number; y: number; id: number }[]>([]);
+  const trailRef = useRef<{ x: number; y: number; id: number }[]>([]);
+  const counterRef = useRef(0);
 
   useEffect(() => {
     const updatePosition = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      const { clientX: x, clientY: y } = e;
+      setPosition({ x, y });
+      
+      // Add to trail
+      counterRef.current++;
+      const newParticle = { x, y, id: counterRef.current };
+      trailRef.current = [newParticle, ...trailRef.current].slice(0, 8);
+      setTrail(trailRef.current);
     };
 
     const updateCursorType = (e: MouseEvent) => {
@@ -33,7 +43,23 @@ const CustomCursor = () => {
 
   return (
     <>
-      {/* Custom cursor dot */}
+      {/* Luminous Trail */}
+      {trail.map((point, index) => (
+        <div
+          key={point.id}
+          className="fixed pointer-events-none z-[9997] rounded-full bg-primary/20 blur-sm transition-opacity duration-500"
+          style={{
+            left: `${point.x}px`,
+            top: `${point.y}px`,
+            width: `${12 - index * 1.2}px`,
+            height: `${12 - index * 1.2}px`,
+            transform: 'translate(-50%, -50%)',
+            opacity: (8 - index) / 10,
+          }}
+        />
+      ))}
+
+      {/* Main Cursor Dot */}
       <div
         className="custom-cursor fixed pointer-events-none z-[9999] mix-blend-difference"
         style={{
@@ -42,27 +68,8 @@ const CustomCursor = () => {
           transform: 'translate(-50%, -50%)',
         }}
       >
-        {isPointer ? (
-          <div className="relative">
-            <div className="w-4 h-4 rounded-full bg-primary animate-pulse" />
-            <div className="absolute inset-0 w-4 h-4 rounded-full bg-primary/50 animate-ping" />
-          </div>
-        ) : (
-          <div className="w-3 h-3 rounded-full bg-primary" />
-        )}
-      </div>
-
-      {/* Cursor trail */}
-      <div
-        className="custom-cursor-trail fixed pointer-events-none z-[9998] transition-all duration-200 ease-out"
-        style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-          transform: 'translate(-50%, -50%)',
-        }}
-      >
-        <div className={`rounded-full border-2 border-primary/30 transition-all duration-300 ${
-          isPointer ? 'w-16 h-16' : 'w-8 h-8'
+        <div className={`rounded-full bg-primary shadow-[0_0_15px_rgba(255,69,58,0.8)] transition-all duration-300 ${
+          isPointer ? 'w-5 h-5 opacity-80' : 'w-2.5 h-2.5'
         }`} />
       </div>
 
@@ -72,8 +79,7 @@ const CustomCursor = () => {
         }
         
         @media (max-width: 768px) {
-          .custom-cursor,
-          .custom-cursor-trail {
+          .custom-cursor {
             display: none;
           }
           * {
@@ -83,7 +89,6 @@ const CustomCursor = () => {
       `}</style>
     </>
   );
-
 };
 
 export default CustomCursor;

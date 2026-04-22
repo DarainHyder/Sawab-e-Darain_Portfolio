@@ -12,15 +12,33 @@ interface Skill {
 const Skills = () => {
   const { ref, isVisible } = useScrollAnimation();
   const skills: Skill[] = [
-    { name: "Python", level: 88, category: "programming" },
-    { name: "Machine Learning", level: 85, category: "ml" },
-    { name: "Deep Learning", level: 78, category: "ml" },
-    { name: "TensorFlow", level: 80, category: "ml" },
-    { name: "PyTorch", level: 75, category: "ml" },
+    // Core Programming
+    { name: "Python", level: 92, category: "programming" },
     { name: "SQL", level: 82, category: "programming" },
-    { name: "Pandas", level: 86, category: "data" },
-    { name: "NumPy", level: 84, category: "data" },
-    { name: "Scikit-learn", level: 83, category: "ml" },
+    { name: "OOP & DSA", level: 88, category: "programming" },
+    
+    // AI & Machine Learning
+    { name: "Machine Learning", level: 90, category: "ml" },
+    { name: "Deep Learning", level: 85, category: "ml" },
+    { name: "Computer Vision", level: 88, category: "ml" },
+    { name: "NLP", level: 86, category: "ml" },
+    
+    // Frameworks & Libraries
+    { name: "PyTorch", level: 88, category: "ml" },
+    { name: "TensorFlow", level: 80, category: "ml" },
+    { name: "Scikit-learn", level: 86, category: "ml" },
+    { name: "Hugging Face", level: 85, category: "ml" },
+    
+    // Data Science & Engineering
+    { name: "Pandas & NumPy", level: 90, category: "data" },
+    { name: "Feature Engineering", level: 88, category: "data" },
+    { name: "Visualization", level: 85, category: "data" },
+    
+    // MLOps & Deployment
+    { name: "FastAPI", level: 86, category: "deployment" },
+    { name: "Streamlit", level: 88, category: "deployment" },
+    { name: "Git & GitHub", level: 88, category: "tools" },
+    { name: "Linux", level: 80, category: "tools" },
   ];
 
   const getSkillColor = (level: number) => {
@@ -50,31 +68,29 @@ const Skills = () => {
             Skill <span className="gradient-text">Set</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive arsenal of technologies and methodologies mastered through continuous learning and real-world application
+            A high-impact arsenal of technologies mastered through continuous learning and engineering.
           </p>
         </div>
 
-        {/* Skills Grid */}
-        <div className={`grid md:grid-cols-3 gap-6 scroll-reveal ${isVisible ? 'visible' : ''}`}>
+        {/* Skills Grid - Updated to 4-5 per row */}
+        <div className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 scroll-reveal ${isVisible ? 'visible' : ''}`}>
           {skills.map((skill, index) => (
             <Card 
               key={skill.name}
-              className="glow-card group hover:scale-[1.02] transition-all duration-300"
+              className="glow-card group hover:scale-[1.05] transition-all duration-300 border-none bg-card/30 backdrop-blur-md"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
-              <CardContent className="p-6">
-                <div className="flex justify-between items-center mb-3">
-                  <h4 className="font-semibold text-lg group-hover:text-primary transition-colors">
+              <CardContent className="p-4">
+                <div className="flex justify-between items-center mb-2">
+                  <h4 className="font-bold text-sm group-hover:text-primary transition-colors truncate pr-1">
                     {skill.name}
                   </h4>
-                  <span className="text-sm font-bold text-primary">
+                  <span className="text-[10px] font-bold text-primary">
                     {skill.level}%
                   </span>
                 </div>
                 
-                {/* Progress Bar Background */}
-                <div className="relative h-3 bg-muted/30 rounded-full overflow-hidden">
-                  {/* Animated Progress Bar */}
+                <div className="relative h-1.5 bg-muted/20 rounded-full overflow-hidden">
                   <div
                     className={`absolute top-0 left-0 h-full rounded-full bg-gradient-to-r ${getSkillGradient(skill.level)} transition-all duration-1000 ease-out ${
                       isVisible ? 'animate-fill' : 'w-0'
@@ -84,18 +100,8 @@ const Skills = () => {
                       animationDelay: `${index * 0.05}s`
                     }}
                   >
-                    {/* Shine effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer" />
                   </div>
-                  
-                  {/* Glow effect */}
-                  <div
-                    className={`absolute top-0 left-0 h-full ${getSkillColor(skill.level)} opacity-50 blur-sm transition-all duration-1000`}
-                    style={{ 
-                      width: isVisible ? `${skill.level}%` : '0%',
-                      animationDelay: `${index * 0.05}s`
-                    }}
-                  />
                 </div>
               </CardContent>
             </Card>
