@@ -57,21 +57,31 @@ const Navigation = () => {
 
           <div className="relative flex items-center justify-between">
             {/* Logo */}
-            <button 
+            <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="flex items-center gap-3 group"
             >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent blur-xl opacity-50 group-hover:opacity-75 transition-opacity rounded-full" />
-                <span className="relative gradient-text font-black tracking-tighter text-3xl drop-shadow-[0_0_10px_rgba(255,69,58,0.5)]">
-                  DH
+              {/* Premium Bespoke Signature Logo */}
+              <div className="relative flex flex-col items-center justify-center group-hover:scale-[1.03] transition-transform duration-700 mt-1 px-1">
+                {/* Core ambient bloom */}
+                <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 blur-2xl transition-all duration-700 scale-150 rounded-full" />
+                
+                {/* Signature Typography */}
+                <span 
+                  style={{ fontFamily: "'Alex Brush', cursive" }} 
+                  className="text-[2.2rem] text-transparent bg-clip-text bg-gradient-to-r from-foreground via-foreground to-foreground/70 drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)] group-hover:drop-shadow-[0_2px_15px_rgba(255,255,255,0.3)] transition-all duration-700 relative z-10 font-normal leading-none pr-1"
+                >
+                  Sawabedarain
                 </span>
+                
+                {/* Custom Designer Flourish / Swoosh */}
+                <svg className="w-[110%] h-3 absolute -bottom-[2px] left-[-5%] z-10 opacity-80 group-hover:opacity-100 group-hover:scale-x-110 transition-all duration-700 text-primary origin-left" viewBox="0 0 100 20" preserveAspectRatio="none">
+                  <path d="M5,15 Q35,25 65,10 T95,5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="drop-shadow-[0_0_8px_rgba(255,69,58,0.8)]" />
+                  <circle cx="95" cy="5" r="2" fill="currentColor" className="drop-shadow-[0_0_8px_rgba(255,69,58,0.8)]" />
+                </svg>
               </div>
-              <div className="hidden sm:block h-6 w-px bg-gradient-to-b from-transparent via-primary/50 to-transparent" />
-              <span className="hidden sm:block text-xs font-semibold text-muted-foreground/80 group-hover:text-primary transition-colors uppercase tracking-widest">
-                Portfolio
-              </span>
             </button>
+
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-1 bg-background/30 rounded-full px-2 py-1">
@@ -96,7 +106,7 @@ const Navigation = () => {
                 className="relative overflow-hidden rounded-full bg-gradient-to-r from-primary to-accent hover:shadow-[0_0_30px_rgba(255,69,58,0.5)] transition-all duration-300 group border-0"
                 asChild
               >
-                <a href="https://drive.google.com/file/d/1jo0jeDiUHFf92ypxvhyicnsbi7rgpJML/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <a href="https://drive.google.com/file/d/129MG1Pxi5QC13KT8osDd6eJAhQuyZtmx/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                   <Download className="w-4 h-4 group-hover:animate-bounce" />
                   <span className="font-semibold">Resume</span>
                 </a>
@@ -133,7 +143,7 @@ const Navigation = () => {
                 className="w-full mt-4 rounded-2xl bg-gradient-to-r from-primary to-accent hover:shadow-[0_0_30px_rgba(255,69,58,0.5)] border-0" 
                 asChild
               >
-                <a href="https://drive.google.com/file/d/1jo0jeDiUHFf92ypxvhyicnsbi7rgpJML/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 justify-center">
+                <a href="https://drive.google.com/file/d/129MG1Pxi5QC13KT8osDd6eJAhQuyZtmx/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 justify-center">
                   <Download className="w-4 h-4" />
                   Download Resume
                 </a>

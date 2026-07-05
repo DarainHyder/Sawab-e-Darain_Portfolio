@@ -53,6 +53,12 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <div className="animate-fade-in-up">
+          {/* Status badge */}
+          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/25 text-xs font-medium text-primary/90 tracking-wide">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse inline-block" />
+            Available for new opportunities
+          </div>
+
           <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight">
             <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent font-light" style={{ 
               letterSpacing: '0.05em'
@@ -67,18 +73,18 @@ const Hero = () => {
               Data Scientist
             </span>
             <span className="px-4 py-2 rounded-full bg-accent/10 border border-accent/30 text-foreground font-medium hover:bg-accent/20 transition-all duration-300">
-              ML Tinkerer
+              AI/ML Engineer
             </span>
             <span className="px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-foreground font-medium hover:bg-primary/20 transition-all duration-300">
-              AI/ML Engineer
+              NLP Engineer
             </span>
           </div>
           
-          {/* Unique Aesthetic Quote */}
-          <p className="text-lg md:text-xl text-muted-foreground/80 mb-12 font-light italic max-w-xl mx-auto">
-            Where <span className="gradient-text font-medium not-italic">algorithms</span> meet artistry,
+          {/* Tagline */}
+          <p className="text-lg md:text-xl text-muted-foreground/80 mb-12 font-light max-w-xl mx-auto">
+            I build things with data.
             <br />
-            <span className="gradient-text font-medium not-italic">patterns</span> become poetry
+            <span className="gradient-text font-medium">Models, pipelines, insights</span> the kind that actually ship.
           </p>
         </div>
 

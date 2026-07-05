@@ -8,7 +8,7 @@ import profileImage from "@/assets/darain-professional.jpg";
 const About = () => {
   const { ref, isVisible } = useScrollAnimation();
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
-  
+
   return (
     <section id="about" ref={ref} className="py-20 px-4 relative overflow-hidden">
       <SectionParticles variant="neural" />
@@ -25,7 +25,7 @@ const About = () => {
           <div className="relative max-w-3xl mx-auto">
             <Quote className="absolute -top-4 -left-4 h-8 w-8 text-primary/20" />
             <p className="text-xl text-muted-foreground italic">
-              Transforming raw data into <span className="gradient-text font-semibold">digital symphonies</span> — 
+              Transforming raw data into <span className="gradient-text font-semibold">digital symphonies</span>;
               where numbers whisper stories and algorithms paint futures.
             </p>
             <Quote className="absolute -bottom-4 -right-4 h-8 w-8 text-primary/20 rotate-180" />
@@ -46,12 +46,12 @@ const About = () => {
                     My <span className="gradient-text">Philosophy</span>
                   </h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    BSCS student entering 5th semester, fueled by an <span className="text-primary font-medium">insatiable curiosity</span> for 
+                    BSCS student entering 5th semester, fueled by an <span className="text-primary font-medium">insatiable curiosity</span> for
                     data science. Every dataset is a puzzle, every model a masterpiece waiting to emerge.
                   </p>
                   <div className="pl-4 border-l-2 border-primary/50">
                     <p className="text-sm italic text-muted-foreground">
-                      "In the intersection of mathematics and creativity, I found my calling — 
+                      "In the intersection of mathematics and creativity, I found my calling:
                       crafting intelligent systems that don't just compute, but <span className="text-primary">comprehend</span>."
                     </p>
                   </div>
@@ -63,8 +63,8 @@ const About = () => {
                       The <span className="gradient-text">Vision</span>
                     </h4>
                     <p className="text-muted-foreground leading-relaxed">
-                      To architect AI solutions that transcend code — bridging human intuition with machine precision, 
-                      each project is a step toward <span className="text-accent font-medium">data-driven enlightenment</span>.
+                      To architect AI solutions that go beyond code, bridging human intuition with machine precision.
+                      Each project is a step toward <span className="text-accent font-medium">data-driven enlightenment</span>.
                     </p>
                   </div>
                 </CardContent>
@@ -76,29 +76,20 @@ const About = () => {
           <div className={`scroll-reveal-right ${isVisible ? 'visible' : ''}`}>
             <Card className="glow-card group hover:scale-[1.02] transition-all duration-500 overflow-hidden h-full">
               <CardContent className="p-8 flex flex-col items-center justify-center h-full relative">
-                {/* Decorative elements */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
-                {/* Profile Image */}
+
                 <div className="relative z-10">
                   <div className="relative w-64 h-64 mx-auto">
-                    {/* Animated border rings */}
                     <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-pulse"></div>
                     <div className="absolute inset-0 rounded-full border-2 border-accent/20 animate-ping" style={{ animationDuration: '3s' }}></div>
-                    
-                    {/* Glow effect */}
                     <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 blur-2xl group-hover:blur-3xl transition-all duration-500"></div>
-                    
-                    {/* Image container */}
                     <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-primary/50 group-hover:border-primary transition-all duration-300 shadow-2xl shadow-primary/20">
-                      <img 
-                        src={profileImage} 
-                        alt="Darain Hyder - Data Scientist" 
+                      <img
+                        src={profileImage}
+                        alt="Darain Hyder - Data Scientist"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                     </div>
-                    
-                    {/* Sparkle effects */}
                     <Sparkles className="absolute -top-2 -right-2 h-8 w-8 text-primary animate-pulse" />
                     <Sparkles className="absolute -bottom-2 -left-2 h-6 w-6 text-accent animate-pulse" style={{ animationDelay: '0.5s' }} />
                   </div>
@@ -116,7 +107,7 @@ const About = () => {
               <GraduationCap className="h-12 w-12 text-primary mx-auto mb-4 group-hover:scale-110 transition-transform" />
               <h4 className="font-semibold mb-2">Education</h4>
               <p className="text-sm text-muted-foreground">BSCS</p>
-              <p className="text-sm text-primary font-medium">5th Sem</p>
+              <p className="text-sm text-primary font-medium">Final Year</p>
             </CardContent>
           </Card>
 
@@ -161,7 +152,7 @@ const About = () => {
               "Tools that transform imagination into innovation"
             </p>
           </div>
-          
+
           <Card className="glow-card">
             <CardContent className="p-8">
               <div className="flex flex-wrap gap-3 justify-center">
@@ -203,7 +194,7 @@ const About = () => {
                     onMouseLeave={() => setHoveredSkill(null)}
                   >
                     <div className={`flex items-center gap-2 px-4 py-2.5 rounded-lg ${tech.color} text-white transition-all duration-300 cursor-pointer hover:scale-110 hover:shadow-lg ${hoveredSkill === tech.name ? 'scale-110 shadow-lg' : ''}`}>
-                      <img 
+                      <img
                         src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tech.logo}/${tech.logo}-original.svg`}
                         alt={tech.name}
                         className="w-5 h-5 group-hover:scale-110 transition-transform duration-300 filter brightness-0 invert"
