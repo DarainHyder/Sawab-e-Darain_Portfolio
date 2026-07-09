@@ -1,7 +1,7 @@
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Card } from "@/components/ui/card";
 import { Calendar, MapPin, Briefcase } from "lucide-react";
 import SectionParticles from "./SectionParticles";
+import { AnimatedSection } from "./AnimatedSection";
 
 const experiences = [
   {
@@ -43,24 +43,14 @@ const experiences = [
 ];
 
 const Experience = () => {
-  const { ref, isVisible } = useScrollAnimation();
-
   return (
-    <section
+    <AnimatedSection
       id="experience"
-      ref={ref}
+      variant="timeline-draw"
       className="relative py-20 px-4 overflow-hidden"
     >
-      <SectionParticles variant="neural" />
-      
       <div className="container mx-auto max-w-6xl relative z-10">
-        <div
-          className={`text-center mb-16 transition-all duration-1000 ${
-            isVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
+        <div className="text-center mb-16 stagger-child">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-primary-glow to-accent bg-clip-text text-transparent">
             Professional Experience
           </h2>
@@ -70,18 +60,15 @@ const Experience = () => {
         </div>
 
         <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary-glow to-transparent" />
+          {/* Timeline line that draws downwards */}
+          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary-glow to-transparent timeline-line" />
 
           <div className="space-y-12">
             {experiences.map((exp, index) => (
               <div
                 key={index}
-                className={`relative transition-all duration-1000 delay-${index * 200} ${
-                  isVisible
-                    ? "opacity-100 translate-x-0"
-                    : `opacity-0 ${index % 2 === 0 ? "-translate-x-10" : "translate-x-10"}`
-                }`}
+                className="relative stagger-child"
+                style={{ transitionDelay: `${0.3 + (index * 0.2)}s` }}
               >
                 <div className={`md:grid md:grid-cols-2 md:gap-8 ${index % 2 === 0 ? "" : "md:grid-flow-dense"}`}>
                   <div className={`${index % 2 === 0 ? "" : "md:col-start-2"}`}>
@@ -134,7 +121,7 @@ const Experience = () => {
           </div>
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 };
 

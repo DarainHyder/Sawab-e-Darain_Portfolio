@@ -1,11 +1,45 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Star, Quote, User } from "lucide-react";
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import SectionParticles from "./SectionParticles";
+import { Star, Quote } from "lucide-react";
+import { AnimatedSection } from "./AnimatedSection";
+
+const ReviewCard = ({ review }: { review: any }) => (
+  <Card className="w-[300px] md:w-[420px] h-full flex-shrink-0 glow-card border border-border/50 bg-background/95 backdrop-blur-md shadow-xl hover:scale-[1.03] hover:border-primary/50 transition-all duration-300 relative overflow-hidden flex flex-col cursor-pointer">
+    <CardContent className="p-6 md:p-8 flex flex-col h-full relative">
+      <div className="absolute top-4 right-4 opacity-5 transition-all duration-300 pointer-events-none">
+        <Quote className="h-16 w-16" />
+      </div>
+      
+      <div className="flex gap-1 mb-6 relative z-10">
+        {[...Array(review.rating)].map((_, i) => (
+          <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+        ))}
+      </div>
+
+      <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-8 relative z-10">
+        "{review.review}"
+      </p>
+
+      <div className="mt-auto relative z-10">
+        <div className="mb-5">
+          <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium border border-primary/20">
+            {review.project}
+          </span>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold shadow-lg">
+            {review.avatar}
+          </div>
+          <div>
+            <h4 className="font-semibold text-foreground">{review.name}</h4>
+            <p className="text-xs text-muted-foreground">{review.role}</p>
+          </div>
+        </div>
+      </div>
+    </CardContent>
+  </Card>
+);
 
 const Reviews = () => {
-  const { ref, isVisible } = useScrollAnimation();
-  
   const reviews = [
     {
       name: "Dr. Areeba Nadeem",
@@ -36,7 +70,7 @@ const Reviews = () => {
       role: "CTO, AI Innovations Lab",
       project: "AI Podcast Generator",
       rating: 5,
-      review: "The AI Podcast Generator felt like something straight out of a startup pitch deck — in the best way. Smooth voice synthesis, great topic flow, and a really natural delivery. It's rare to see such well-integrated AI systems.",
+      review: "The AI Podcast Generator felt like something straight out of a startup pitch deck in the best way. Smooth voice synthesis, great topic flow, and a really natural delivery. It's rare to see such well-integrated AI systems.",
       avatar: "MK"
     },
     {
@@ -49,89 +83,97 @@ const Reviews = () => {
     }
   ];
 
+  const singleRowBlock = [...reviews, ...reviews, ...reviews]; 
+
   return (
-    <section id="reviews" ref={ref} className="py-20 px-4 bg-gradient-to-br from-background via-primary/5 to-background relative overflow-hidden">
-      <SectionParticles variant="neural" />
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className={`text-center mb-16 scroll-reveal ${isVisible ? 'visible' : ''}`}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+    <AnimatedSection id="reviews" variant="horizontal-slide" className="py-24 bg-gradient-to-br from-background via-primary/5 to-background relative overflow-hidden flex flex-col justify-center">
+      
+      <style>{`
+        @keyframes marquee-left {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee-left {
+          animation: marquee-left 50s linear infinite;
+        }
+        .marquee-mask {
+          mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+          -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+          .animate-marquee-left {
+             animation: none !important;
+             transform: none !important;
+             width: 100% !important;
+             flex-wrap: wrap !important;
+             justify-content: center !important;
+             gap: 1.5rem !important;
+          }
+          .hide-on-reduce {
+             display: none !important;
+          }
+          .marquee-mask {
+             mask-image: none !important;
+             -webkit-mask-image: none !important;
+          }
+        }
+      `}</style>
+
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0 opacity-[0.03]">
+        <Quote className="w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] text-primary" />
+      </div>
+
+      <div className="max-w-7xl mx-auto w-full relative z-10 px-4 mb-12">
+        <div className="text-center stagger-child">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
             Client <span className="gradient-text">Reviews</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Testimonials from collaborators and industry professionals who have worked with my projects
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-light">
+            Testimonials from collaborators and industry professionals who have experienced the impact of my AI and software solutions.
           </p>
         </div>
+      </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reviews.map((review, index) => (
-            <Card 
-              key={review.name} 
-              className={`glow-card group card-reveal ${isVisible ? 'visible' : ''} stagger-${(index % 6) + 1} hover:scale-105 transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,69,58,0.4)] relative overflow-hidden`}
-            >
-              {/* Decorative Quote */}
-              <div className="absolute top-4 right-4 opacity-10">
-                <Quote className="h-16 w-16 text-primary" />
-              </div>
-              
-              <CardContent className="p-6 relative">
-                {/* Rating */}
-                <div className="flex gap-1 mb-4">
-                  {[...Array(review.rating)].map((_, i) => (
-                    <Star 
-                      key={i} 
-                      className="h-4 w-4 fill-primary text-primary" 
-                    />
-                  ))}
-                </div>
-
-                {/* Review Text */}
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-6">
-                  "{review.review}"
-                </p>
-
-                {/* Project Badge */}
-                <div className="mb-4">
-                  <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium border border-primary/20">
-                    {review.project}
-                  </span>
-                </div>
-
-                {/* Reviewer Info */}
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold shadow-[0_0_20px_rgba(255,69,58,0.3)]">
-                    {review.avatar}
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">{review.name}</h4>
-                    <p className="text-xs text-muted-foreground">{review.role}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Stats Section */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div className={`scroll-reveal ${isVisible ? 'visible' : ''} stagger-1`}>
-            <div className="text-4xl font-bold gradient-text mb-2">100%</div>
-            <div className="text-sm text-muted-foreground">Client Satisfaction</div>
-          </div>
-          <div className={`scroll-reveal ${isVisible ? 'visible' : ''} stagger-2`}>
-            <div className="text-4xl font-bold gradient-text mb-2">8+</div>
-            <div className="text-sm text-muted-foreground">Projects Completed</div>
-          </div>
-          <div className={`scroll-reveal ${isVisible ? 'visible' : ''} stagger-3`}>
-            <div className="text-4xl font-bold gradient-text mb-2">5★</div>
-            <div className="text-sm text-muted-foreground">Average Rating</div>
-          </div>
-          <div className={`scroll-reveal ${isVisible ? 'visible' : ''} stagger-4`}>
-            <div className="text-4xl font-bold gradient-text mb-2">3+</div>
-            <div className="text-sm text-muted-foreground">Industries Served</div>
+      <div className="w-full relative z-10 py-4 marquee-mask overflow-hidden slide-from-right" style={{ transitionDelay: '0.3s' }}>
+        <div className="flex w-full group/row">
+          <div className="flex w-max animate-marquee-left group-hover/row:[animation-play-state:paused]">
+            <div className="flex gap-6 pr-6">
+              {singleRowBlock.map((review, i) => (
+                <ReviewCard key={`b1-${i}`} review={review} />
+              ))}
+            </div>
+            <div className="flex gap-6 pr-6 hide-on-reduce">
+              {singleRowBlock.map((review, i) => (
+                <ReviewCard key={`b2-${i}`} review={review} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </section>
+
+      <div className="max-w-6xl mx-auto w-full relative z-10 px-4 mt-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6 text-center">
+          <div className="stagger-child" style={{ transitionDelay: '0.4s' }}>
+            <div className="text-4xl md:text-5xl font-black gradient-text mb-2">100%</div>
+            <div className="text-sm md:text-base text-muted-foreground font-medium">Client Satisfaction</div>
+          </div>
+          <div className="stagger-child" style={{ transitionDelay: '0.5s' }}>
+            <div className="text-4xl md:text-5xl font-black gradient-text mb-2">8+</div>
+            <div className="text-sm md:text-base text-muted-foreground font-medium">Projects Completed</div>
+          </div>
+          <div className="stagger-child" style={{ transitionDelay: '0.6s' }}>
+            <div className="text-4xl md:text-5xl font-black gradient-text mb-2">5<span className="text-3xl text-primary align-top">★</span></div>
+            <div className="text-sm md:text-base text-muted-foreground font-medium">Average Rating</div>
+          </div>
+          <div className="stagger-child" style={{ transitionDelay: '0.7s' }}>
+            <div className="text-4xl md:text-5xl font-black gradient-text mb-2">3+</div>
+            <div className="text-sm md:text-base text-muted-foreground font-medium">Industries Served</div>
+          </div>
+        </div>
+      </div>
+
+    </AnimatedSection>
   );
 };
 

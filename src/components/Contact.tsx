@@ -7,11 +7,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Send, Github, Linkedin } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import emailjs from '@emailjs/browser';
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import SectionParticles from "./SectionParticles";
+import { AnimatedSection } from "./AnimatedSection";
 
 const Contact = () => {
-  const { ref, isVisible } = useScrollAnimation();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
@@ -34,7 +32,6 @@ const Contact = () => {
     setLoading(true);
     
     try {
-      // EmailJS configuration
       const serviceId = 'service_lr5r3g9';
       const templateId = 'template_25tfbra';
       const publicKey = 'qAZh3k0bi8Yrl0SJd';
@@ -54,7 +51,6 @@ const Contact = () => {
         description: "Thank you for your message. I'll get back to you soon!",
       });
 
-      // Reset form
       setName("");
       setEmail("");
       setSubject("");
@@ -72,10 +68,9 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" ref={ref} className="py-20 bg-gradient-to-br from-background via-background/80 to-primary/5 relative overflow-hidden">
-      <SectionParticles variant="network" />
+    <AnimatedSection id="contact" variant="radial-reveal" className="py-20 bg-gradient-to-br from-background via-background/80 to-primary/5 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 relative z-10">
-        <div className={`text-center mb-16 scroll-reveal ${isVisible ? 'visible' : ''}`}>
+        <div className="text-center mb-16 reveal-center">
           <h2 className="text-4xl font-bold mb-4 gradient-text">Get In Touch</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Ready to start a project together? I'm always open to discussing new opportunities and creative ideas.
@@ -84,7 +79,7 @@ const Contact = () => {
         
         <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           {/* Contact Form */}
-          <div className={`scroll-reveal-left ${isVisible ? 'visible' : ''}`}>
+          <div className="reveal-center" style={{ transitionDelay: '0.1s' }}>
             <Card className="border-0 shadow-lg bg-card/50 backdrop-blur-sm">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2">
@@ -147,7 +142,7 @@ const Contact = () => {
           </div>
           
           {/* Contact Information */}
-          <div className={`space-y-8 scroll-reveal-right ${isVisible ? 'visible' : ''}`}>
+          <div className="space-y-8 reveal-center" style={{ transitionDelay: '0.2s' }}>
             <Card className="border-0 shadow-lg bg-card/50 backdrop-blur-sm">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2">
@@ -215,7 +210,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 };
 

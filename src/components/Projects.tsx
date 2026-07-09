@@ -1,14 +1,100 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Github, ExternalLink, Database, BarChart3, Brain, TrendingUp, Stethoscope, Activity, Image, Gamepad2, Sparkles } from "lucide-react";
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import SectionParticles from "./SectionParticles";
-import { useState } from "react";
+import { Github, ExternalLink, Database, Brain, Stethoscope, Activity, Image, Sparkles } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { AnimatedSection } from "./AnimatedSection";
+
+const ProjectCard = ({ project }: { project: any }) => (
+  <Card className="relative glow-card w-full h-full border border-border bg-background shadow-2xl shadow-black/80 overflow-hidden group hover:border-primary/50 transition-colors duration-500">
+    <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+    
+    <CardHeader className="relative z-10 pb-4 md:p-8 md:pb-6 bg-background">
+      <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 mb-2">
+        <div className={`relative p-4 rounded-xl bg-muted/20 ${project.color} transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 w-fit`}>
+          <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-50 blur-md transition-opacity duration-500 ${project.color}`} 
+               style={{ backgroundColor: 'currentColor' }} />
+          <project.icon className="h-8 w-8 relative z-10 group-hover:animate-pulse" />
+        </div>
+        <div className="flex-1">
+          <CardTitle className="text-2xl md:text-3xl font-bold group-hover:text-primary transition-colors duration-300">{project.title}</CardTitle>
+        </div>
+      </div>
+      <CardDescription className="text-base md:text-lg leading-relaxed group-hover:text-foreground/90 transition-colors duration-300 mt-4 md:mt-2">
+        {project.description}
+      </CardDescription>
+    </CardHeader>
+    <CardContent className="relative z-10 md:px-8 md:pb-8 pt-0">
+      <div className="space-y-6 md:space-y-8">
+        <div className="flex flex-wrap gap-2">
+          {project.tech.map((tech: string) => (
+            <Badge 
+              key={tech} 
+              variant="secondary" 
+              className="text-xs md:text-sm px-3 py-1 transition-all duration-300 hover:scale-110 hover:bg-primary hover:text-primary-foreground cursor-default"
+            >
+              {tech}
+            </Badge>
+          ))}
+        </div>
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-2">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="group/btn hover:border-primary hover:text-primary transition-all duration-300 sm:flex-1"
+            onClick={() => window.open(project.githubUrl, '_blank')}
+          >
+            <Github className="mr-2 h-5 w-5 group-hover/btn:rotate-12 transition-transform duration-300" />
+            Source Code
+          </Button>
+          <Button 
+            variant="default" 
+            size="lg" 
+            className="group/btn hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 sm:flex-1"
+            onClick={() => window.open(project.liveUrl || project.githubUrl, '_blank')}
+          >
+            <ExternalLink className="mr-2 h-5 w-5 group-hover/btn:-rotate-12 transition-transform duration-300" />
+            Live Preview
+          </Button>
+        </div>
+      </div>
+    </CardContent>
+  </Card>
+);
 
 const Projects = () => {
-  const { ref, isVisible } = useScrollAnimation();
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = useState(0);
+
+  const cardOffsets = [
+    { r: 0, x: 0, y: 0 },
+    { r: 4, x: 15, y: -18 },
+    { r: -5, x: -20, y: -25 },
+    { r: 3, x: 25, y: -10 },
+    { r: -6, x: -15, y: -30 },
+    { r: 5, x: 20, y: -20 }
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      const maxScroll = rect.height - windowHeight;
+      const scrolled = -rect.top;
+      
+      if (maxScroll > 0) {
+        const currentProgress = Math.max(0, Math.min(1, scrolled / maxScroll));
+        setProgress(currentProgress);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); 
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const projects = [
     {
       title: "Adaptive Multi-Agent E-Learning System",
@@ -67,113 +153,115 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" ref={ref} className="py-20 px-4 bg-muted/5 relative overflow-hidden">
-      <SectionParticles variant="data-flow" />
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className={`text-center mb-16 scroll-reveal ${isVisible ? 'visible' : ''}`}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Featured <span className="gradient-text">Projects</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A showcase of my data science projects that demonstrate practical application of 
-            machine learning, data analysis, and visualization techniques.
-          </p>
-        </div>
+    <AnimatedSection id="projects" variant="scale-up-staggered" className="bg-muted/5 relative md:h-[400vh]">
+      <div ref={containerRef} className="absolute inset-0 z-0 pointer-events-none" />
+      
+      <div className="md:sticky md:top-0 md:h-screen md:overflow-hidden py-20 px-4 flex flex-col justify-center">
+        <div className="max-w-6xl mx-auto w-full relative z-10">
+          
+          <div className="text-center mb-8 md:mb-12 stagger-child">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Featured <span className="gradient-text">Projects</span>
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+              A showcase of my data science projects demonstrating practical applications of 
+              machine learning, data analysis, and software engineering.
+            </p>
+          </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <div 
-              key={project.title} 
-              className="relative group"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              {/* Animated gradient background */}
-              <div className={`absolute -inset-0.5 bg-gradient-to-r from-primary via-accent to-primary rounded-2xl blur opacity-0 group-hover:opacity-75 transition-all duration-1000 animate-gradient ${hoveredIndex === index ? 'opacity-75' : ''}`} 
-                   style={{ backgroundSize: '200% 200%' }} />
-              
-              {/* Sparkle particles on hover */}
-              {hoveredIndex === index && (
-                <>
-                  <Sparkles className="absolute -top-2 -right-2 h-6 w-6 text-primary animate-pulse z-20" />
-                  <Sparkles className="absolute -bottom-2 -left-2 h-5 w-5 text-accent animate-pulse z-20" style={{ animationDelay: '0.5s' }} />
-                </>
-              )}
-              
-              <Card className={`relative glow-card card-reveal ${isVisible ? 'visible' : ''} stagger-${(index % 8) + 1} transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 border-2 ${hoveredIndex === index ? 'border-primary/50' : 'border-transparent'}`}>
-                {/* Inner glow effect */}
-                <div className={`absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                
-                <CardHeader className="relative z-10">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className={`relative p-3 rounded-lg bg-muted/20 ${project.color} transition-all duration-500 group-hover:scale-110 group-hover:rotate-12`}>
-                      {/* Icon glow */}
-                      <div className={`absolute inset-0 rounded-lg opacity-0 group-hover:opacity-50 blur-md transition-opacity duration-500 ${project.color}`} 
-                           style={{ backgroundColor: 'currentColor' }} />
-                      <project.icon className="h-6 w-6 relative z-10 group-hover:animate-pulse" />
-                    </div>
-                    <div className="flex-1">
-                      <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">{project.title}</CardTitle>
-                    </div>
-                  </div>
-                  <CardDescription className="text-base leading-relaxed group-hover:text-foreground/90 transition-colors duration-300">
-                    {project.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="relative z-10">
-                  <div className="space-y-4">
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech, techIndex) => (
-                        <Badge 
-                          key={tech} 
-                          variant="secondary" 
-                          className={`text-xs transition-all duration-300 hover:scale-110 hover:bg-primary hover:text-primary-foreground cursor-default`}
-                          style={{ transitionDelay: `${techIndex * 50}ms` }}
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                    <div className="flex gap-3">
-                      <Button 
-                        variant="outline" 
-                        size="sm" 
-                        className="flex-1 group/btn hover:border-primary hover:text-primary transition-all duration-300"
-                        onClick={() => window.open(project.githubUrl, '_blank')}
-                      >
-                        <Github className="mr-2 h-4 w-4 group-hover/btn:rotate-12 transition-transform duration-300" />
-                        Code
-                      </Button>
-                      <Button 
-                        variant="default" 
-                        size="sm" 
-                        className="flex-1 group/btn hover:shadow-lg hover:shadow-primary/50 transition-all duration-300"
-                        onClick={() => window.open((project as any).liveUrl || project.githubUrl, '_blank')}
-                      >
-                        <ExternalLink className="mr-2 h-4 w-4 group-hover/btn:-rotate-12 transition-transform duration-300" />
-                        View
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+          {/* Mobile Swipe Container */}
+          <div className="block md:hidden mt-8">
+            <div className="flex overflow-x-auto snap-x snap-mandatory pb-8 gap-4 hide-scrollbar -mx-4 px-4">
+              {projects.map((project, index) => (
+                 <div key={index} className="w-[85vw] flex-shrink-0 snap-center stagger-child" style={{ transitionDelay: `${0.2 + index * 0.1}s` }}>
+                    <ProjectCard project={project} />
+                 </div>
+              ))}
             </div>
-          ))}
-        </div>
+            
+            <div className="text-center mt-4 stagger-child" style={{ transitionDelay: '0.8s' }}>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="w-full"
+                onClick={() => window.open('https://github.com/DarainHyder', '_blank')}
+              >
+                <Github className="mr-2 h-5 w-5" />
+                View All on GitHub
+              </Button>
+            </div>
+          </div>
 
-        <div className="text-center mt-12">
-          <Button 
-            variant="outline" 
-            size="lg" 
-            className="interactive-hover"
-            onClick={() => window.open('https://github.com/DarainHyder', '_blank')}
-          >
-            <Github className="mr-2 h-5 w-5" />
-            View All Projects on GitHub
-          </Button>
+          {/* Desktop Stacked Deck */}
+          <div className="hidden md:block relative w-full max-w-4xl mx-auto h-[450px] lg:h-[480px]">
+            {/* Progress Indicator */}
+            <div className="absolute -left-20 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 z-50 stagger-child" style={{ transitionDelay: '0.2s' }}>
+               <div className="text-sm font-bold text-primary">0{Math.min(projects.length, Math.floor(progress * projects.length) + 1)}</div>
+               <div className="w-1 h-32 bg-border/50 rounded-full overflow-hidden relative">
+                 <div className="absolute top-0 left-0 w-full bg-primary transition-all duration-100" style={{ height: `${progress * 100}%` }}></div>
+               </div>
+               <div className="text-sm font-bold text-muted-foreground">0{projects.length}</div>
+            </div>
+
+            {/* Deck of Cards */}
+            {projects.map((project, i) => {
+              const totalCards = projects.length;
+              const currentIndex = progress * (totalCards - 1);
+              const relativeIndex = i - currentIndex;
+              
+              let translateY = 0;
+              let translateX = 0;
+              let rotate = 0;
+              let opacity = 1;
+              
+              if (relativeIndex < 0) {
+                translateY = relativeIndex * 250; 
+                opacity = Math.max(0, 1 + relativeIndex * 2.5); 
+              } else {
+                const mix = Math.min(1, relativeIndex); 
+                const offset = cardOffsets[i % cardOffsets.length];
+                
+                rotate = offset.r * mix;
+                translateX = offset.x * mix;
+                translateY = offset.y * mix;
+                opacity = 1; 
+              }
+              
+              if (opacity <= 0.01) return null;
+
+              return (
+                <div 
+                  key={i}
+                  className="absolute top-0 left-0 w-full h-full stagger-child"
+                  style={{ zIndex: 100 - i, transitionDelay: `${0.3 + i * 0.1}s` }}
+                >
+                  <div
+                    className="w-full h-full will-change-transform origin-center"
+                    style={{
+                      transform: `translate(${translateX}px, ${translateY}px) rotate(${rotate}deg)`,
+                      opacity: opacity,
+                      transition: 'transform 0.1s ease-out, opacity 0.1s linear'
+                    }}
+                  >
+                    <ProjectCard project={project} />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="hidden md:flex justify-center mt-12 z-50 stagger-child" style={{ transitionDelay: '0.9s' }}>
+            <Button 
+              variant="link" 
+              className="text-muted-foreground hover:text-foreground opacity-50 hover:opacity-100 transition-opacity"
+              onClick={() => window.open('https://github.com/DarainHyder', '_blank')}
+            >
+              View All Projects on GitHub <ExternalLink className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 };
 

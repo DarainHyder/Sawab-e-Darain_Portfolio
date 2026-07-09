@@ -99,7 +99,7 @@ const Skills = () => {
 
   return (
     <section id="skills" ref={ref} className="py-20 px-4 relative overflow-hidden">
-      <SectionParticles variant="network" />
+
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}

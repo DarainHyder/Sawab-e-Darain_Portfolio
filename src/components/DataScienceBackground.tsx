@@ -3,8 +3,6 @@ import { useEffect, useRef } from 'react';
 interface Neuron {
   x: number;
   y: number;
-  vx: number;
-  vy: number;
   radius: number;
   connections: number[];
   activationLevel: number;
@@ -47,8 +45,6 @@ const DataScienceBackground = () => {
         const neuron: Neuron = {
           x: padding + Math.random() * (canvas.width - padding * 2),
           y: padding + Math.random() * (canvas.height - padding * 2),
-          vx: (Math.random() - 0.5) * 0.1,
-          vy: (Math.random() - 0.5) * 0.1,
           radius: 3 + Math.random() * 2,
           connections: [],
           activationLevel: Math.random(),
@@ -135,16 +131,10 @@ const DataScienceBackground = () => {
     };
 
     const animate = (time: number) => {
-      ctx.fillStyle = 'rgba(10, 10, 10, 0.95)';
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.95)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       neurons.forEach((neuron) => {
-        neuron.x += neuron.vx;
-        neuron.y += neuron.vy;
-
-        if (neuron.x < 50 || neuron.x > canvas.width - 50) neuron.vx *= -1;
-        if (neuron.y < 50 || neuron.y > canvas.height - 50) neuron.vy *= -1;
-
         neuron.activationLevel *= 0.985;
       });
 
@@ -193,8 +183,8 @@ const DataScienceBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0"
-      style={{ background: '#0a0a0a' }}
+      className="absolute inset-0 pointer-events-none z-0"
+      style={{ background: '#000000' }}
     />
   );
 };

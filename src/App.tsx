@@ -9,7 +9,6 @@ import CustomCursor from "./components/CustomCursor";
 
 const App = () => (
   <TooltipProvider>
-    <DataScienceBackground />
     <CustomCursor />
     <Toaster />
     <Sonner />

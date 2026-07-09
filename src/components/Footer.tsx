@@ -48,15 +48,15 @@ const Footer = () => {
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-2xl font-extrabold gradient-text tracking-tight">DS</span>
+                  <span className="text-2xl font-extrabold gradient-text tracking-tight">AI/ML</span>
                   <span className="text-primary/50">|</span>
-                  <span className="text-sm font-medium text-muted-foreground">Data Science</span>
+                  <span className="text-sm font-medium text-muted-foreground">Engineer</span>
                 </div>
-                <p className="text-xs text-muted-foreground">Transforming Data into Insights</p>
+                <p className="text-xs text-muted-foreground">Architecting Intelligent Systems</p>
               </div>
             </div>
             <p className="text-muted-foreground leading-relaxed">
-              A passionate BSCS student on a mission to transform data into insights and make a positive impact through technology. Specializing in Machine Learning, AI, and Data Analytics.
+              An ambitious AI/ML Engineer and BSCS student driven by the pursuit of building intelligent systems that solve real-world problems. I specialize in designing scalable machine learning models and turning complex datasets into high-impact solutions.
             </p>
             
             {/* Tech Stack Icons */}
