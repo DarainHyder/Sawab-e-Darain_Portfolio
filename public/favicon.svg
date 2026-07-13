@@ -1,33 +1,13 @@
-<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <!-- Vibrant Glowing Red for the Signature -->
-    <linearGradient id="sigGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ff453a" />
-      <stop offset="50%" stop-color="#ff8c85" />
-      <stop offset="100%" stop-color="#ff453a" />
-    </linearGradient>
-
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="15" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
-  </defs>
-
-  <!-- Elegant flowing cursive 'S' to match the signature style -->
-  <g filter="url(#glow)" transform="translate(40, -20)">
-    <path 
-      d="M360 120 C420 80, 480 140, 420 220 C360 300, 260 260, 200 360 C140 460, 200 520, 280 460" 
-      fill="none" 
-      stroke="url(#sigGrad)" 
-      stroke-width="32" 
-      stroke-linecap="round"
-    />
-    <path 
-      d="M120 400 C160 320, 220 180, 320 140" 
-      fill="none" 
-      stroke="url(#sigGrad)" 
-      stroke-width="16" 
-      stroke-linecap="round"
-    />
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Dark background -->
+  <rect width="100" height="100" rx="20" fill="#0A0A0A" />
+  
+  <!-- Subtle red glow -->
+  <circle cx="50" cy="50" r="40" fill="#ff453a" opacity="0.15" filter="blur(10px)" />
+  
+  <!-- Terminal Prompt > -->
+  <path d="M 35 25 L 65 50 L 35 75" fill="none" stroke="#ff453a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Blinking Cursor -->
+  <rect x="70" y="65" width="10" height="12" fill="#ff453a" />
 </svg>

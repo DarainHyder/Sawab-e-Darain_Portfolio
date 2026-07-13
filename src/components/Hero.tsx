@@ -1,48 +1,44 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Github, Linkedin, Mail, Terminal as TerminalIcon } from "lucide-react";
+import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 import DataScienceBackground from "./DataScienceBackground";
 
-// --- Custom Hooks ---
+// --- Components ---
 
-const useTypewriter = (words: string[], typingSpeed = 100, deletingSpeed = 50, pauseTime = 2000) => {
-  const [text, setText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [loopNum, setLoopNum] = useState(0);
+const FlipText = ({ words, interval = 3000 }: { words: string[], interval?: number }) => {
+  const [index, setIndex] = useState(0);
+  const [isFlipping, setIsFlipping] = useState(false);
 
   useEffect(() => {
-    // Respect prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      setText(words[0]);
-      return;
-    }
-
-    const i = loopNum % words.length;
-    const fullText = words[i];
-
-    const timeout = setTimeout(() => {
-      setText(isDeleting 
-        ? fullText.substring(0, text.length - 1) 
-        : fullText.substring(0, text.length + 1)
-      );
-
-      if (!isDeleting && text === fullText) {
-        setTimeout(() => setIsDeleting(true), pauseTime);
-      } else if (isDeleting && text === "") {
-        setIsDeleting(false);
-        setLoopNum(loopNum + 1);
+    
+    const id = setInterval(() => {
+      if (prefersReducedMotion) {
+        setIndex((i) => (i + 1) % words.length);
+      } else {
+        setIsFlipping(true);
+        setTimeout(() => {
+          setIndex((i) => (i + 1) % words.length);
+          setIsFlipping(false);
+        }, 400); // Wait for half flip
       }
-    }, isDeleting ? deletingSpeed : typingSpeed);
+    }, interval);
+    
+    return () => clearInterval(id);
+  }, [words, interval]);
 
-    return () => clearTimeout(timeout);
-  }, [text, isDeleting, loopNum, words, typingSpeed, deletingSpeed, pauseTime]);
-
-  return text;
+  return (
+    <span 
+      className={`inline-block transition-all duration-400 ease-in-out ${
+        isFlipping ? 'opacity-0 rotate-x-90 scale-90' : 'opacity-100 rotate-x-0 scale-100'
+      }`}
+      style={{ transformStyle: 'preserve-3d' }}
+    >
+      {words[index]}
+    </span>
+  );
 };
-
-// --- Components ---
 
 const MagneticWrapper = ({ children }: { children: React.ReactElement }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -76,90 +72,19 @@ const MagneticWrapper = ({ children }: { children: React.ReactElement }) => {
   );
 };
 
-const TerminalWindow = () => {
-  return (
-    <div className="w-full max-w-[500px] rounded-xl overflow-hidden border border-border/50 bg-[#0a0a0a]/90 backdrop-blur-xl shadow-[0_0_50px_rgba(255,69,58,0.15)] group relative">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-      
-      {/* Terminal Header */}
-      <div className="flex items-center px-4 py-3 border-b border-border/50 bg-black/50">
-        <div className="flex gap-2">
-          <div className="w-3 h-3 rounded-full bg-red-500/80 shadow-sm"></div>
-          <div className="w-3 h-3 rounded-full bg-yellow-500/80 shadow-sm"></div>
-          <div className="w-3 h-3 rounded-full bg-green-500/80 shadow-sm"></div>
-        </div>
-        <div className="mx-auto text-xs font-mono text-muted-foreground/80 flex items-center gap-2">
-          <TerminalIcon className="w-3 h-3" />
-          train_model.py
-        </div>
-      </div>
 
-      {/* Terminal Body */}
-      <div className="p-6 font-mono text-xs md:text-sm h-[320px] flex flex-col gap-1.5 relative overflow-hidden">
-        {/* We use inline styles with CSS variables for stagger delays to keep it clean */}
-        <div className="term-line opacity-0" style={{ animationDelay: '0.5s' }}>
-          <span className="text-blue-400">import</span> <span className="text-foreground">torch, transformers</span>
-        </div>
-        <div className="term-line opacity-0 text-muted-foreground mt-2" style={{ animationDelay: '1.0s' }}>
-          # Initializing distributed training cluster...
-        </div>
-        <div className="term-line opacity-0 text-green-400" style={{ animationDelay: '1.5s' }}>
-          Loading dataset "medical_nlp_v4"... <span className="text-foreground">100%</span>
-        </div>
-        <div className="term-line opacity-0 text-green-400" style={{ animationDelay: '2.0s' }}>
-          Model architecture: <span className="text-yellow-400">Transformer-XL (1.2B)</span>
-        </div>
-        <div className="term-line opacity-0 mt-3" style={{ animationDelay: '3.0s' }}>
-          Epoch 1/50 <span className="text-foreground">[==========]</span> loss: <span className="text-accent">0.892</span>
-        </div>
-        <div className="term-line opacity-0" style={{ animationDelay: '3.6s' }}>
-          Epoch 2/50 <span className="text-foreground">[==========]</span> loss: <span className="text-accent">0.651</span>
-        </div>
-        <div className="term-line opacity-0" style={{ animationDelay: '4.2s' }}>
-          Epoch 3/50 <span className="text-foreground">[==========]</span> loss: <span className="text-accent">0.402</span>
-        </div>
-        <div className="term-line opacity-0 mt-3 text-primary font-bold" style={{ animationDelay: '5.2s' }}>
-          &gt; Optimal weights achieved. Saving artifacts...
-        </div>
-        <div className="term-line opacity-0 text-foreground flex items-center gap-1 mt-2" style={{ animationDelay: '6.0s' }}>
-          <span className="text-blue-400">darain@dev</span>:<span className="text-blue-400">~</span>$ <span className="w-2 h-4 bg-foreground animate-pulse ml-1" />
-        </div>
-      </div>
-    </div>
-  );
-};
 
 // --- Main Hero Component ---
 
 const Hero = () => {
-  const roles = ["Data Scientist", "AI/ML Engineer", "NLP Engineer"];
-  const typingText = useTypewriter(roles, 80, 40, 2500);
+  const roles = ["Data Models", "Intelligent Systems", "NLP Architectures"];
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      
-      {/* CSS Keyframes for Terminal */}
-      <style>{`
-        @keyframes terminal-fade-in {
-          0% { opacity: 0; transform: translateY(5px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        .term-line {
-          animation: terminal-fade-in 0.4s ease-out forwards;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .term-line {
-            animation: none;
-            opacity: 1;
-            transform: none;
-          }
-        }
-      `}</style>
-
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background Layers */}
       <DataScienceBackground />
       <div 
@@ -169,102 +94,127 @@ const Hero = () => {
         <div className="absolute inset-0 hero-gradient opacity-90"></div>
       </div>
       
-      {/* Static Background Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/3 left-1/4 w-2 h-2 rounded-full bg-primary/70 shadow-[0_0_10px_rgba(255,69,58,0.7)] opacity-60"></div>
-        <div className="absolute top-1/2 left-2/3 w-2 h-2 rounded-full bg-accent/70 shadow-[0_0_10px_rgba(255,45,85,0.7)] opacity-60"></div>
-        <div className="absolute top-2/3 left-1/2 w-2 h-2 rounded-full bg-primary/70 shadow-[0_0_10px_rgba(255,69,58,0.7)] opacity-60"></div>
+      {/* Background Orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 left-1/4 w-2 h-2 rounded-full bg-primary/70 shadow-[0_0_10px_rgba(255,69,58,0.7)] opacity-60 z-0 animate-pulse-slow"></div>
+        <div className="absolute top-[45%] left-[55%] w-3 h-3 rounded-full bg-accent/70 shadow-[0_0_15px_rgba(255,45,85,0.7)] opacity-70 z-10 animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-[70%] left-[80%] w-2 h-2 rounded-full bg-primary/70 shadow-[0_0_12px_rgba(255,69,58,0.7)] opacity-60 z-10 animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-2/3 left-1/4 w-2 h-2 rounded-full bg-primary/70 shadow-[0_0_10px_rgba(255,69,58,0.7)] opacity-60 z-0 animate-float"></div>
       </div>
 
-      {/* Main Content Grid */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 lg:px-8 pt-20 pb-12">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+
+
+      {/* Main Centered Content */}
+      <div className="relative z-30 w-full max-w-5xl mx-auto px-4 flex flex-col items-center text-center mt-[-5vh]">
+        <div className="animate-fade-in-up w-full flex flex-col items-center">
           
-          {/* Left Column: Typography & CTAs */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
-            <div className="animate-fade-in-up w-full">
-              
-              {/* Availability Badge */}
-              <div className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/25 text-xs font-medium text-primary/90 tracking-wide backdrop-blur-sm">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse inline-block shadow-[0_0_8px_rgba(255,69,58,0.8)]" />
-                Available for new opportunities
-              </div>
-
-              {/* Name */}
-              <h1 className="text-6xl md:text-8xl lg:text-[7rem] font-bold mb-4 tracking-tight leading-none">
-                <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent font-light" style={{ letterSpacing: '0.02em' }}>
-                  Darain Hyder
-                </span>
-              </h1>
-              
-              {/* Kinetic Typography Roles */}
-              <div className="h-10 md:h-12 mb-6 flex items-center">
-                <p className="text-2xl md:text-3xl font-semibold text-accent flex items-center">
-                  <span className="text-muted-foreground mr-3 font-light">I am a</span>
-                  {typingText}
-                  <span className="w-[3px] h-8 bg-accent ml-1 animate-pulse" />
-                </p>
-              </div>
-              
-              {/* Tagline */}
-              <p className="text-lg md:text-xl text-muted-foreground/80 mb-10 font-light max-w-xl leading-relaxed">
-                I build things with data. <span className="text-foreground font-medium">Models, pipelines, insights</span> — the kind that actually ship to production and solve real problems.
-              </p>
+          {/* Availability Badge */}
+          <div className="relative inline-flex items-center gap-3 mb-8 px-5 py-2 rounded-full group overflow-hidden shadow-[0_0_20px_rgba(255,69,58,0.15)]">
+            {/* Animated Gradient Border */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-accent/50 to-primary/30 bg-[length:200%_200%] animate-[gradient-shift_3s_linear_infinite] group-hover:from-primary/50 group-hover:via-accent/70 group-hover:to-primary/50 transition-colors duration-500 rounded-full p-[1px]">
+              <div className="w-full h-full bg-[#0a0505]/70 backdrop-blur-md rounded-full"></div>
             </div>
-
-            {/* CTAs */}
-            <div className="animate-slide-in-left flex flex-wrap gap-4 mb-12">
-              <MagneticWrapper>
-                <Button 
-                  variant="default" 
-                  size="lg" 
-                  className="interactive-hover h-14 px-8 text-base shadow-[0_0_20px_rgba(255,69,58,0.2)] hover:shadow-[0_0_30px_rgba(255,69,58,0.4)] transition-all duration-300"
-                  onClick={() => scrollToSection('projects')}
-                >
-                  <Github className="mr-2 h-5 w-5" />
-                  View Projects
-                </Button>
-              </MagneticWrapper>
-              
-              <MagneticWrapper>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="interactive-hover h-14 px-8 text-base bg-background/50 backdrop-blur-sm border-border/50 hover:bg-muted/50 transition-all duration-300"
-                  onClick={() => scrollToSection('contact')}
-                >
-                  <Mail className="mr-2 h-5 w-5" />
-                  Contact Me
-                </Button>
-              </MagneticWrapper>
+            
+            {/* Radar ping dot */}
+            <div className="relative flex items-center justify-center w-2 h-2 z-10">
+              <span className="absolute inline-flex h-4 w-4 rounded-full bg-primary opacity-50 motion-safe:animate-ping"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary shadow-[0_0_8px_rgba(255,69,58,1)]"></span>
             </div>
-
-            {/* Social Links */}
-            <div className="animate-slide-in-left flex gap-6">
-              <a href="https://github.com/DarainHyder" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors hover:-translate-y-1 duration-300">
-                <Github className="h-6 w-6" />
-              </a>
-              <a href="https://www.linkedin.com/in/syed-darain-hyder-kazm" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors hover:-translate-y-1 duration-300">
-                <Linkedin className="h-6 w-6" />
-              </a>
-              <a href="mailto:darainhyder21@gmail.com" className="text-muted-foreground hover:text-primary transition-colors hover:-translate-y-1 duration-300">
-                <Mail className="h-6 w-6" />
-              </a>
-            </div>
+            
+            <span className="relative z-10 text-xs font-medium text-white/90 tracking-wide">Available for new opportunities</span>
           </div>
 
-          {/* Right Column: Terminal Visual */}
-          <div className="hidden lg:flex lg:col-span-5 justify-end animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <TerminalWindow />
-          </div>
+          {/* Focal Name */}
+          <h1 className="relative text-[5.5rem] sm:text-[7rem] md:text-[9rem] lg:text-[11.5rem] mb-2 tracking-normal leading-none w-full flex flex-wrap justify-center gap-x-2 sm:gap-x-4 lg:gap-x-6">
+            <span className="opacity-0 animate-fade-in-up inline-block" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
+              <span 
+                className="font-signature text-white drop-shadow-[0_0_25px_rgba(239,68,68,0.7)] inline-block transition-transform duration-500 hover:scale-105" 
+              >
+                Darain
+              </span>
+            </span>
+            <span className="opacity-0 animate-fade-in-up inline-block" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
+              <span 
+                className="font-signature bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(239,68,68,0.9)] inline-block transition-transform duration-500 hover:scale-105" 
+              >
+                Hyder
+              </span>
+            </span>
 
+            {/* Signature Flourish / Swash */}
+            <svg 
+              className="absolute -bottom-4 sm:-bottom-6 md:-bottom-8 left-1/2 -translate-x-1/2 w-3/4 max-w-[350px] md:max-w-[500px] h-auto text-primary opacity-60 signature-swash pointer-events-none" 
+              viewBox="0 0 400 40" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path 
+                d="M 20 20 Q 100 -5, 200 20 T 380 15" 
+                stroke="currentColor" 
+                strokeWidth="2.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              />
+            </svg>
+          </h1>
+          
+          {/* Kinetic Typography Roles - 3D Flip */}
+          <div className="h-12 md:h-16 mb-8 flex items-center justify-center overflow-visible" style={{ perspective: '1000px' }}>
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-accent flex items-center gap-2 sm:gap-3 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] flex-wrap justify-center">
+              <span className="text-muted-foreground font-light whitespace-nowrap">I engineer</span>
+              <FlipText words={roles} interval={3500} />
+            </p>
+          </div>
+          
+          {/* Tagline */}
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground/90 mb-10 font-light max-w-2xl leading-relaxed px-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+            Bridging the gap between raw data and <span className="text-foreground font-medium drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">production-ready AI</span>. Specialized in building intelligent architectures that actually solve real problems.
+          </p>
+        </div>
+
+        {/* CTAs */}
+        <div className="animate-fade-in-up flex flex-wrap justify-center gap-4 relative z-30" style={{ animationDelay: '0.4s' }}>
+          <MagneticWrapper>
+            <Button 
+              variant="default" 
+              size="lg" 
+              className="interactive-hover h-12 md:h-14 px-6 md:px-8 text-sm md:text-base shadow-[0_0_20px_rgba(255,69,58,0.2)] hover:shadow-[0_0_30px_rgba(255,69,58,0.4)] transition-all duration-300 rounded-full"
+              onClick={() => scrollToSection('projects')}
+            >
+              <Github className="mr-2 h-4 w-4 md:h-5 md:w-5" />
+              View Architecture
+            </Button>
+          </MagneticWrapper>
+          
+          <MagneticWrapper>
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="interactive-hover h-12 md:h-14 px-6 md:px-8 text-sm md:text-base bg-[#0a0505]/40 backdrop-blur-md border-white/10 hover:bg-white/10 transition-all duration-300 rounded-full text-white/90"
+              onClick={() => scrollToSection('contact')}
+            >
+              <Mail className="mr-2 h-4 w-4 md:h-5 md:w-5" />
+              Initialize Contact
+            </Button>
+          </MagneticWrapper>
+        </div>
+        
+
+        {/* Social Links */}
+        <div className="animate-fade-in-up flex gap-8 mt-10 md:mt-12 relative z-30" style={{ animationDelay: '0.6s' }}>
+          <a href="https://github.com/DarainHyder" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-white transition-colors hover:-translate-y-1 duration-300">
+            <Github className="h-6 w-6" />
+          </a>
+          <a href="https://www.linkedin.com/in/syed-darain-hyder-kazm" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-white transition-colors hover:-translate-y-1 duration-300">
+            <Linkedin className="h-6 w-6" />
+          </a>
         </div>
       </div>
 
       {/* Scroll Indicator */}
       <button 
         onClick={() => scrollToSection('about')}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-muted-foreground hover:text-primary transition-colors animate-bounce p-2"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-muted-foreground hover:text-white transition-colors animate-bounce p-2 z-30"
         aria-label="Scroll down"
       >
         <ChevronDown className="h-8 w-8" />
