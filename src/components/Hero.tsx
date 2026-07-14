@@ -205,7 +205,7 @@ const Hero = () => {
           <a href="https://github.com/DarainHyder" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-white transition-colors hover:-translate-y-1 duration-300">
             <Github className="h-6 w-6" />
           </a>
-          <a href="https://www.linkedin.com/in/syed-darain-hyder-kazm" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-white transition-colors hover:-translate-y-1 duration-300">
+          <a href="https://www.linkedin.com/in/syed-darain-hyder-kazmi" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-white transition-colors hover:-translate-y-1 duration-300">
             <Linkedin className="h-6 w-6" />
           </a>
         </div>

@@ -15,12 +15,12 @@ const skills: Skill[] = [
   { name: "OOP & DSA",        level: 88, category: "programming" },
   // AI & Machine Learning
   { name: "Machine Learning", level: 90, category: "ml" },
-  { name: "Deep Learning",    level: 85, category: "ml" },
+  { name: "Deep Learning",    level: 75, category: "ml" },
   { name: "Computer Vision",  level: 30, category: "ml" },
-  { name: "NLP",              level: 86, category: "ml" },
+  { name: "NLP",              level: 75, category: "ml" },
   // Frameworks
   { name: "PyTorch",          level: 70, category: "ml" },
-  { name: "TensorFlow",       level: 80, category: "ml" },
+
   { name: "Scikit-learn",     level: 86, category: "ml" },
   { name: "Hugging Face",     level: 85, category: "ml" },
   // Data Engineering

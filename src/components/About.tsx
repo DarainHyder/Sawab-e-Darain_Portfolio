@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { GraduationCap, Brain, Code, Database, Sparkles, Quote, FileText, BarChart, PieChart } from "lucide-react";
 import SectionParticles from "./SectionParticles";
 import { useState } from "react";
-import profileImage from "@/assets/darain-professional-nobg.png";
+import profileImage from "@/assets/sawabedararin.jpg";
 import { AnimatedSection } from "./AnimatedSection";
 
 const techCategories = [
@@ -20,7 +20,7 @@ const techCategories = [
     icon: <Brain className="w-5 h-5 text-primary" />,
     skills: [
       { name: "PyTorch", logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg", color: "hover:bg-[#EE4C2C] hover:border-[#EE4C2C]", isCore: true },
-      { name: "TensorFlow", logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg", color: "hover:bg-[#FF6F00] hover:border-[#FF6F00]", isCore: true },
+
       { name: "Scikit-learn", logoUrl: "https://cdn.simpleicons.org/scikitlearn/white", color: "hover:bg-[#F7931E] hover:border-[#F7931E]", isCore: false },
       { name: "Hugging Face", logoUrl: "https://cdn.simpleicons.org/huggingface/white", color: "hover:bg-[#FFD21E] hover:border-[#FFD21E]", isCore: false },
       { name: "Computer Vision", logoUrl: "https://cdn.simpleicons.org/opencv/white", color: "hover:bg-[#5C3EE8] hover:border-[#5C3EE8]", isCore: false },

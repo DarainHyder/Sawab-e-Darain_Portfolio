@@ -120,7 +120,7 @@ const Footer = () => {
                 <Github className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
               </a>
               <a 
-                href="https://www.linkedin.com/in/syed-darain-hyder-kazm" 
+                href="https://www.linkedin.com/in/syed-darain-hyder-kazmi" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="group p-3 rounded-lg bg-muted/20 hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,69,58,0.3)]"
