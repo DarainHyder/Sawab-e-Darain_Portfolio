@@ -105,23 +105,36 @@ const Hero = () => {
 
 
       {/* Main Centered Content */}
-      <div className="relative z-30 w-full max-w-5xl mx-auto px-4 flex flex-col items-center text-center mt-[-5vh]">
+      <div className="relative z-30 w-full max-w-5xl mx-auto px-4 flex flex-col items-center text-center mt-[-5vh] pb-20">
         <div className="animate-fade-in-up w-full flex flex-col items-center">
           
-          {/* Availability Badge */}
-          <div className="relative inline-flex items-center gap-3 mb-8 px-5 py-2 rounded-full group overflow-hidden shadow-[0_0_20px_rgba(255,69,58,0.15)]">
-            {/* Animated Gradient Border */}
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-accent/50 to-primary/30 bg-[length:200%_200%] animate-[gradient-shift_3s_linear_infinite] group-hover:from-primary/50 group-hover:via-accent/70 group-hover:to-primary/50 transition-colors duration-500 rounded-full p-[1px]">
-              <div className="w-full h-full bg-[#0a0505]/70 backdrop-blur-md rounded-full"></div>
+          {/* Availability Badge (Option 3: Orbiting Cyber-Ring HUD) */}
+          <div className="relative inline-flex items-center gap-4 mb-10 px-5 py-2.5 border border-primary/20 bg-background/30 backdrop-blur-md shadow-[0_0_15px_rgba(255,69,58,0.05)] group transition-all duration-500 hover:border-primary/50 hover:bg-primary/5 hover:shadow-[0_0_25px_rgba(255,69,58,0.15)]">
+            
+            {/* The Cyber Ring Component */}
+            <div className="relative flex items-center justify-center w-5 h-5">
+              {/* Hollow Outer Ring */}
+              <div className="absolute inset-0 border border-primary/40 rounded-full"></div>
+              
+              {/* Orbiting Satellite Dot */}
+              <div className="absolute inset-0 animate-[spin_3s_linear_infinite]">
+                <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_rgba(255,69,58,1)]"></div>
+              </div>
+              
+              {/* Center Core */}
+              <div className="absolute w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-colors duration-300"></div>
             </div>
             
-            {/* Radar ping dot */}
-            <div className="relative flex items-center justify-center w-2 h-2 z-10">
-              <span className="absolute inline-flex h-4 w-4 rounded-full bg-primary opacity-50 motion-safe:animate-ping"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary shadow-[0_0_8px_rgba(255,69,58,1)]"></span>
-            </div>
-            
-            <span className="relative z-10 text-xs font-medium text-white/90 tracking-wide">Available for new opportunities</span>
+            {/* Technical HUD Text */}
+            <span className="text-[0.7rem] sm:text-xs font-mono text-primary/80 tracking-widest uppercase flex items-center gap-2">
+              Status <span className="text-white/30">|</span> <span className="text-white font-medium">Available_For_Opportunities</span>
+            </span>
+
+            {/* Corner Tech Accents */}
+            <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-primary/70 transition-all duration-300 group-hover:w-2 group-hover:h-2"></div>
+            <div className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-primary/70 transition-all duration-300 group-hover:w-2 group-hover:h-2"></div>
+            <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-primary/70 transition-all duration-300 group-hover:w-2 group-hover:h-2"></div>
+            <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-primary/70 transition-all duration-300 group-hover:w-2 group-hover:h-2"></div>
           </div>
 
           {/* Focal Name */}
@@ -214,7 +227,7 @@ const Hero = () => {
       {/* Scroll Indicator */}
       <button 
         onClick={() => scrollToSection('about')}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-muted-foreground hover:text-white transition-colors animate-bounce p-2 z-30"
+        className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-muted-foreground hover:text-white transition-colors animate-bounce p-2 z-30"
         aria-label="Scroll down"
       >
         <ChevronDown className="h-8 w-8" />

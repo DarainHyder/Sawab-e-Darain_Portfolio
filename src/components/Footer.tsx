@@ -1,5 +1,6 @@
 import { Github, Linkedin, Mail, Heart, ArrowUp, Code, Database, Brain } from "lucide-react";
 import { Button } from "./ui/button";
+import logoImage from "@/assets/image_nobg_white.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -44,7 +45,7 @@ const Footer = () => {
           <div className="md:col-span-2 space-y-6">
             <div className="flex items-center gap-3 group cursor-pointer">
               <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(255,69,58,0.5)] animate-pulse-slow">
-                <Brain className="h-6 w-6 text-primary group-hover:scale-110 transition-transform" />
+                <img src={logoImage} alt="Logo" className="h-10 w-10 object-contain group-hover:scale-110 transition-transform" />
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-1">
