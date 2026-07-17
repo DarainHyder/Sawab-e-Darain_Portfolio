@@ -1,6 +1,6 @@
-import { Github, Linkedin, Mail, Heart, ArrowUp, Code, Database, Brain } from "lucide-react";
-import { Button } from "./ui/button";
-import logoImage from "@/assets/image_nobg_white.png";
+import { ArrowUp } from "lucide-react";
+import heroImage from "@/assets/hero-bg.jpg";
+import DataScienceBackground from "./DataScienceBackground";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,172 +9,93 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <footer className="relative bg-gradient-to-br from-background via-background/95 to-primary/5 border-t border-primary/20 overflow-hidden">
-      {/* Giant Background Text */}
-      <div className="absolute inset-0 flex items-center justify-center overflow-hidden opacity-[0.03] pointer-events-none select-none">
-        <div className="text-[20vw] font-extrabold whitespace-nowrap animate-pulse-slow">
-          DATA SCIENCE
-        </div>
+    <footer className="relative border-t border-primary/20 overflow-hidden font-mono text-xs sm:text-sm py-8 sm:py-12 px-6 sm:px-12 md:px-24">
+      
+      {/* Background Layers */}
+      <div className="absolute inset-0 z-0">
+        <DataScienceBackground />
+      </div>
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      >
+        <div className="absolute inset-0 hero-gradient opacity-90"></div>
       </div>
       
-      {/* Animated Background Pattern */}
-      <div className="absolute inset-0 overflow-hidden opacity-5">
-        <div className="absolute top-0 left-0 w-full h-full">
-          <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-primary/30 blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-accent/30 blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-1/2 left-1/2 w-48 h-48 rounded-full bg-primary/20 blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+      {/* Decorative Terminal Scanline Overlay */}
+      <div className="absolute inset-0 pointer-events-none opacity-20 bg-[linear-gradient(rgba(255,255,255,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] z-0"></div>
+      
+      {/* Subtle glowing orb in the corner */}
+      <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-primary/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
+
+      <div className="max-w-5xl mx-auto flex flex-col gap-4 relative z-10">
+        
+        {/* Terminal Trace Header */}
+        <div className="text-primary/70 mb-2">
+          <p className="flex items-center gap-2">
+            <span className="text-green-500">root@darain-hyder</span>:<span className="text-blue-400">~</span>$ <span className="text-white">./terminate_session.sh</span>
+          </p>
+          <p className="text-white/40 mt-1">Executing shutdown sequence...</p>
+        </div>
+
+        {/* System Logs */}
+        <div className="flex flex-col text-white/50">
+          <p>[<span className="text-green-500">OK</span>] Data Models persisted to storage.</p>
+          <p>[<span className="text-green-500">OK</span>] Neural pathways decoupled.</p>
+          <p className="text-primary animate-pulse">[WARN] Intelligence core entering sleep state...</p>
+        </div>
+
+        {/* Quick Links Array (Horizontal format) */}
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-white/70 mt-2">
+          <span><span className="text-primary">const</span> <span className="text-blue-400">quick_links</span> = [</span>
+          <button onClick={() => scrollToSection('about')} className="text-green-400 hover:text-white transition-colors duration-300 group">
+            "<span className="group-hover:text-primary transition-colors">ABOUT_ME</span>",
+          </button>
+          <button onClick={() => scrollToSection('projects')} className="text-green-400 hover:text-white transition-colors duration-300 group">
+            "<span className="group-hover:text-primary transition-colors">ARCHITECTURE</span>",
+          </button>
+          <button onClick={() => scrollToSection('contact')} className="text-green-400 hover:text-white transition-colors duration-300 group">
+            "<span className="group-hover:text-primary transition-colors">INITIALIZE_CONTACT</span>"
+          </button>
+          <span>];</span>
+        </div>
+
+        {/* Social Endpoints Object (Horizontal format) */}
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-white/70 mt-1">
+          <span><span className="text-primary">exports</span>.<span className="text-blue-400">socials</span> = {"{"}</span>
+          <a href="https://github.com/DarainHyder" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-white transition-colors duration-300 group">
+            <span className="text-white/70">github:</span> "<span className="group-hover:text-primary transition-colors">github.com/DarainHyder</span>",
+          </a>
+          <a href="https://www.linkedin.com/in/syed-darain-hyder-kazmi" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-white transition-colors duration-300 group">
+            <span className="text-white/70">linkedin:</span> "<span className="group-hover:text-primary transition-colors">linkedin.com/in/syed-darain-hyder-kazmi</span>"
+          </a>
+          <span>{"};"}</span>
+        </div>
+
+        {/* Execution Complete & Scroll Top */}
+        <div className="mt-6 pt-6 border-t border-primary/20 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <p className="text-white/40 text-xs">
+            {`// Copyright (c) ${currentYear} Darain Hyder. All rights reserved.`}
+          </p>
           
-          {/* Floating binary code */}
-          <div className="absolute top-1/4 left-1/3 text-primary/30 font-mono text-sm animate-float">01001101 01001100</div>
-          <div className="absolute bottom-1/3 right-1/4 text-accent/30 font-mono text-sm animate-float" style={{ animationDelay: '2s' }}>01000001 01001001</div>
-          <div className="absolute top-1/2 left-1/4 text-primary/30 font-mono text-sm animate-float" style={{ animationDelay: '1s' }}>01000100 01010011</div>
-          <div className="absolute top-3/4 right-1/3 text-accent/30 font-mono text-sm animate-float" style={{ animationDelay: '3s' }}>01010000 01011001</div>
-          
-          {/* Moving particles */}
-          <div className="absolute top-20 left-1/4 w-2 h-2 rounded-full bg-primary/40 animate-flow-right"></div>
-          <div className="absolute top-1/3 left-1/2 w-2 h-2 rounded-full bg-accent/40 animate-flow-right" style={{ animationDelay: '1.5s' }}></div>
-          <div className="absolute bottom-1/4 left-1/3 w-2 h-2 rounded-full bg-primary/40 animate-flow-right" style={{ animationDelay: '2.5s' }}></div>
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={scrollToTop}
+              className="group flex items-center gap-3 text-primary hover:text-white transition-colors tracking-widest uppercase"
+            >
+              <span className="text-white/30">{">"}</span> execute_scroll(top)
+              <ArrowUp className="h-4 w-4 group-hover:-translate-y-2 transition-transform duration-300" />
+            </button>
+            <span className="inline-block w-2 h-4 bg-primary animate-pulse ml-2"></span>
+          </div>
         </div>
+
       </div>
-
-      <div className="relative max-w-6xl mx-auto px-4 py-16">
-        {/* Main Footer Content */}
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
-          {/* Brand Section with Interactive Elements */}
-          <div className="md:col-span-2 space-y-6">
-            <div className="flex items-center gap-3 group cursor-pointer">
-              <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(255,69,58,0.5)] animate-pulse-slow">
-                <img src={logoImage} alt="Logo" className="h-10 w-10 object-contain group-hover:scale-110 transition-transform" />
-              </div>
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-2xl font-extrabold gradient-text tracking-tight">AI/ML</span>
-                  <span className="text-primary/50">|</span>
-                  <span className="text-sm font-medium text-muted-foreground">Engineer</span>
-                </div>
-                <p className="text-xs text-muted-foreground">Architecting Intelligent Systems</p>
-              </div>
-            </div>
-            <p className="text-muted-foreground leading-relaxed">
-              An ambitious AI/ML Engineer and BSCS student driven by the pursuit of building intelligent systems that solve real-world problems. I specialize in designing scalable machine learning models and turning complex datasets into high-impact solutions.
-            </p>
-            
-            {/* Tech Stack Icons */}
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/20 border border-primary/10">
-                <Code className="h-4 w-4 text-primary" />
-                <span className="text-xs text-muted-foreground">Python</span>
-              </div>
-              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/20 border border-primary/10">
-                <Database className="h-4 w-4 text-accent" />
-                <span className="text-xs text-muted-foreground">ML/AI</span>
-              </div>
-              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/20 border border-primary/10">
-                <Brain className="h-4 w-4 text-primary" />
-                <span className="text-xs text-muted-foreground">Analytics</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Quick Links with Hover Effects */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-foreground flex items-center gap-2">
-              <div className="h-1 w-8 bg-gradient-to-r from-primary to-accent rounded-full"></div>
-              Quick Links
-            </h4>
-            <div className="space-y-3">
-              {[
-                { label: "About", id: "about" },
-                { label: "Projects", id: "projects" },
-                { label: "Reviews", id: "reviews" },
-                { label: "Certificates", id: "certificates" },
-                { label: "Contact", id: "contact" }
-              ].map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: "smooth" })}
-                  className="group block text-muted-foreground hover:text-primary transition-all duration-300"
-                >
-                  <span className="relative">
-                    {link.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300"></span>
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Connect Section with Animated Icons */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-foreground flex items-center gap-2">
-              <div className="h-1 w-8 bg-gradient-to-r from-primary to-accent rounded-full"></div>
-              Let's Connect
-            </h4>
-            <div className="flex gap-3">
-              <a 
-                href="https://github.com/DarainHyder" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group p-3 rounded-lg bg-muted/20 hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,69,58,0.3)]"
-              >
-                <Github className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-              </a>
-              <a 
-                href="https://www.linkedin.com/in/syed-darain-hyder-kazmi" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group p-3 rounded-lg bg-muted/20 hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,69,58,0.3)]"
-              >
-                <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-              </a>
-              <button 
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group p-3 rounded-lg bg-muted/20 hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,69,58,0.3)]"
-              >
-                <Mail className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-              </button>
-            </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Available for internships and collaborative projects
-            </p>
-          </div>
-        </div>
-
-        {/* Bottom Bar with Creative Layout */}
-        <div className="pt-8 border-t border-primary/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-4">
-              <p className="text-muted-foreground text-sm">
-                © {currentYear} DarainHyder Portfolio
-              </p>
-              <div className="hidden md:block h-4 w-px bg-primary/20"></div>
-              <p className="text-muted-foreground text-sm flex items-center gap-2">
-                Architecting Intelligence with <Heart className="h-4 w-4 text-primary animate-pulse" /> & Precision
-              </p>
-            </div>
-            
-            {/* Watermark & Scroll to Top */}
-            <div className="flex items-center gap-6">
-              <span className="text-[10px] font-mono text-muted-foreground/30 tracking-widest uppercase select-none hover:text-primary/50 transition-colors">
-                sawabedarain
-              </span>
-              <Button
-                onClick={scrollToTop}
-                variant="outline"
-                size="sm"
-                className="group border-primary/30 hover:border-primary hover:bg-primary/10 hover:shadow-[0_0_20px_rgba(255,69,58,0.3)] transition-all duration-300"
-              >
-                <ArrowUp className="h-4 w-4 mr-2 group-hover:animate-bounce" />
-                Back to Top
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
     </footer>
   );
 };
