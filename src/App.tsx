@@ -5,11 +5,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import DataScienceBackground from "./components/DataScienceBackground";
-import CustomCursor from "./components/CustomCursor";
 
 const App = () => (
   <TooltipProvider>
-    <CustomCursor />
     <Toaster />
     <Sonner />
     <BrowserRouter>
