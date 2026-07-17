@@ -71,7 +71,7 @@ const Experience = () => {
                 style={{ transitionDelay: `${0.3 + (index * 0.2)}s` }}
               >
                 <div className={`md:grid md:grid-cols-2 md:gap-8 ${index % 2 === 0 ? "" : "md:grid-flow-dense"}`}>
-                  <div className={`${index % 2 === 0 ? "" : "md:col-start-2"}`}>
+                  <div className={`ml-14 md:ml-0 ${index % 2 === 0 ? "md:pr-12" : "md:col-start-2 md:pl-12"}`}>
                     <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group">
                       {exp.current && (
                         <div className="inline-block px-3 py-1 mb-3 text-xs font-medium bg-primary/20 text-primary rounded-full">
@@ -114,7 +114,7 @@ const Experience = () => {
                   </div>
 
                   {/* Timeline dot */}
-                  <div className="absolute left-8 md:left-1/2 top-8 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background shadow-lg shadow-primary/50" />
+                  <div className="absolute left-[30px] md:left-1/2 top-8 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background shadow-lg shadow-primary/50" />
                 </div>
               </div>
             ))}

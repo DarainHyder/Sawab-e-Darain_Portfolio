@@ -49,18 +49,18 @@ const Hero = () => {
       </div>
 
       {/* Main Centered Content: THE MONOLITH */}
-      <div className="relative z-30 w-full flex flex-col items-center justify-center pointer-events-none">
-        <h1 className="relative text-[6rem] sm:text-[9rem] md:text-[13rem] lg:text-[17rem] tracking-normal leading-none w-full flex justify-center items-center px-4">
+      <div className="relative z-30 w-full flex flex-col items-center justify-center pointer-events-none mt-10 md:mt-0">
+        <h1 className="relative text-[4.5rem] sm:text-[7rem] md:text-[10rem] lg:text-[15rem] tracking-normal leading-none w-full flex flex-col md:flex-row justify-center items-center px-4 gap-0 md:gap-6">
           
           {/* First Name */}
           <span className="opacity-0 animate-fade-in-up inline-block" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
-            <span className="font-signature text-white drop-shadow-[0_0_35px_rgba(239,68,68,0.4)] relative z-10 pr-4 sm:pr-8">
+            <span className="font-signature text-white drop-shadow-[0_0_35px_rgba(239,68,68,0.4)] relative z-10 md:pr-4">
               Darain
             </span>
           </span>
           
           {/* Last Name */}
-          <span className="opacity-0 animate-fade-in-up inline-block" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
+          <span className="opacity-0 animate-fade-in-up inline-block -mt-4 md:mt-0" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
             <span className="font-signature bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(239,68,68,0.7)] relative z-10">
               Hyder
             </span>
@@ -81,15 +81,15 @@ const Hero = () => {
       <div className={`absolute inset-0 pointer-events-none transition-opacity duration-1000 ease-in-out z-40 ${isMouseActive ? 'opacity-100' : 'opacity-0'}`}>
         
         {/* Top Left: Raw Status */}
-        <div className="absolute top-32 left-6 md:top-40 md:left-12">
-           <span className="font-mono text-[0.60rem] md:text-xs text-primary/70 tracking-[0.2em] uppercase flex items-center gap-3">
-              <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse shadow-[0_0_8px_rgba(255,69,58,1)]"></span>
+        <div className="absolute top-20 left-4 md:top-40 md:left-12">
+           <span className="font-mono text-[0.55rem] md:text-xs text-primary/70 tracking-[0.2em] uppercase flex items-center gap-2 md:gap-3">
+              <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse shadow-[0_0_8px_rgba(255,69,58,1)] flex-shrink-0"></span>
               SYS.STATUS <span className="text-white/20">|</span> <span className="text-white/90">AVAILABLE_FOR_OPPORTUNITIES</span>
            </span>
         </div>
 
         {/* Bottom Left: Navigation Links */}
-        <div className="absolute bottom-12 left-6 md:bottom-16 md:left-12 flex flex-col gap-5 pointer-events-auto">
+        <div className="absolute bottom-8 left-4 md:bottom-16 md:left-12 flex flex-col gap-4 md:gap-5 pointer-events-auto">
           <button 
             onClick={() => scrollToSection('projects')} 
             className="group font-mono text-[0.65rem] md:text-xs text-white/40 hover:text-white transition-colors tracking-[0.2em] uppercase text-left flex items-center gap-3"
@@ -113,7 +113,7 @@ const Hero = () => {
         </div>
 
         {/* Bottom Right: Social Links */}
-        <div className="absolute bottom-12 right-6 md:bottom-16 md:right-12 flex flex-col gap-5 text-right pointer-events-auto items-end">
+        <div className="absolute bottom-8 right-4 md:bottom-16 md:right-12 flex flex-col gap-4 md:gap-5 text-right pointer-events-auto items-end">
           <a 
             href="https://github.com/DarainHyder" 
             target="_blank" 

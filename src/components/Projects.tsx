@@ -175,7 +175,9 @@ const Projects = () => {
             <div className="flex overflow-x-auto snap-x snap-mandatory pb-8 gap-4 hide-scrollbar -mx-4 px-4">
               {projects.map((project, index) => (
                  <div key={index} className="w-[85vw] flex-shrink-0 snap-center stagger-child" style={{ transitionDelay: `${0.2 + index * 0.1}s` }}>
-                    <ProjectCard project={project} />
+                    <div className="h-[420px] w-full">
+                      <ProjectCard project={project} />
+                    </div>
                  </div>
               ))}
             </div>
