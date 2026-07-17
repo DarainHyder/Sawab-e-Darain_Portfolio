@@ -89,33 +89,67 @@ const Reviews = () => {
     <AnimatedSection id="reviews" variant="horizontal-slide" className="py-24 bg-gradient-to-br from-background via-primary/5 to-background relative overflow-hidden flex flex-col justify-center">
       
       <style>{`
-        @keyframes marquee-left {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
+        .carousel-container {
+          perspective: 1500px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 400px;
+          margin-top: 1rem;
         }
-        .animate-marquee-left {
-          animation: marquee-left 50s linear infinite;
+
+        .carousel-track {
+          width: 300px;
+          height: 100%;
+          position: relative;
+          transform-style: preserve-3d;
+          animation: rotate-carousel 45s infinite linear;
         }
-        .marquee-mask {
-          mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-          -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+
+        @media (min-width: 768px) {
+          .carousel-track {
+            width: 420px;
+          }
+        }
+
+        .carousel-track:hover {
+          animation-play-state: paused;
+        }
+
+        .carousel-card-wrapper {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden; /* Optional, but helps performance */
+        }
+
+        @keyframes rotate-carousel {
+          from { transform: rotateY(0deg); }
+          to { transform: rotateY(-360deg); }
         }
         
         @media (prefers-reduced-motion: reduce) {
-          .animate-marquee-left {
+          .carousel-container {
+             height: auto;
+             perspective: none;
+             flex-direction: column;
+          }
+          .carousel-track {
              animation: none !important;
              transform: none !important;
-             width: 100% !important;
-             flex-wrap: wrap !important;
-             justify-content: center !important;
-             gap: 1.5rem !important;
+             position: static;
+             width: 100%;
+             display: flex;
+             flex-direction: column;
+             gap: 2rem;
+             align-items: center;
           }
-          .hide-on-reduce {
-             display: none !important;
-          }
-          .marquee-mask {
-             mask-image: none !important;
-             -webkit-mask-image: none !important;
+          .carousel-card-wrapper {
+             position: static !important;
+             transform: none !important;
+             height: auto;
           }
         }
       `}</style>
@@ -135,19 +169,26 @@ const Reviews = () => {
         </div>
       </div>
 
-      <div className="w-full relative z-10 py-4 marquee-mask overflow-hidden slide-from-right" style={{ transitionDelay: '0.3s' }}>
-        <div className="flex w-full group/row">
-          <div className="flex w-max animate-marquee-left group-hover/row:[animation-play-state:paused]">
-            <div className="flex gap-6 pr-6">
-              {singleRowBlock.map((review, i) => (
-                <ReviewCard key={`b1-${i}`} review={review} />
-              ))}
-            </div>
-            <div className="flex gap-6 pr-6 hide-on-reduce">
-              {singleRowBlock.map((review, i) => (
-                <ReviewCard key={`b2-${i}`} review={review} />
-              ))}
-            </div>
+      <div className="w-full relative z-10 py-10 overflow-visible slide-from-right" style={{ transitionDelay: '0.3s' }}>
+        <div className="carousel-container">
+          <div className="carousel-track">
+            {reviews.map((review, i) => {
+              const rotation = i * (360 / reviews.length);
+              // Responsive radius: ~300px on mobile, ~450px on desktop
+              const tz = 'clamp(280px, 45vw, 480px)';
+              
+              return (
+                <div 
+                  key={i} 
+                  className="carousel-card-wrapper"
+                  style={{ 
+                    transform: `rotateY(${rotation}deg) translateZ(${tz})`
+                  }}
+                >
+                  <ReviewCard review={review} />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
