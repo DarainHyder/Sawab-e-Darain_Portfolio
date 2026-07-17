@@ -1,5 +1,5 @@
 import { ArrowUp } from "lucide-react";
-import heroImage from "@/assets/hero-bg.jpg";
+import heroImage from "@/assets/premium-bg.png";
 import DataScienceBackground from "./DataScienceBackground";
 
 const Footer = () => {
@@ -19,12 +19,6 @@ const Footer = () => {
       {/* Background Layers */}
       <div className="absolute inset-0 z-0">
         <DataScienceBackground />
-      </div>
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="absolute inset-0 hero-gradient opacity-90"></div>
       </div>
       
       {/* Decorative Terminal Scanline Overlay */}

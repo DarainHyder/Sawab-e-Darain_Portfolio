@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import heroImage from "@/assets/hero-bg.jpg";
+import heroImage from "@/assets/premium-bg.png";
 import DataScienceBackground from "./DataScienceBackground";
 
 const Hero = () => {
@@ -40,12 +40,6 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Layers */}
       <DataScienceBackground />
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="absolute inset-0 hero-gradient opacity-90"></div>
-      </div>
       
       {/* Background Orbs */}
       <div className="absolute inset-0 pointer-events-none">
