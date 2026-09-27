@@ -10,7 +10,7 @@ export const LINKS = {
   email: "darainhyder21@gmail.com",
   phone: "+923433055357",
   location: "Islamabad, Pakistan",
-  resume: "/SyedDarain_AI-ML_Resume.pdf",
+  resume: "/DarainHyder_AI-ML_Resume.pdf",
 };
 
 export const SECTIONS = [
