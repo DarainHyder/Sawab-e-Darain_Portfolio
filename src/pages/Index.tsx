@@ -1,39 +1,57 @@
-import Navigation from "@/components/Navigation";
-import Hero from "@/components/Hero";
-import About from "@/components/About";
-import HeroAboutTransition from "@/components/HeroAboutTransition";
-import Skills from "@/components/Skills";
-import Experience from "@/components/Experience";
-import Projects from "@/components/Projects";
-import Reviews from "@/components/Reviews";
-import Certificates from "@/components/Certificates";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import { useEffect } from "react";
+import { TransitionProvider } from "@/components/term/Transition";
+import { TopBar } from "@/components/term/TopBar";
+import { ResumeProvider } from "@/components/term/Resume";
+import { Hero } from "@/components/term/Hero";
+import { About, Certs, Projects, Reviews, Stack, Work } from "@/components/term/Sections";
+import { Contact, Footer } from "@/components/term/Contact";
 
-const Index = () => {
+/** Faint grid that brightens around the cursor. */
+function Backdrop() {
+  useEffect(() => {
+    let raf = 0;
+    const onMove = (e: PointerEvent) => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        document.documentElement.style.setProperty("--mx", `${e.clientX}px`);
+        document.documentElement.style.setProperty("--my", `${e.clientY}px`);
+      });
+    };
+    window.addEventListener("pointermove", onMove, { passive: true });
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
   return (
-    <div className="min-h-screen">
-      <Navigation />
-      <HeroAboutTransition 
-        hero={<Hero />} 
-        about={<About />} 
-      />
-      <Skills />
-      <Experience />
-      <Projects />
-      <Reviews />
-      <Certificates />
-      <Contact />
-      <Footer />
-      
-      {/* Fixed Watermark */}
-      <div className="fixed bottom-4 right-4 z-[9999] pointer-events-none select-none">
-        <span className="text-[10px] font-mono text-primary/20 tracking-[0.2em] uppercase vertical-text">
-          sawabedarain
-        </span>
-      </div>
+    <div className="t-backdrop" aria-hidden>
+      <div className="t-grid" />
+      <div className="t-grid is-lit" />
+      <div className="t-vignette" />
     </div>
   );
-};
+}
+
+const Index = () => (
+  <TransitionProvider>
+    <ResumeProvider>
+      <div className="t-root">
+        <Backdrop />
+        <TopBar />
+        <main>
+          <Hero />
+          <About />
+          <Stack />
+          <Work />
+          <Projects />
+          <Reviews />
+          <Certs />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </ResumeProvider>
+  </TransitionProvider>
+);
 
 export default Index;
