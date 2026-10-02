@@ -11,56 +11,57 @@ function ProjectCover({ p, lazy = true }: { p: (typeof PROJECTS)[number]; lazy?:
     const Cover = COVERS[p.cover];
     return <Cover />;
   }
-  return <img src={p.image} alt={`${p.title} — live app`} loading={lazy ? "lazy" : undefined} />;
+  return <img src={p.image} alt={`${p.title}: live app`} loading={lazy ? "lazy" : undefined} />;
 }
 
 export function About() {
   return (
     <Section id="about" index="01" cmd="cat about.md" title="about" ext=".md">
       <div className="t-about">
-        <div className="t-about-text">
-          <Out i={0} as="p" className="t-lead-p">{ABOUT.intro}</Out>
-          <Out i={1}>
-            <h3 className="t-h3"><span className="t-faint">## </span>philosophy</h3>
-            <p className="t-p">{ABOUT.philosophy}</p>
-          </Out>
-          <Out i={2}>
-            <h3 className="t-h3"><span className="t-faint">## </span>vision</h3>
-            <p className="t-p">{ABOUT.vision}</p>
-          </Out>
-          <Out i={3} className="t-comment">
-            <span className="t-faint">/*</span>
-            <p>
-              {ABOUT.quote[0]}
-              <span className="t-acc">{ABOUT.quote[1]}</span>
-              {ABOUT.quote[2]}
-            </p>
-            <span className="t-faint">*/</span>
-          </Out>
-        </div>
-
-        <div className="t-about-side">
-          <Out i={1} className="t-window">
-            <div className="t-window-bar">
-              <span className="t-dots" aria-hidden><i /><i /><i /></span>
-              <span className="t-dim">darain.jpg</span>
-            </div>
-            <div className="t-photo">
-              <img src={profileImage} alt="Darain Hyder" loading="lazy" />
-            </div>
-          </Out>
-          <Out i={2} className="t-json" as="div">
-            <div><span className="t-dim">{"{"}</span></div>
-            {ABOUT.meta.map(([k, v], i) => (
-              <div key={k} className="t-json-row">
-                <span className="t-key">"{k}"</span>
-                <span className="t-dim">: </span>
-                <span className="t-str">{v}</span>
-                {i < ABOUT.meta.length - 1 && <span className="t-dim">,</span>}
-              </div>
+        {/* lead runs full width so the two columns below balance */}
+        <Out i={0} as="p" className="t-lead-p">{ABOUT.intro}</Out>
+        <div className="t-about-cols">
+          <div className="t-about-text">
+            {ABOUT.blocks.map(([heading, text], i) => (
+              <Out key={heading} i={i + 1}>
+                <h3 className="t-h3"><span className="t-faint">## </span>{heading}</h3>
+                <p className="t-p">{text}</p>
+              </Out>
             ))}
-            <div><span className="t-dim">{"}"}</span></div>
-          </Out>
+            <Out i={ABOUT.blocks.length + 1} className="t-comment">
+              <span className="t-faint">/*</span>
+              <p>
+                {ABOUT.quote[0]}
+                <span className="t-acc">{ABOUT.quote[1]}</span>
+                {ABOUT.quote[2]}
+              </p>
+              <span className="t-faint">*/</span>
+            </Out>
+          </div>
+
+          <div className="t-about-side">
+            <Out i={1} className="t-window">
+              <div className="t-window-bar">
+                <span className="t-dots" aria-hidden><i /><i /><i /></span>
+                <span className="t-dim">darain.jpg</span>
+              </div>
+              <div className="t-photo">
+                <img src={profileImage} alt="Darain Hyder" loading="lazy" />
+              </div>
+            </Out>
+            <Out i={2} className="t-json" as="div">
+              <div><span className="t-dim">{"{"}</span></div>
+              {ABOUT.meta.map(([k, v], i) => (
+                <div key={k} className="t-json-row">
+                  <span className="t-key">"{k}"</span>
+                  <span className="t-dim">: </span>
+                  <span className="t-str">{v}</span>
+                  {i < ABOUT.meta.length - 1 && <span className="t-dim">,</span>}
+                </div>
+              ))}
+              <div><span className="t-dim">{"}"}</span></div>
+            </Out>
+          </div>
         </div>
       </div>
     </Section>
@@ -147,6 +148,9 @@ export function Projects() {
   const [open, setOpen] = useState<number | null>(0);
   const [hover, setHover] = useState<number | null>(null);
   const previewRef = useRef<HTMLDivElement>(null);
+  // the cursor preview is portaled to <body>, which only exists in the browser
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const onMove = (e: MouseEvent) => {
     const el = previewRef.current;
@@ -222,16 +226,17 @@ export function Projects() {
       </Out>
 
       {/* portaled: the section's scroll transform would otherwise trap position:fixed */}
-      {createPortal(
-        <div ref={previewRef} className={`t-preview ${hover !== null && hover !== open ? "is-on" : ""}`} aria-hidden>
-          {PROJECTS.map((p, i) => (
-            <div key={p.slug} className={`t-preview-item ${hover === i ? "is-on" : ""}`}>
-              <ProjectCover p={p} lazy={false} />
-            </div>
-          ))}
-        </div>,
-        document.body
-      )}
+      {mounted &&
+        createPortal(
+          <div ref={previewRef} className={`t-preview ${hover !== null && hover !== open ? "is-on" : ""}`} aria-hidden>
+            {PROJECTS.map((p, i) => (
+              <div key={p.slug} className={`t-preview-item ${hover === i ? "is-on" : ""}`}>
+                <ProjectCover p={p} lazy={false} />
+              </div>
+            ))}
+          </div>,
+          document.body
+        )}
     </Section>
   );
 }
@@ -265,7 +270,7 @@ export function Reviews() {
             <span className="t-faint">”</span>
           </blockquote>
           <div className="t-review-who">
-            <span className="t-faint">— </span>
+            <span className="t-faint">-- </span>
             {r.name}
             <span className="t-dim"> · {r.role}</span>
           </div>
@@ -327,7 +332,7 @@ export function Certs() {
                   verify ↗
                 </a>
               ) : (
-                <span className="t-faint">—</span>
+                <span className="t-faint">-</span>
               )}
             </span>
           </Out>
