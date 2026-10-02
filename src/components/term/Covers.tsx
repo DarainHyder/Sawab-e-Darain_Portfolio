@@ -1,4 +1,5 @@
 import { useId, useMemo, type ReactNode } from "react";
+import { rng } from "./fx";
 
 /* Hand-built vector covers, drawn in the site palette (480×300 = 16:10). */
 
@@ -12,16 +13,6 @@ const MONO = { fontFamily: '"JetBrains Mono", ui-monospace, monospace' };
 
 const useSvgId = () => useId().replace(/:/g, "");
 
-/** Deterministic PRNG so covers look identical on every render. */
-function rng(seed: number) {
-  return () => {
-    seed |= 0;
-    seed = (seed + 0x6d2b79f5) | 0;
-    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
 
 function Frame({ children, label }: { children: ReactNode; label: string }) {
   return (
@@ -123,7 +114,7 @@ export function IQACover() {
     const out: { x: number; y: number; c: string }[] = [];
     for (let y = IMG.y; y < IMG.y + IMG.h; y += s) {
       for (let x = SPLIT; x < IMG.x + IMG.w; x += s) {
-        // block-average the scene, then add luma noise and posterize — a heavily compressed JPEG
+        // block-average the scene, then add luma noise and posterize, like a heavily compressed JPEG
         const acc = [0, 0, 0];
         for (let sy = 0; sy < 4; sy++)
           for (let sx = 0; sx < 4; sx++) scene(x + (sx + 0.5) * (s / 4), y + (sy + 0.5) * (s / 4)).forEach((v, k) => (acc[k] += v / 16));
