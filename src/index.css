@@ -76,7 +76,8 @@
 }
 
 /* ───────────────────────── primitives ───────────────────────── */
-.t-root { position: relative; min-height: 100vh; }
+/* clip, not hidden: shards flying past the edge must never widen the page (mobile would zoom out) */
+.t-root { position: relative; min-height: 100vh; overflow-x: clip; }
 .t-acc { color: var(--t-accent); }
 .t-dim { color: var(--t-dim); }
 .t-faint { color: var(--t-faint); }
@@ -372,8 +373,10 @@ kbd {
 .t-h3 { font-weight: 600; margin: 26px 0 6px; }
 
 /* ───────────────────────── about ───────────────────────── */
-.t-about { display: grid; gap: 48px; }
-@media (min-width: 900px) { .t-about { grid-template-columns: 1fr 340px; gap: 64px; } }
+.t-about .t-lead-p { max-width: 80ch; margin-bottom: 40px; }
+.t-about-cols { display: grid; gap: 48px; }
+@media (min-width: 900px) { .t-about-cols { grid-template-columns: 1fr 340px; gap: 64px; align-items: start; } }
+.t-about-text > :first-child .t-h3 { margin-top: 0; }
 .t-lead-p { font-size: clamp(16px, 1.9vw, 19px); line-height: 1.6; letter-spacing: -0.01em; }
 .t-comment { margin-top: 36px; color: var(--t-dim); font-style: italic; }
 .t-comment p { padding-left: 18px; border-left: 1px solid var(--t-accent); margin: 4px 0; font-size: 15px; max-width: 60ch; color: var(--t-fg); }
@@ -675,6 +678,8 @@ kbd {
 }
 .t-div-run { flex: 1 1 0; min-width: 0; display: flex; }
 .t-div-run.is-l { justify-content: flex-end; }
+/* drawn by CSS so the rule stays out of the page text that crawlers read */
+.t-div-shard::before { content: "─"; }
 .t-div-label {
   color: var(--t-dim);
   letter-spacing: 0.06em;
