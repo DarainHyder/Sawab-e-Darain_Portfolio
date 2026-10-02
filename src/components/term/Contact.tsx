@@ -54,7 +54,7 @@ export function Contact() {
       <div className="t-contact">
         <form className="t-form" onSubmit={submit} noValidate>
           <Out i={0} className="t-dim t-form-intro">
-            Open to roles, freelance work and interesting problems. Say hello —
+            Open to roles, freelance work and interesting problems. Send a message below.
           </Out>
           {FIELDS.map((f, i) => (
             <Out key={f.key} i={i + 1} className="t-field">
@@ -124,7 +124,9 @@ export function Footer() {
           <span className="t-path">~/darain</span>
           <span className="t-acc"> $ </span>exit
         </div>
-        <div className="t-dim">logout · session closed · © {new Date().getFullYear()} Darain Hyder</div>
+        <div className="t-dim" suppressHydrationWarning>
+          logout · session closed · © {new Date().getFullYear()} Darain Hyder
+        </div>
         <button className="t-link" onClick={(e: MouseEvent) => go("top", { x: e.clientX, y: e.clientY })}>
           ↑ back to top
         </button>
