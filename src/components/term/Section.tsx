@@ -6,7 +6,7 @@ const RUN = 56;
 /** `── 02 / stack ──` rule whose shards assemble around mid-screen and explode near the edges. */
 function Divider({ index, label }: { index: string; label: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const seeds = useShardSeeds(RUN * 2, 0.8);
+  const seeds = useShardSeeds(RUN * 2, 0.8, label);
 
   useScrollFx(() => {
     const el = ref.current;
@@ -22,9 +22,7 @@ function Divider({ index, label }: { index: string; label: string }) {
 
   const run = (from: number) =>
     seeds.slice(from, from + RUN).map((st, i) => (
-      <span key={i} className="sh-i" style={st}>
-        ─
-      </span>
+      <span key={i} className="sh-i t-div-shard" style={st} />
     ));
 
   return (
