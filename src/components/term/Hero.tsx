@@ -31,8 +31,7 @@ type Line = { kind: "in" | "out" | "err"; text: ReactNode };
 export function Hero() {
   const go = useGo();
   const showResume = useResume();
-  const reduced = prefersReducedMotion();
-  const [booted, setBooted] = useState(reduced ? BOOT.length : 0);
+  const [booted, setBooted] = useState(0);
   const [value, setValue] = useState("");
   const [lines, setLines] = useState<Line[]>([]);
   const [hist, setHist] = useState<string[]>([]);
@@ -50,6 +49,7 @@ export function Hero() {
 
   useEffect(() => {
     if (booted >= BOOT.length) return;
+    if (prefersReducedMotion()) return setBooted(BOOT.length);
     const t = setTimeout(() => setBooted((b) => b + 1), booted === 0 ? 250 : 170);
     return () => clearTimeout(t);
   }, [booted]);
@@ -90,7 +90,7 @@ export function Hero() {
         ),
       });
     }
-    if (cmd === "whoami") return print({ kind: "out", text: "darain hyder — ai/ml engineer, islamabad" });
+    if (cmd === "whoami") return print({ kind: "out", text: "syed darain hyder kazmi · ai/ml engineer · islamabad" });
     if (cmd.startsWith("sudo")) return print({ kind: "err", text: "nice try. permission denied." });
     if (cmd === "resume" || cmd === "cat resume.pdf" || cmd === "resume.pdf") {
       showResume();
@@ -161,7 +161,7 @@ export function Hero() {
             <span className="t-name-caret" aria-hidden />
           </h1>
           <p className="t-lede">
-            <span className="t-acc">AI/ML engineer</span> — I train models and write the software that ships them.
+            <span className="t-acc">AI/ML engineer</span> who trains models and writes the software that ships them.
             <br className="hidden sm:block" /> Pipelines, APIs and data systems from Islamabad.
           </p>
 
