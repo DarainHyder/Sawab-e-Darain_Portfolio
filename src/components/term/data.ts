@@ -13,6 +13,31 @@ export const LINKS = {
   resume: "/DarainHyder_AI-ML_Resume.pdf",
 };
 
+/** Who this site is about. Shared by the page, the structured data and llms.txt. */
+export const PROFILE = {
+  name: "Syed Darain Hyder Kazmi",
+  shortName: "Darain Hyder",
+  handle: "sawabedarain",
+  title: "AI/ML Engineer",
+  site: "https://darainhyder.netlify.app",
+  summary:
+    "AI/ML engineer in Islamabad, Pakistan, building production machine learning systems: computer vision models served as real-time APIs, NLP and LLM applications, and data pipelines for multi-client analytics.",
+  employer: "Syvyo",
+  education: {
+    degree: "Bachelor of Computer and Information Sciences",
+    school: "Pakistan Institute of Engineering and Applied Sciences (PIEAS)",
+    city: "Islamabad",
+    years: "2023-2027",
+  },
+  languages: ["English", "Urdu"],
+  leadership: [
+    "President, PIEAS AI Society (2025-26, second term 2026-27)",
+    "Outreach Co-Lead, GDGoC PIEAS",
+    "General Secretary, PIEAS Blood Society",
+    "Graphic Designer, AWS Cloud Club",
+  ],
+};
+
 export const SECTIONS = [
   { id: "about", label: "about" },
   { id: "stack", label: "stack" },
@@ -25,19 +50,30 @@ export const SECTIONS = [
 
 export const ABOUT = {
   intro:
-    "I'm an AI Engineer and Python developer focused on designing and deploying production ML systems. I train deep learning models and write the backend code that turns complex datasets into software people actually use.",
-  philosophy:
-    "My work is rooted in strong software engineering. Instead of stopping at a Jupyter notebook, I use PyTorch, FastAPI and Docker to build end-to-end pipelines. A good model isn't just accurate — it's cleanly integrated, optimized and maintainable.",
-  vision:
-    "I want to keep building AI tools that solve concrete engineering problems — computer vision pipelines, NLP services, data platforms. Intelligent software that actually ships.",
+    "I'm an AI/ML engineer based in Islamabad. I design, train and deploy machine learning systems, from computer vision models served as real-time APIs to the data pipelines behind multi-client analytics products. I currently work part-time as an AI Engineer at Syvyo while completing my degree in Computer and Information Sciences at PIEAS.",
+  blocks: [
+    [
+      "currently",
+      "At Syvyo I own the ML lifecycle for computer vision and predictive models: preprocessing, feature engineering, tuning, evaluation and the FastAPI services that serve them for real-time inference. Before that, at Data Pilot, I built and maintained ETL/ELT pipelines for Datatram, a multi-client social media analytics dashboard, with a focus on data quality and schema validation.",
+    ],
+    [
+      "how i work",
+      "I treat a model as one component of a larger system. Training it is only part of the job. The rest is data validation, careful evaluation, packaging and serving, so that it behaves in production the way it did in testing. Most of what I build uses Python, PyTorch and Scikit-Learn, served through FastAPI and packaged with Docker.",
+    ],
+    [
+      "outside work",
+      "I lead the PIEAS AI Society as President, a role I held for the 2025-26 term and now continue in for a second consecutive term in 2026-27.",
+    ],
+  ] as [string, string][],
   quote: [
     "The hardest part of machine learning isn't the math, it's ",
     "writing the infrastructure",
     " to serve those models reliably to real users.",
   ],
   meta: [
-    ["education", '"BSCS — final year"'],
-    ["focus", '["AI/ML", "Data Engineering", "Systems"]'],
+    ["role", '"AI Engineer @ Syvyo"'],
+    ["education", '"BCIS @ PIEAS, 2023-2027"'],
+    ["focus", '["Computer Vision", "NLP", "MLOps"]'],
     ["location", '"Islamabad, PK"'],
     ["status", '"open to opportunities"'],
   ] as [string, string][],
@@ -90,26 +126,26 @@ export const WORK = [
     role: "AI Engineer (Part-time, Contract)",
     company: "Syvyo",
     location: "Remote",
-    period: "Sep 2026 — present",
+    period: "Sep 2026 - present",
     duration: "current",
     current: true,
     description:
-      "Back at Syvyo, this time as an AI Engineer on a part-time contract — designing, building and shipping production AI systems end to end.",
+      "Design, train and deploy production computer vision and predictive ML models in PyTorch, served through FastAPI REST APIs as containerized microservices for real-time inference. Own the ML lifecycle end to end: data preprocessing, feature engineering, tuning and evaluation.",
   },
   {
     role: "AI Engineer Intern",
     company: "Data Pilot",
     location: "Islamabad / Remote",
-    period: "Apr 2026 — Jun 2026",
+    period: "Apr 2026 - Jun 2026",
     duration: "~10w",
     description:
-      "Built scalable AI/ML data pipelines for social media management dashboards. Implemented ETL/ELT workflows and owned data quality assurance and schema validation for production components.",
+      "Built and maintained scalable AI/ML data pipelines for Datatram, a multi-client social media dashboard. Implemented ETL/ELT workflows for real-time processing and owned data quality assurance and schema validation across client environments.",
   },
   {
     role: "ML Trainee (Contract)",
     company: "Syvyo",
     location: "Remote",
-    period: "Sep 2025 — Feb 2026",
+    period: "Sep 2025 - Feb 2026",
     duration: "6mo",
     description:
       "Selected for a contract position following a successful internship. Implemented machine learning solutions and contributed to production-grade AI models.",
@@ -118,7 +154,7 @@ export const WORK = [
     role: "Data Science Fellow",
     company: "Buildables",
     location: "Remote",
-    period: "Sep 2025 — Nov 2025",
+    period: "Sep 2025 - Nov 2025",
     duration: "3mo",
     description:
       "Intensive fellowship on end-to-end data science workflows, model development and deployment strategies.",
@@ -127,7 +163,7 @@ export const WORK = [
     role: "ML/AI Intern",
     company: "Syvyo",
     location: "Remote",
-    period: "Jun 2025 — Sep 2025",
+    period: "Jun 2025 - Sep 2025",
     duration: "4mo",
     description:
       "Developed computer vision models and predictive ML pipelines in PyTorch. Served models through FastAPI REST APIs and improved performance with feature engineering and hyperparameter tuning.",
@@ -169,8 +205,8 @@ export const PROJECTS = [
     slug: "nasa-space-app",
     title: "NASA Space App",
     description:
-      "Built for the NASA Space Apps Challenge — visualization and analysis of space-related datasets, made approachable.",
-    tech: ["python", "data-viz", "apis"],
+      "Built for the NASA Space Apps Challenge: an ML app that flags likely exoplanet candidates in NASA mission data using XGBoost and decision trees, with batch CSV analysis and single-candidate scoring.",
+    tech: ["python", "xgboost", "ml", "data-viz"],
     image: projSpace,
     code: "https://github.com/DarainHyder/NASA-Space-App",
     live: "https://nasa-space-app-nine.vercel.app/",
@@ -208,7 +244,7 @@ export const REVIEWS = [
     name: "Hassan Javed",
     role: "Lead Data Scientist, TechVision Analytics",
     project: "image-quality-assessment",
-    text: "The Image Quality Assessment tool turned out way better than we expected. Fast, precise, and technically sound — you can tell a lot of time went into optimizing it for real-world use.",
+    text: "The Image Quality Assessment tool turned out way better than we expected. Fast, precise, and technically sound. You can tell a lot of time went into optimizing it for real-world use.",
   },
   {
     name: "Uzair Ahmed",
