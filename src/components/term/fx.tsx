@@ -45,8 +45,9 @@ export function Scramble({
   split?: number;
   className?: string;
 }) {
-  const seeds = useShardSeeds(text.length, split || 1);
-  const [out, setOut] = useState(() => (active && !prefersReducedMotion() ? "" : text));
+  const seeds = useShardSeeds(text.length, split || 1, text);
+  // must match the prerendered HTML, so never read browser state here
+  const [out, setOut] = useState(() => (active ? "" : text));
 
   useEffect(() => {
     if (!active) return;
@@ -85,7 +86,8 @@ export function Scramble({
   if (split) {
     const chars = [...out];
     return (
-      <span className={className} aria-label={text}>
+      <span className={className}>
+      <span className="sr-only">{text}</span>
         {[...text].map((c, i) => (
           <span key={i} aria-hidden className="sh-i" style={seeds[i]}>
             {c === " " ? "\u00a0" : chars[i] ?? "\u00a0"}
@@ -96,35 +98,53 @@ export function Scramble({
   }
 
   return (
-    <span className={className} aria-label={text}>
+    <span className={className}>
+      <span className="sr-only">{text}</span>
       <span aria-hidden>{out}</span>
     </span>
   );
 }
 
-/** Random flight vectors (as CSS vars) for each shard of an exploding string. */
-export function useShardSeeds(n: number, amp = 1) {
-  return useMemo(
-    () =>
-      Array.from({ length: n }, (_, k) => {
-        const a = Math.random() * Math.PI * 2;
-        const d = (0.5 + Math.random() * 0.8) * amp;
-        return {
-          "--dx": `${Math.cos(a) * 140 * d}px`,
-          "--dy": `${Math.sin(a) * 90 * d - 20 * amp}px`,
-          "--r": `${(Math.random() - 0.5) * 120}deg`,
-          "--k": k,
-        } as CSSProperties;
-      }),
-    [n, amp]
-  );
+/** Deterministic PRNG (mulberry32): identical output on the server and in the browser. */
+export function rng(seed: number) {
+  return () => {
+    seed |= 0;
+    seed = (seed + 0x6d2b79f5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function hashSeed(s: string) {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619);
+  return h >>> 0;
+}
+
+/** Flight vectors (as CSS vars) for each shard of an exploding string, seeded by `key`. */
+export function useShardSeeds(n: number, amp = 1, key = "") {
+  return useMemo(() => {
+    const rand = rng(hashSeed(`${key}:${n}`));
+    return Array.from({ length: n }, (_, k) => {
+      const a = rand() * Math.PI * 2;
+      const d = (0.5 + rand() * 0.8) * amp;
+      return {
+        "--dx": `${(Math.cos(a) * 140 * d).toFixed(2)}px`,
+        "--dy": `${(Math.sin(a) * 90 * d - 20 * amp).toFixed(2)}px`,
+        "--r": `${((rand() - 0.5) * 120).toFixed(2)}deg`,
+        "--k": k,
+      } as CSSProperties;
+    });
+  }, [n, amp, key]);
 }
 
 /** Text whose characters fly in to assemble on entry and scatter by the parent's `--s` (0..1). */
 export function Shatter({ text, amp = 1, className }: { text: string; amp?: number; className?: string }) {
-  const seeds = useShardSeeds(text.length, amp);
+  const seeds = useShardSeeds(text.length, amp, text);
   return (
-    <span className={className} aria-label={text}>
+    <span className={className}>
+      <span className="sr-only">{text}</span>
       {[...text].map((c, i) => (
         <span key={i} aria-hidden className="sh-o" style={seeds[i]}>
           <span className="sh-i">{c === " " ? "\u00a0" : c}</span>
@@ -199,7 +219,7 @@ export function Typed({
   onDone?: () => void;
   className?: string;
 }) {
-  const [n, setN] = useState(() => (prefersReducedMotion() ? text.length : 0));
+  const [n, setN] = useState(0);
   const doneRef = useRef(onDone);
   doneRef.current = onDone;
 
@@ -223,7 +243,8 @@ export function Typed({
   }, [text, active, speed, delay]);
 
   return (
-    <span className={className} aria-label={text}>
+    <span className={className}>
+      <span className="sr-only">{text}</span>
       <span aria-hidden>{text.slice(0, n)}</span>
       {caret && <span className="caret" aria-hidden />}
     </span>
