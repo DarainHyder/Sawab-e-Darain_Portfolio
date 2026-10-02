@@ -71,7 +71,7 @@ export function ResumeProvider({ children }: { children: ReactNode }) {
                 </button>
               </span>
             </div>
-            <iframe src={`${LINKS.resume}#view=FitH&toolbar=0&navpanes=0`} title="Syed Darain Hyder — Resume" />
+            <iframe src={`${LINKS.resume}#view=FitH&toolbar=0&navpanes=0`} title="Syed Darain Hyder Kazmi, resume" />
           </div>
         </div>
       )}
