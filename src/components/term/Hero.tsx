@@ -8,7 +8,7 @@ const BOOT: ReactNode[] = [
   <>booting <b>darain.sh</b> <span className="t-dim">v2026.09</span></>,
   <><span className="t-ok">[ ok ]</span> loading models <span className="t-faint">.......</span> pytorch · sklearn · hf</>,
   <><span className="t-ok">[ ok ]</span> mounting /projects <span className="t-faint">...</span> {PROJECTS.length} found</>,
-  <><span className="t-ok">[ ok ]</span> status <span className="t-faint">...............</span> available for work</>,
+  <><span className="t-ok">[ ok ]</span> status <span className="t-faint">...............</span> available for work + freelance</>,
 ];
 
 const COMMANDS: Record<string, string> = {
@@ -20,6 +20,7 @@ const COMMANDS: Record<string, string> = {
   reviews: "what people say",
   certs: "certifications",
   contact: "get in touch",
+  hire: "hire me freelance",
   resume: "view my resume",
   github: "open github",
   linkedin: "open linkedin",
@@ -96,7 +97,27 @@ export function Hero() {
       showResume();
       return print({ kind: "out", text: "opening resume.pdf …" });
     }
-    const ext: Record<string, string> = { github: LINKS.github, linkedin: LINKS.linkedin };
+    if (cmd === "hire") {
+      const hire: [string, string, string][] = [
+        ["fiverr", "hire me on fiverr", LINKS.fiverr],
+        ["gig", "view my fiverr gig", LINKS.fiverrGig],
+        ["upwork", "hire me on upwork", LINKS.upwork],
+      ];
+      return print(
+        ...hire.map(([k, label, href]): Line => ({
+          kind: "out",
+          text: (
+            <>
+              <span className="t-dim">{k} · </span>
+              <a href={href} target="_blank" rel="noopener noreferrer" className="t-link">
+                {label} ↗
+              </a>
+            </>
+          ),
+        }))
+      );
+    }
+    const ext: Record<string, string> = { github: LINKS.github, linkedin: LINKS.linkedin, fiverr: LINKS.fiverr, upwork: LINKS.upwork };
     if (ext[cmd]) {
       window.open(ext[cmd], "_blank", "noopener");
       return print({ kind: "out", text: `opening ${cmd} ↗` });
@@ -210,7 +231,7 @@ export function Hero() {
             <button className="t-btn is-primary t-resume-cta" onClick={showResume}>
               <span className="t-resume-cta-icon" aria-hidden>▤</span> view resume
             </button>
-            {["projects", "work", "contact"].map((k) => (
+            {["projects", "work", "contact", "hire"].map((k) => (
               <button key={k} onClick={() => run(k)}>
                 ./{k}
               </button>

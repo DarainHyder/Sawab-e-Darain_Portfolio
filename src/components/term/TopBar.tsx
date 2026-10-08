@@ -56,6 +56,9 @@ export function TopBar() {
               {s.label}
             </button>
           ))}
+          <button onClick={nav("hire")} className="t-bar-hire">
+            hire
+          </button>
           <button onClick={showResume} className="t-bar-cta">
             resume.pdf
           </button>
@@ -73,12 +76,15 @@ export function TopBar() {
               <span className="t-dim">{String(i + 1).padStart(2, "0")}</span> cd ./{s.label}
             </button>
           ))}
+          <button onClick={nav("hire")} className="t-bar-hire" style={{ ["--i" as string]: SECTIONS.length }}>
+            <span className="t-dim">→</span> ./hire --freelance
+          </button>
           <button
             onClick={() => {
               setOpen(false);
               showResume();
             }}
-            style={{ ["--i" as string]: SECTIONS.length }}
+            style={{ ["--i" as string]: SECTIONS.length + 1 }}
           >
             <span className="t-dim">↗</span> cat resume.pdf
           </button>

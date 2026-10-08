@@ -47,10 +47,45 @@ export function Contact() {
     ["phone", LINKS.phone, `tel:${LINKS.phone}`],
     ["github", "github.com/DarainHyder", LINKS.github],
     ["linkedin", "in/syed-darain-hyder-kazmi", LINKS.linkedin],
+    ["fiverr", "Hire me on Fiverr ↗", LINKS.fiverr],
+    ["gig", "View my Fiverr gig ↗", LINKS.fiverrGig],
+    ["upwork", "Hire me on Upwork ↗", LINKS.upwork],
   ];
 
   return (
     <Section id="contact" index="07" cmd="./send_message.sh" title="contact" ext=".sh">
+      {/* the navbar's "hire" item jumps here */}
+      <div id="hire" className="t-hire">
+        <Out i={0} className="t-window t-hire-win">
+          <div className="t-window-bar">
+            <span className="t-dots" aria-hidden><i /><i /><i /></span>
+            <span className="t-dim">./hire --freelance</span>
+            <span className="t-live t-hire-status">
+              <i aria-hidden /> open for projects
+            </span>
+          </div>
+          <div className="t-hire-body">
+            <div>
+              <h3 className="t-hire-title">Need an ML engineer for your project?</h3>
+              <p className="t-p">
+                I take on freelance work in machine learning, computer vision, NLP/LLM apps and data pipelines, from first
+                prototype to a deployed API. Hire me directly on Fiverr or Upwork.
+              </p>
+            </div>
+            <div className="t-actions t-hire-actions">
+              <a href={LINKS.fiverr} target="_blank" rel="noopener noreferrer" className="t-btn is-primary">
+                Hire me on Fiverr ↗
+              </a>
+              <a href={LINKS.upwork} target="_blank" rel="noopener noreferrer" className="t-btn">
+                Hire me on Upwork ↗
+              </a>
+              <a href={LINKS.fiverrGig} target="_blank" rel="noopener noreferrer" className="t-link t-small">
+                view my fiverr gig ↗
+              </a>
+            </div>
+          </div>
+        </Out>
+      </div>
       <div className="t-contact">
         <form className="t-form" onSubmit={submit} noValidate>
           <Out i={0} className="t-dim t-form-intro">
@@ -99,13 +134,13 @@ export function Contact() {
               </a>
             </Out>
           ))}
-          <Out i={7} className="t-kv">
+          <Out i={links.length + 2} className="t-kv">
             <span className="t-dim">resume</span>
             <button onClick={showResume} className="t-link t-left">
               resume.pdf
             </button>
           </Out>
-          <Out i={8} className="t-kv">
+          <Out i={links.length + 3} className="t-kv">
             <span className="t-dim">location</span>
             <span>{LINKS.location}</span>
           </Out>

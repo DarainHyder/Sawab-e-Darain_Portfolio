@@ -69,7 +69,7 @@ export function jsonLd(today: string) {
         },
         knowsAbout: KNOWS_ABOUT,
         knowsLanguage: PROFILE.languages,
-        sameAs: [LINKS.github, LINKS.linkedin],
+        sameAs: [LINKS.github, LINKS.linkedin, LINKS.fiverr, LINKS.upwork],
         hasCredential: CERTS.map((c) => ({
           "@type": "EducationalOccupationalCredential",
           name: c.title,
@@ -138,6 +138,8 @@ export function llmsTxt() {
     `- [Resume (PDF)](${abs(LINKS.resume)})`,
     `- [GitHub](${LINKS.github})`,
     `- [LinkedIn](${LINKS.linkedin})`,
+    `- [Hire on Fiverr](${LINKS.fiverr}) (gig: ${LINKS.fiverrGig})`,
+    `- [Hire on Upwork](${LINKS.upwork})`,
     "",
   ];
   return lines.join("\n");

@@ -209,6 +209,7 @@ kbd {
 .t-bar-nav button::before { content: "./"; color: var(--t-accent); opacity: 0; position: absolute; right: 100%; transition: opacity 0.2s; }
 .t-bar-nav button:hover, .t-bar-nav button.is-active { color: var(--t-fg); }
 .t-bar-nav button.is-active::before, .t-bar-nav button:hover::before { opacity: 1; }
+.t-bar-nav .t-bar-hire, .t-bar-sheet .t-bar-hire { color: var(--t-accent); }
 .t-bar-nav .t-bar-cta { color: var(--t-bg); background: var(--t-fg); padding: 3px 10px; transition: background 0.2s; }
 .t-bar-nav .t-bar-cta::before { display: none; }
 .t-bar-nav .t-bar-cta:hover { background: var(--t-accent); color: var(--t-bg); }
@@ -589,6 +590,18 @@ kbd {
 @media (hover: none) { .t-cert-skills { max-height: none; opacity: 1; } }
 
 /* ───────────────────────── contact ───────────────────────── */
+/* freelance panel at the top of contact */
+.t-hire { margin-bottom: 64px; }
+.t-hire-win { border-color: color-mix(in srgb, var(--t-accent) 35%, var(--t-line)); }
+.t-hire-win .t-window-bar { flex-wrap: wrap; gap: 4px 10px; white-space: nowrap; }
+.t-hire-status { margin-left: auto; }
+.t-hire-body { display: grid; gap: 22px; padding: 24px clamp(16px, 3vw, 30px); }
+@media (min-width: 900px) { .t-hire-body { grid-template-columns: 1fr auto; align-items: center; gap: 48px; } }
+.t-hire-title { font-size: clamp(17px, 2vw, 20px); font-weight: 600; letter-spacing: -0.02em; margin-bottom: 6px; }
+.t-hire-actions { margin-top: 0; flex-direction: column; align-items: stretch; }
+.t-hire-actions .t-btn { justify-content: center; }
+.t-hire-actions .t-link { align-self: center; }
+
 .t-contact { display: grid; gap: 56px; }
 @media (min-width: 900px) { .t-contact { grid-template-columns: 1fr 300px; gap: 72px; } }
 .t-form-intro { margin-bottom: 22px; }

@@ -7,6 +7,9 @@ import projPuzzle from "@/assets/projects/shot_puzzle.webp";
 export const LINKS = {
   github: "https://github.com/DarainHyder",
   linkedin: "https://www.linkedin.com/in/syed-darain-hyder-kazmi",
+  fiverr: "https://www.fiverr.com/darainhyder",
+  fiverrGig: "https://www.fiverr.com/s/mmmDB7z",
+  upwork: "https://www.upwork.com/freelancers/~016542608fe0bf33cf",
   email: "darainhyder21@gmail.com",
   phone: "+923433055357",
   location: "Islamabad, Pakistan",
