@@ -723,6 +723,8 @@ kbd {
   z-index: 90;
   display: grid;
   place-items: center;
+  /* pin the row to the screen so tall rendered pages scroll inside the window instead of stretching it */
+  grid-template-rows: minmax(0, 1fr);
   padding: 72px 24px 24px;
   background: color-mix(in srgb, var(--t-bg) 72%, transparent);
   backdrop-filter: blur(8px);
@@ -751,6 +753,21 @@ kbd {
 .t-resume-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .t-resume-actions { display: flex; gap: 18px; }
 .t-resume-win iframe { flex: 1; width: 100%; border: 0; background: #fff; }
+/* pdf.js mode (phones, tablets): rendered pages + a thumb-friendly action bar */
+.t-resume-scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; padding: 12px; }
+.t-resume-status { padding: 18px 6px; font-size: 13px; }
+.t-resume-pages { display: flex; flex-direction: column; gap: 12px; }
+.t-resume-page { display: block; width: 100%; height: auto; background: #fff; box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.7); animation: t-fade 0.4s var(--t-ease) both; }
+.t-resume-foot { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 12px; border-top: 1px solid var(--t-line); }
+.t-resume-foot .t-btn { justify-content: center; padding: 11px 14px; font-size: 14px; }
+@media (max-width: 759px) {
+  .t-resume.is-pages { padding: 0; place-items: stretch; }
+  .t-resume.is-pages .t-resume-win { width: 100%; height: 100%; border: 0; box-shadow: none; animation-name: t-sheet-up; }
+  .t-resume.is-pages .t-resume-bar { padding: 12px 14px; font-size: 13px; }
+  .t-resume.is-pages .t-resume-bar .t-dots { display: none; }
+  .t-resume.is-pages .t-resume-actions button { padding: 4px 0 4px 12px; }
+}
+@keyframes t-sheet-up { from { transform: translateY(32px); opacity: 0; } }
 .t-resume.is-closing { animation: t-fade 0.28s var(--t-ease) reverse both; }
 .t-resume.is-closing .t-resume-win { animation: t-win-in 0.28s var(--t-ease) reverse both; }
 @keyframes t-fade { from { opacity: 0; } }
