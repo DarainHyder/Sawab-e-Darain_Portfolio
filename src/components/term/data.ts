@@ -1,7 +1,6 @@
 // covers: hand-built vector art (`cover`) or a real screenshot of the live deployment (`image`)
 import type { CoverKey } from "./Covers";
 import projSpace from "@/assets/projects/shot_space.webp";
-import projHeart from "@/assets/projects/shot_heart.webp";
 import projPuzzle from "@/assets/projects/shot_puzzle.webp";
 import projKisaanKhata from "@/assets/projects/shot_kisaankhata.webp";
 import certHackathon from "@/assets/certs/AI-HackathonCertificate.pdf";
@@ -195,8 +194,8 @@ export const PROJECTS = [
     slug: "adaptive-e-learning",
     title: "Adaptive Multi-Agent E-Learning System",
     description:
-      "Multi-agent AI system with reinforcement-based feedback loops that personalizes learning paths and adjusts content difficulty dynamically.",
-    tech: ["multi-agent", "rl", "nlp", "classification"],
+      "A LangGraph multi-agent tutor with five agents and a custom transformer knowledge-tracing model (0.693 AUC, beating DKT and BKT) served via ONNX. A Thompson-sampling bandit adapts teaching strategy and quiz difficulty in real time.",
+    tech: ["langgraph", "multi-agent", "transformers", "onnx", "bandits"],
     cover: "elearning",
     code: "https://github.com/DarainHyder",
     live: "https://adaptive-e-learning-system.vercel.app/",
@@ -205,8 +204,8 @@ export const PROJECTS = [
     slug: "biomed-research-helper",
     title: "BioMed Research Helper",
     description:
-      "Biomedical research assistant combining PubMed API mining, semantic search and LLM summarization of medical literature.",
-    tech: ["python", "fastapi", "streamlit", "llm", "semantic-search"],
+      "BioAtlas, a hybrid semantic search engine over 14,693 PubMed studies. Fine-tuned bge-small fused with BM25 reaches 96.7% Recall@1, served as int8 ONNX on CPU via FastAPI, with cited evidence briefs and a React topic map.",
+    tech: ["semantic-search", "bge-small", "bm25", "onnx", "fastapi", "react"],
     cover: "biomed",
     code: "https://github.com/DarainHyder/BioMed_ResearchHelper",
     live: "https://bio-med-research-helper-yzop.vercel.app/",
@@ -215,8 +214,8 @@ export const PROJECTS = [
     slug: "image-quality-assessment",
     title: "Image Quality Assessment",
     description:
-      "PyTorch pipeline for blind image quality scoring using CNN feature extraction, deployed as a FastAPI microservice in Docker.",
-    tech: ["pytorch", "fastapi", "docker", "cnn", "cv"],
+      "Lumina, a no-reference image quality system. A CLIP ConvNeXt-B with multi-scale quality, attention and defect heads reaches 0.940 SRCC on KonIQ-10k (0.830 zero-shot on LIVE-C), served as int8 ONNX via FastAPI with a React app.",
+    tech: ["pytorch", "clip", "convnext", "onnx", "fastapi", "react"],
     cover: "iqa",
     code: "https://github.com/DarainHyder/Image_Quality_Assessment",
     live: "https://lumina-iqa.vercel.app/",
@@ -232,14 +231,14 @@ export const PROJECTS = [
     live: "https://nasa-space-app-nine.vercel.app/",
   },
   {
-    slug: "heart-attack-risk",
-    title: "Heart Attack Risk Analysis",
+    slug: "kisaankhata",
+    title: "KisaanKhata",
     description:
-      "Probability & statistics applied to heart attack risk: data cleaning, hypothesis testing and a trained classification model.",
-    tech: ["python", "statistics", "ml", "jupyter"],
-    image: projHeart,
-    code: "https://github.com/DarainHyder/Heart_Attack_risk-analysis-and-Trainig-Model",
-    live: "https://myocardial-risk-index.vercel.app/",
+      "A digital ledger for Pakistan's smallholder farmers: Urdu voice entry with faster-whisper, live AMIS mandi price checks, SMS for basic phones and a tamper-evident SHA-256 ledger. National Finalist at the Alibaba Cloud AI Hackathon Pakistan 2026.",
+    tech: ["fastapi", "faster-whisper", "react", "twilio", "sqlalchemy"],
+    image: projKisaanKhata,
+    code: KISAANKHATA.code,
+    live: KISAANKHATA.live,
   },
   {
     slug: "word-puzzle-solver",

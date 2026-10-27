@@ -187,7 +187,7 @@ export function IQACover() {
         mos 1.4
       </text>
       <text x={SPLIT} y={282} fontSize="7.5" fill={FAINT} style={MONO} textAnchor="middle">
-        cnn features → blind quality score
+        clip convnext-b → no-reference quality score
       </text>
     </Frame>
   );
