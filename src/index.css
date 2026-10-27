@@ -569,7 +569,7 @@ kbd {
 /* ───────────────────────── certs table ───────────────────────── */
 .t-tr {
   display: grid;
-  grid-template-columns: 3.2rem 1fr auto;
+  grid-template-columns: 4.6rem 1fr auto;
   gap: 16px;
   align-items: baseline;
   padding: 13px 0;
@@ -580,10 +580,12 @@ kbd {
 .t-th { font-size: 11px; color: var(--t-faint); text-transform: uppercase; letter-spacing: 0.08em; border-bottom-style: solid; padding-top: 0; }
 .t-hide-sm { display: none; }
 @media (min-width: 760px) {
-  .t-tr { grid-template-columns: 3.2rem 1fr 7rem 8rem 5rem; }
+  .t-tr { grid-template-columns: 4.6rem 1fr 10rem 7.5rem 7.5rem; }
   .t-hide-sm { display: inline; }
 }
 .t-cert-title { display: flex; flex-direction: column; }
+.t-cert-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 2px 12px; }
+@media (max-width: 759px) { .t-cert-links { flex-direction: column; align-items: flex-end; } }
 .t-cert-skills { font-size: 11.5px; max-height: 0; opacity: 0; overflow: hidden; transition: all 0.4s var(--t-ease); }
 .t-tr:hover .t-cert-skills { max-height: 2em; opacity: 1; }
 .t-tr:not(.t-th):hover { background: linear-gradient(90deg, color-mix(in srgb, var(--t-accent) 6%, transparent), transparent 70%); }

@@ -3,6 +3,15 @@ import type { CoverKey } from "./Covers";
 import projSpace from "@/assets/projects/shot_space.webp";
 import projHeart from "@/assets/projects/shot_heart.webp";
 import projPuzzle from "@/assets/projects/shot_puzzle.webp";
+import certHackathon from "@/assets/certs/AI-HackathonCertificate.pdf";
+import certGenAI from "@/assets/certs/GenAI_LLMs.pdf";
+import certMlops from "@/assets/certs/mlops.pdf";
+import certAws from "@/assets/certs/aws.pdf";
+import certContainers from "@/assets/certs/containerization.pdf";
+import certDeepLearning from "@/assets/certs/dl.pdf";
+import certSupervised from "@/assets/certs/supervisedml.pdf";
+import certDataScientist from "@/assets/certs/datascience.pdf";
+import certDataAnalyst from "@/assets/certs/dataanalyst.pdf";
 
 export const LINKS = {
   github: "https://github.com/DarainHyder",
@@ -269,50 +278,105 @@ export const REVIEWS = [
   },
 ];
 
-export const CERTS = [
+/** Newest first. `file` is the certificate itself, `url` its public verification page. */
+export const CERTS: {
+  title: string;
+  issuer: string;
+  date: string;
+  year: string;
+  scope: string;
+  skills: string[];
+  url: string;
+  file: string;
+}[] = [
+  {
+    title: "AI Hackathon Pakistan 2026, National Final",
+    issuer: "Alibaba Cloud · Cognix",
+    date: "Oct 2026",
+    year: "2026",
+    scope: "national final",
+    skills: ["kisaankhata", "smart agriculture", "fastapi", "whisper"],
+    url: "https://aihackathon.cognix-pk.com/certificate/TF61-YWVZ-7G1F",
+    file: certHackathon,
+  },
+  {
+    title: "Generative AI and LLMs: Architecture and Data Preparation",
+    issuer: "IBM · Coursera",
+    date: "Jul 2026",
+    year: "2026",
+    scope: "course",
+    skills: ["llms", "transformers", "tokenization", "data preparation"],
+    url: "https://coursera.org/verify/SGRUHO5TIXRB",
+    file: certGenAI,
+  },
+  {
+    title: "MLOps Concepts",
+    issuer: "DataCamp",
+    date: "Sep 2025",
+    year: "2025",
+    scope: "course",
+    skills: ["ml lifecycle", "deployment", "monitoring"],
+    url: "https://www.datacamp.com/completed/statement-of-accomplishment/course/afe8023debffb6910f37f2a88997db8fb462b7d5",
+    file: certMlops,
+  },
+  {
+    title: "AWS Cloud Practitioner (CLF-C02)",
+    issuer: "DataCamp",
+    date: "Sep 2025",
+    year: "2025",
+    scope: "track",
+    skills: ["cloud concepts", "aws services", "security", "pricing"],
+    url: "https://www.datacamp.com/completed/statement-of-accomplishment/track/8ae1160e0da04b0484716fcb64b1a2d96e5f727f",
+    file: certAws,
+  },
+  {
+    title: "Containerization and Virtualization Concepts",
+    issuer: "DataCamp",
+    date: "Aug 2025",
+    year: "2025",
+    scope: "course",
+    skills: ["containers", "virtualization", "docker"],
+    url: "https://www.datacamp.com/completed/statement-of-accomplishment/course/59cb66da82da5f05fc609a6f7e04789c6a52ffe4",
+    file: certContainers,
+  },
+  {
+    title: "Deep Learning in Python",
+    issuer: "DataCamp",
+    date: "Aug 2025",
+    year: "2025",
+    scope: "track",
+    skills: ["neural networks", "deep learning", "model training"],
+    url: "https://www.datacamp.com/completed/statement-of-accomplishment/track/60d23c4b115258dd770d8e0ca38bac2cec6b59c0",
+    file: certDeepLearning,
+  },
+  {
+    title: "Supervised Machine Learning in Python",
+    issuer: "DataCamp",
+    date: "Jul 2025",
+    year: "2025",
+    scope: "track",
+    skills: ["classification", "regression", "model evaluation", "scikit-learn"],
+    url: "https://www.datacamp.com/completed/statement-of-accomplishment/track/2d7a1c36c792f5ed56094e402144ec75db634915",
+    file: certSupervised,
+  },
   {
     title: "Associate Data Scientist in Python",
     issuer: "DataCamp",
+    date: "Jul 2025",
     year: "2025",
-    level: "advanced",
-    skills: ["python", "ml", "statistics", "scikit-learn"],
-    url: "https://www.datacamp.com/completed/statement-of-accomplishment/track/2d7a1c36c792f5ed56094e402144ec75db634915",
+    scope: "track",
+    skills: ["python", "statistics", "machine learning", "scikit-learn"],
+    url: "https://www.datacamp.com/completed/statement-of-accomplishment/track/eed3292c43dbac9595454e76c6dc40ca5654850d",
+    file: certDataScientist,
   },
   {
-    title: "Data Analyst with Python",
+    title: "Data Analyst in Python",
     issuer: "DataCamp",
+    date: "Jul 2025",
     year: "2025",
-    level: "advanced",
+    scope: "track",
     skills: ["pandas", "matplotlib", "seaborn", "analysis"],
-    url: "https://www.datacamp.com/completed/statement-of-accomplishment/track/60d23c4b115258dd770d8e0ca38bac2cec6b59c0",
+    url: "https://www.datacamp.com/completed/statement-of-accomplishment/track/11f12ec4aaaf72c20ccf94725434a9c81569d968",
+    file: certDataAnalyst,
   },
-  {
-    title: "Supervised Machine Learning",
-    issuer: "DataCamp",
-    year: "2025",
-    level: "advanced",
-    skills: ["supervised", "training", "evaluation"],
-    url: "https://www.datacamp.com/completed/statement-of-accomplishment/track/2d7a1c36c792f5ed56094e402144ec75db634915",
-  },
-  {
-    title: "Machine Learning with Tree-Based Models",
-    issuer: "DataCamp",
-    year: "2025",
-    level: "advanced",
-    skills: ["random-forest", "boosting", "xgboost"],
-  },
-  {
-    title: "Unsupervised Learning in Python",
-    issuer: "DataCamp",
-    year: "2025",
-    level: "intermediate",
-    skills: ["clustering", "pca", "k-means"],
-  },
-  {
-    title: "Hypothesis Testing in Python",
-    issuer: "DataCamp",
-    year: "2025",
-    level: "intermediate",
-    skills: ["t-tests", "anova", "inference"],
-  },
-] as { title: string; issuer: string; year: string; level: string; skills: string[]; url?: string }[];
+];

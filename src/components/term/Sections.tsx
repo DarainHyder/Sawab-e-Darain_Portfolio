@@ -308,32 +308,31 @@ export function Reviews() {
 
 export function Certs() {
   return (
-    <Section id="certs" index="06" cmd="ls ./certs --sort=level" title="certs" ext="/">
+    <Section id="certs" index="06" cmd="ls -t ./certs" title="certs" ext="/">
       <div className="t-table">
         <Out i={0} className="t-tr t-th">
-          <span>year</span>
+          <span>date</span>
           <span>title</span>
           <span className="t-hide-sm">issuer</span>
-          <span className="t-hide-sm">level</span>
+          <span className="t-hide-sm">scope</span>
           <span />
         </Out>
         {CERTS.map((c, i) => (
           <Out key={c.title} i={i + 1} className="t-tr">
-            <span className="t-dim">{c.year}</span>
+            <span className="t-dim">{c.date}</span>
             <span className="t-cert-title">
               {c.title}
               <span className="t-cert-skills t-faint">{c.skills.join(" · ")}</span>
             </span>
             <span className="t-dim t-hide-sm">{c.issuer}</span>
-            <span className={`t-hide-sm ${c.level === "advanced" ? "t-acc" : "t-dim"}`}>{c.level}</span>
-            <span className="t-right">
-              {c.url ? (
-                <a href={c.url} target="_blank" rel="noopener noreferrer" className="t-link">
-                  verify ↗
-                </a>
-              ) : (
-                <span className="t-faint">-</span>
-              )}
+            <span className={`t-hide-sm ${c.scope === "national final" ? "t-acc" : "t-dim"}`}>{c.scope}</span>
+            <span className="t-cert-links">
+              <a href={c.file} target="_blank" rel="noopener noreferrer" className="t-link">
+                pdf
+              </a>
+              <a href={c.url} target="_blank" rel="noopener noreferrer" className="t-link">
+                verify ↗
+              </a>
             </span>
           </Out>
         ))}

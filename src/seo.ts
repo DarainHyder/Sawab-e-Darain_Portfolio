@@ -75,7 +75,7 @@ export function jsonLd(today: string) {
           name: c.title,
           credentialCategory: "certificate",
           recognizedBy: { "@type": "Organization", name: c.issuer },
-          ...(c.url ? { url: c.url } : {}),
+          url: c.url,
         })),
       },
       ...PROJECTS.map((p) => ({
@@ -129,7 +129,7 @@ export function llmsTxt() {
     "",
     "## Certifications",
     "",
-    ...CERTS.map((c) => `- ${c.title}, ${c.issuer} (${c.year})${c.url ? `: ${c.url}` : ""}`),
+    ...CERTS.map((c) => `- ${c.title}, ${c.issuer} (${c.date}): ${c.url}`),
     "",
     "## Contact",
     "",
