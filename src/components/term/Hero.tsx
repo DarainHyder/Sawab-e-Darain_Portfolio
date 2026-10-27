@@ -183,8 +183,8 @@ export function Hero() {
             <span className="t-name-caret" aria-hidden />
           </h1>
           <p className="t-lede">
-            <span className="t-acc">AI/ML engineer</span> who trains models and writes the software that ships them.
-            <br className="hidden sm:block" /> Pipelines, APIs and data systems from Islamabad.
+            <span className="t-acc">AI engineer</span> building agentic AI, LLM apps and production ML systems.
+            <br className="hidden sm:block" /> Multi-agent workflows, RAG and computer vision, from Islamabad.
           </p>
 
           <div className="t-shell" onClick={() => inputRef.current?.focus()}>

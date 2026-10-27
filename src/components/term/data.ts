@@ -34,7 +34,7 @@ export const PROFILE = {
   title: "AI/ML Engineer",
   site: "https://darainhyder.netlify.app",
   summary:
-    "AI/ML engineer in Islamabad, Pakistan, building production machine learning systems: computer vision models served as real-time APIs, NLP and LLM applications, and data pipelines for multi-client analytics.",
+    "AI/ML engineer in Islamabad, Pakistan, building agentic AI systems and multi-agent LLM applications with LangGraph and LangChain, retrieval and semantic search, and production computer vision models served through FastAPI.",
   employer: "Syvyo",
   education: {
     degree: "Bachelor of Computer and Information Sciences",
@@ -64,15 +64,15 @@ export const SECTIONS = [
 
 export const ABOUT = {
   intro:
-    "I'm an AI/ML engineer based in Islamabad. I design, train and deploy machine learning systems, from computer vision models served as real-time APIs to the data pipelines behind multi-client analytics products. I currently work part-time as an AI Engineer at Syvyo while completing my degree in Computer and Information Sciences at PIEAS.",
+    "I'm an AI engineer in Islamabad building intelligent systems end to end: agentic AI and multi-agent workflows, LLM-powered applications, retrieval and semantic search, and production computer vision. I take ideas from prototype to deployed product, with the evaluation, APIs and infrastructure that keep them reliable for real users. I currently work part-time as an AI Engineer at Syvyo while completing my degree in Computer and Information Sciences at PIEAS.",
   blocks: [
     [
-      "currently",
-      "At Syvyo I own the ML lifecycle for computer vision and predictive models: preprocessing, feature engineering, tuning, evaluation and the FastAPI services that serve them for real-time inference. Before that, at Data Pilot, I built and maintained ETL/ELT pipelines for Datatram, a multi-client social media analytics dashboard, with a focus on data quality and schema validation.",
+      "what i build",
+      "AI agents that reason, call tools and coordinate with each other, orchestrated with LangGraph and LangChain; RAG and hybrid search over large knowledge bases; and deep learning models for vision and language. Recent work includes a five-agent LangGraph tutor driven by its own knowledge-tracing model, a hybrid search engine over 14,693 PubMed studies at 96.7% Recall@1, and an image quality model reaching 0.940 SRCC on KonIQ-10k.",
     ],
     [
-      "how i work",
-      "I treat a model as one component of a larger system. Training it is only part of the job. The rest is data validation, careful evaluation, packaging and serving, so that it behaves in production the way it did in testing. Most of what I build uses Python, PyTorch and Scikit-Learn, served through FastAPI and packaged with Docker.",
+      "currently",
+      "At Syvyo I own the ML lifecycle for computer vision and predictive models, from data preprocessing and tuning to FastAPI microservices for real-time inference. Before that, at Data Pilot, I built ETL/ELT pipelines for Datatram, a multi-client social media analytics dashboard. Whatever I ship, I optimise for production: honest evaluation, clean data and lean serving with ONNX and Docker.",
     ],
     [
       "outside work",
@@ -80,14 +80,15 @@ export const ABOUT = {
     ],
   ] as [string, string][],
   quote: [
-    "The hardest part of machine learning isn't the math, it's ",
-    "writing the infrastructure",
-    " to serve those models reliably to real users.",
+    "The hardest part of AI isn't the model, it's ",
+    "engineering the system around it",
+    " so it holds up for real users.",
   ],
   meta: [
     ["role", '"AI Engineer @ Syvyo"'],
+    ["focus", '["Agentic AI", "LLMs", "Computer Vision"]'],
+    ["stack", '["LangGraph", "PyTorch", "FastAPI"]'],
     ["education", '"BCIS @ PIEAS, 2023-2027"'],
-    ["focus", '["Computer Vision", "NLP", "MLOps"]'],
     ["location", '"Islamabad, PK"'],
     ["status", '"open to opportunities"'],
   ] as [string, string][],
