@@ -17,6 +17,7 @@ const COMMANDS: Record<string, string> = {
   stack: "tools & skills",
   work: "experience",
   projects: "things i've built",
+  hackathon: "kisaankhata, national final",
   reviews: "what people say",
   certs: "certifications",
   contact: "get in touch",

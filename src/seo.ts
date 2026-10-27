@@ -1,6 +1,6 @@
 /* Machine-readable views of the portfolio, generated at build time from the same data the page renders. */
 import profileImage from "@/assets/sawabedararin.jpg";
-import { ABOUT, CERTS, LINKS, PROFILE, PROJECTS, STACK, TOOLS, WORK } from "@/components/term/data";
+import { ABOUT, CERTS, HACKATHON, LINKS, PROFILE, PROJECTS, STACK, TOOLS, WORK } from "@/components/term/data";
 
 const SITE = PROFILE.site;
 const abs = (path: string) => new URL(path, `${SITE}/`).href;
@@ -69,6 +69,7 @@ export function jsonLd(today: string) {
         },
         knowsAbout: KNOWS_ABOUT,
         knowsLanguage: PROFILE.languages,
+        award: `${HACKATHON.result}, ${HACKATHON.event} (${HACKATHON.project}, ${HACKATHON.track} track)`,
         sameAs: [LINKS.github, LINKS.linkedin, LINKS.fiverr, LINKS.upwork],
         hasCredential: CERTS.map((c) => ({
           "@type": "EducationalOccupationalCredential",
@@ -113,6 +114,13 @@ export function llmsTxt() {
     "## Projects",
     "",
     ...PROJECTS.map((p) => `- [${p.title}](${p.live}): ${p.description} Stack: ${p.tech.join(", ")}. Source: ${p.code}`),
+    "",
+    "## Hackathon",
+    "",
+    `- **${HACKATHON.result}, ${HACKATHON.event}** (${HACKATHON.track} track, ${HACKATHON.date}, ${HACKATHON.venue}; organised by ${HACKATHON.organisers}). Certificate: ${HACKATHON.verify}`,
+    `- [${HACKATHON.project}](${HACKATHON.live}): ${HACKATHON.tagline} ${HACKATHON.summary} Source: ${HACKATHON.code}`,
+    ...HACKATHON.features.map(([k, v]) => `  - ${k}: ${v}`),
+    `  - the hard part: ${HACKATHON.struggle}`,
     "",
     "## Skills",
     "",

@@ -3,6 +3,7 @@ import type { CoverKey } from "./Covers";
 import projSpace from "@/assets/projects/shot_space.webp";
 import projHeart from "@/assets/projects/shot_heart.webp";
 import projPuzzle from "@/assets/projects/shot_puzzle.webp";
+import projKisaanKhata from "@/assets/projects/shot_kisaankhata.webp";
 import certHackathon from "@/assets/certs/AI-HackathonCertificate.pdf";
 import certGenAI from "@/assets/certs/GenAI_LLMs.pdf";
 import certMlops from "@/assets/certs/mlops.pdf";
@@ -55,6 +56,7 @@ export const SECTIONS = [
   { id: "stack", label: "stack" },
   { id: "work", label: "work" },
   { id: "projects", label: "projects" },
+  { id: "hackathon", label: "hackathon" },
   { id: "reviews", label: "reviews" },
   { id: "certs", label: "certs" },
   { id: "contact", label: "contact" },
@@ -181,6 +183,11 @@ export const WORK = [
       "Developed computer vision models and predictive ML pipelines in PyTorch. Served models through FastAPI REST APIs and improved performance with feature engineering and hyperparameter tuning.",
   },
 ];
+
+const KISAANKHATA = {
+  live: "https://kisaankhata.vercel.app/",
+  code: "https://github.com/DarainHyder/KisaanKhata",
+};
 
 export const PROJECTS = [
   {
@@ -380,3 +387,32 @@ export const CERTS: {
     file: certDataAnalyst,
   },
 ];
+
+/** The hackathon write-up shown in its own section. */
+export const HACKATHON = {
+  event: "Alibaba Cloud AI Hackathon Pakistan 2026",
+  result: "National Finalist",
+  track: "Smart Agriculture",
+  date: "24 Oct 2026",
+  venue: "Pakistan-China Friendship Center, Islamabad",
+  organisers: "Alibaba Cloud · Cognix · Alkhidmat Foundation · Bano Qabil",
+  project: "KisaanKhata",
+  tagline:
+    "A free digital ledger (khata) for Pakistan's smallholder farmers that checks every sale against the real mandi rate.",
+  summary:
+    "Farmers record loans and harvest sales by speaking Urdu, on the web or from a basic phone over SMS. KisaanKhata compares each sale with live market prices, tells the farmer in plain Roman Urdu whether they were paid fairly, and seals the record so nobody can quietly rewrite it later.",
+  ...KISAANKHATA,
+  image: projKisaanKhata,
+  certificate: certHackathon,
+  verify: "https://aihackathon.cognix-pk.com/certificate/TF61-YWVZ-7G1F",
+  features: [
+    ["voice-entry", "Urdu speech-to-text with faster-whisper"],
+    ["fair-price", "live AMIS mandi rates, refreshed every 6 hours"],
+    ["sms", "works from any basic phone over SMS"],
+    ["hash-chain", "tamper-evident SHA-256 ledger per farmer"],
+    ["i18n", "English, Urdu and Chinese, right-to-left ready"],
+  ] as [string, string][],
+  stack: ["fastapi", "sqlalchemy", "faster-whisper", "twilio", "apscheduler", "beautifulsoup", "react", "vite"],
+  struggle:
+    "The model was the easy part. Getting Whisper running on free hosting took an evening of Docker, Gradio and ZeroGPU fixes, and a price scraper that ran without errors turned out to be reading the wrong unit. The last fix shipped the day before the final.",
+};

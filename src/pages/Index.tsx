@@ -3,7 +3,7 @@ import { TransitionProvider } from "@/components/term/Transition";
 import { TopBar } from "@/components/term/TopBar";
 import { ResumeProvider } from "@/components/term/Resume";
 import { Hero } from "@/components/term/Hero";
-import { About, Certs, Projects, Reviews, Stack, Work } from "@/components/term/Sections";
+import { About, Certs, Hackathon, Projects, Reviews, Stack, Work } from "@/components/term/Sections";
 import { Contact, Footer } from "@/components/term/Contact";
 
 /** Faint grid that brightens around the cursor. */
@@ -44,6 +44,7 @@ const Index = () => (
           <Stack />
           <Work />
           <Projects />
+          <Hackathon />
           <Reviews />
           <Certs />
           <Contact />

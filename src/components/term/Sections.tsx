@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { createPortal } from "react-dom";
 import profileImage from "@/assets/sawabedararin.jpg";
-import { ABOUT, CERTS, PROJECTS, REVIEWS, STACK, TOOLS, WORK } from "./data";
+import { ABOUT, CERTS, HACKATHON, PROJECTS, REVIEWS, STACK, TOOLS, WORK } from "./data";
 import { Scramble, hash7, useInView } from "./fx";
 import { Out, Section } from "./Section";
 import { COVERS } from "./Covers";
@@ -254,7 +254,7 @@ export function Reviews() {
 
   const r = REVIEWS[idx];
   return (
-    <Section id="reviews" index="05" cmd="tail -f reviews.log" title="reviews" ext=".log">
+    <Section id="reviews" index="06" cmd="tail -f reviews.log" title="reviews" ext=".log">
       <div ref={ref} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
         <Out i={0} className="t-review">
           <div className="t-review-meta">
@@ -306,9 +306,86 @@ export function Reviews() {
   );
 }
 
+export function Hackathon() {
+  const h = HACKATHON;
+  return (
+    <Section id="hackathon" index="05" cmd="cat ./hackathon/kisaankhata.md" title="hackathon" ext=".md">
+      <div className="t-hack-head">
+        <div>
+          <Out i={0} className="t-hack-badge">
+            <span className="t-ok">[ {h.result.toLowerCase()} ]</span>
+            <span className="t-dim">{h.event}</span>
+          </Out>
+          <Out i={1}>
+            <h3 className="t-hack-title">{h.project}</h3>
+            <p className="t-p t-hack-tagline">{h.tagline}</p>
+          </Out>
+          <Out i={2} className="t-hack-meta">
+            <span className="t-dim">track</span>
+            <span>{h.track}</span>
+            <span className="t-dim">final</span>
+            <span>
+              {h.date} · {h.venue}
+            </span>
+          </Out>
+          <Out i={3} className="t-actions">
+            <a href={h.live} target="_blank" rel="noopener noreferrer" className="t-btn is-primary">
+              ./run live ↗
+            </a>
+            <a href={h.code} target="_blank" rel="noopener noreferrer" className="t-btn">
+              git clone ↗
+            </a>
+            <a href={h.verify} target="_blank" rel="noopener noreferrer" className="t-btn">
+              verify certificate ↗
+            </a>
+          </Out>
+        </div>
+
+        <Out i={2}>
+          <a href={h.live} target="_blank" rel="noopener noreferrer" className="t-shot" tabIndex={-1}>
+            <span className="t-shot-bar" aria-hidden>
+              <span className="t-dots">
+                <i />
+                <i />
+                <i />
+              </span>
+              <span className="t-shot-url">{h.live.replace(/^https:\/\/|\/$/g, "")}</span>
+            </span>
+            <span className="t-shot-img">
+              <img src={h.image} alt={`${h.project}: live app`} loading="lazy" />
+            </span>
+          </a>
+          <a href={h.certificate} target="_blank" rel="noopener noreferrer" className="t-link t-small t-hack-cert">
+            view certificate.pdf ↗
+          </a>
+        </Out>
+      </div>
+
+      <div className="t-hack-cols">
+        <Out i={4}>
+          <h3 className="t-h3"><span className="t-faint">## </span>what it does</h3>
+          <ul className="t-hack-list">
+            {h.features.map(([k, v], i) => (
+              <li key={k}>
+                <span className="t-faint">{i === h.features.length - 1 ? "└── " : "├── "}</span>
+                <span className="t-hack-key">{k}</span>
+                <span className="t-dim">{v}</span>
+              </li>
+            ))}
+          </ul>
+        </Out>
+        <Out i={5}>
+          <h3 className="t-h3"><span className="t-faint">## </span>the hard part</h3>
+          <p className="t-p">{h.struggle}</p>
+        </Out>
+      </div>
+    </Section>
+  );
+}
+
 export function Certs() {
   return (
-    <Section id="certs" index="06" cmd="ls -t ./certs" title="certs" ext="/">
+    <Section id="certs" index="07" cmd="ls -t ./certs" title="certs" ext="/">
       <div className="t-table">
         <Out i={0} className="t-tr t-th">
           <span>date</span>

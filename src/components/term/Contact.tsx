@@ -53,7 +53,7 @@ export function Contact() {
   ];
 
   return (
-    <Section id="contact" index="07" cmd="./send_message.sh" title="contact" ext=".sh">
+    <Section id="contact" index="08" cmd="./send_message.sh" title="contact" ext=".sh">
       {/* the navbar's "hire" item jumps here */}
       <div id="hire" className="t-hire">
         <Out i={0} className="t-window t-hire-win">
